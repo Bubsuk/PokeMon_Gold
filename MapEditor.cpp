@@ -9,8 +9,6 @@
 
 HRESULT MapEditor::Init()
 {
-	
-
 	mSampleTileImage = IMG_MGR->FindImage(eImageTag::SampleTile);
 	mDrawTileImage = IMG_MGR->FindImage(eImageTag::DrawTile);
 	mBackground = IMG_MGR->FindImage(eImageTag::Background);
@@ -47,7 +45,6 @@ HRESULT MapEditor::Init()
 
 			mTileInfo[i * TILE_COUNT_X + j].Terrain = eTerrain::Close;
 		}
-
 	}
 	
 
@@ -248,18 +245,13 @@ void MapEditor::Update()
 		}
 	}
 	
-
-
-	// 저장 부분, 수정 요
-	if (Input::GetButton(VK_CONTROL))
+	// 저장 부분
+	if (Input::GetButton(VK_CONTROL) && Input::GetButtonDown('S'))
 	{
-		if (Input::GetButtonDown('S'))
-		{
 			cout << "저장 할 파일명 : ";
 			cin >> mSaveIndex;
 			cout << "\"" << mSaveIndex << "\"" << "에 저장됩니다" << '\n';
 			SaveMap(mSaveIndex);
-		}
 
 	}
 	if (Input::GetButton(VK_LSHIFT))
@@ -271,32 +263,30 @@ void MapEditor::Update()
 			cout << "\"" << mSaveIndex << "\"" << "을 불러옵니다" << '\n';
 			LoadMap(mSaveIndex);
 		}
-
 	}
 
 
 	// 드래그 시작
 	if (Input::GetButtonDown(VK_LBUTTON))
 	{
-		if (PtInRect(&(mSampleArea), g_ptMouse))
+		if (PtInRect(&(mSampleArea), Input::GetMousePosition()))
 		{
 			mbIsClick = true;
 			// 샘플영역 클릭 시작좌표
-			mClickStart.x = (g_ptMouse.x - mSampleArea.left) / SAMPLE_TILE_SIZE;
-			mClickStart.y = g_ptMouse.y / SAMPLE_TILE_SIZE;
+			mClickStart.x = (Input::GetMousePosition().x - mSampleArea.left) / SAMPLE_TILE_SIZE;
+			mClickStart.y = Input::GetMousePosition().y / SAMPLE_TILE_SIZE;
 			// 클릭 드래그 영역 시작값 1로 설정
 			mClickArea.x = 1;
 			mClickArea.y = 1;
-			
 		}
 	}
 	// 드래그 끝
 	if (Input::GetButtonUp(VK_LBUTTON))
 	{
-		if (PtInRect(&(mSampleArea), g_ptMouse) && mbIsClick == true)
+		if (PtInRect(&(mSampleArea), Input::GetMousePosition()) && mbIsClick == true)
 		{
 			// 클릭 종료시 좌표
-			mCLickEnd = POINT{ (g_ptMouse.x - mSampleArea.left) / SAMPLE_TILE_SIZE, (g_ptMouse.y - mSampleArea.top) / SAMPLE_TILE_SIZE };
+			mCLickEnd = POINT{ (Input::GetMousePosition().x - mSampleArea.left) / SAMPLE_TILE_SIZE, (Input::GetMousePosition().y - mSampleArea.top) / SAMPLE_TILE_SIZE };
 			// 드래그 영역 좌표
 			mClickArea.x = fabs(mClickStart.x -  mCLickEnd.x);
 			mClickArea.y= fabs(mClickStart.y - mCLickEnd.y);
@@ -307,12 +297,12 @@ void MapEditor::Update()
 	// 그리는 영역 타일정보 업데이트
 	if (Input::GetButton(VK_LBUTTON))
 	{
-		if (PtInRect(&(mDrawArea), g_ptMouse))
+		if (PtInRect(&(mDrawArea), Input::GetMousePosition()))
 		{
 			// 그리는 영역 내 좌표
 			POINT clickPos
-				= { (g_ptMouse.x - CAM_MGR->GetCamPos().x) / TILE_SIZE,
-				(g_ptMouse.y - CAM_MGR->GetCamPos().y) / TILE_SIZE };
+				= { (Input::GetMousePosition().x - CAM_MGR->GetCamPos().x) / TILE_SIZE,
+				(Input::GetMousePosition().y - CAM_MGR->GetCamPos().y) / TILE_SIZE };
 
 			for (int i = 0; i <= mClickArea.y; ++i)
 			{
@@ -394,10 +384,10 @@ void MapEditor::Render(HDC hdc)
 	//TextOut(hdc, WIN_SIZE_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 120, mSampleText, strlen(mSampleText));
 	// 샘플타일넘버
 	wsprintf(mSampleText, "Sample Tile index : %d", mClickStart.y * SAMPLE_TILE_COUNT_X + mClickStart.x);
-	TextOut(hdc, WIN_SIZE_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 120, mSampleText, strlen(mSampleText));
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 120, mSampleText, strlen(mSampleText));
 	// 선택 타일 속성 표기
 	wsprintf(mSampleText, "Tile Terrain : %d", (int)mTileInfo[mClickStart.y * TILE_COUNT_X + mClickStart.x].Terrain);
-	TextOut(hdc, WIN_SIZE_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 160, mSampleText, strlen(mSampleText));
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 160, mSampleText, strlen(mSampleText));
 
 
 }

@@ -36,9 +36,6 @@
     <ClCompile Include="Image.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="TimerManager.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
@@ -81,6 +78,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="RandomManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h">
@@ -97,9 +97,6 @@
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerManager.h">
-      <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>Manager</Filter>
@@ -153,6 +150,9 @@
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "Timer.h"
 #include <crtdbg.h>
 #include "Config.h"
 #include "CommonFunction.h"
@@ -12,14 +13,16 @@
 
 #define _CRTDBG_MAP_ALLOC
 
-#define TILETOOL
 
 // 전역변수
-POINT		g_ptMouse;
 HINSTANCE	g_hInstance;
 HWND		g_hWnd;
 LPSTR		g_lpszClass = (LPSTR)TEXT("Pokemon_Gold");
 MainGame	g_mainGame;
+
+POINT		g_maxSize;
+
+
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage,
 	WPARAM wParam, LPARAM lParam);
@@ -49,17 +52,12 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 	// 윈도우 클래스 등록
 	RegisterClass(&wndClass);
 
-#ifdef TILETOOL
-	g_hWnd = CreateWindow(g_lpszClass, g_lpszClass, WS_OVERLAPPEDWINDOW,
-		WIN_START_POS_X, WIN_START_POS_Y, TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y,
-		NULL, NULL, _hInstance, NULL);
 
-#else
 	// 윈도우 생성
 	g_hWnd = CreateWindow(g_lpszClass, g_lpszClass, WS_OVERLAPPEDWINDOW,
-		WIN_START_POS_X, WIN_START_POS_Y, WIN_SIZE_X, WIN_SIZE_Y,
+		WIN_START_POS_X, WIN_START_POS_Y, g_maxSize.x, g_maxSize.y,
 		NULL, NULL, _hInstance, NULL);
-#endif
+
 
 	// 메인게임 초기화
 	g_mainGame.Init();
@@ -70,54 +68,48 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 
 
 	// 메시지 큐에 있는 메시지 처리
-	MSG message;
-	while (GetMessage(&message, 0, 0, 0))
+
+	MSG msg;
+
+	while (TRUE)
 	{
-		TranslateMessage(&message);
-		DispatchMessage(&message);
+		if (PeekMessage(&msg, nullptr, NULL, NULL, PM_REMOVE))
+		{
+			if (msg.message == WM_QUIT)
+			{
+				break;
+			}
+
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			if (Timer::CanUpdate())
+			{
+				Input::Update();
+				g_mainGame.Update();
+				HDC hdc = GetDC(g_hWnd);
+				g_mainGame.Render(hdc);
+			}
+		}
 	}
 
 	// 메인게임 해제
 	g_mainGame.Release();
 
-	return message.wParam;
+	return msg.wParam;
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
-	HDC hdc;
-	PAINTSTRUCT ps;
-
-	static bool isUpdate = true;
-
+	
 	switch (iMessage)
 	{
-	case WM_KEYDOWN:
-		switch (wParam)
-		{
-		case VK_RETURN:
-			//isUpdate = !isUpdate;
-			break;
-		}
-		break;
-	case WM_TIMER:
-		if (isUpdate)
-		{
-			g_mainGame.Update();
-		}
-
-		break;
-	case WM_PAINT:		// 윈도우 화면이 다시 그려지는 경우 발생하는 메시지
-		hdc = BeginPaint(g_hWnd, &ps);
-
-		g_mainGame.Render(hdc);
-
-		EndPaint(g_hWnd, &ps);
-		break;
 	case WM_DESTROY:	// 닫기 버튼 메시지처리 (프로그램 종료)
 		PostQuitMessage(0);
 		break;
 	}
 
-	return g_mainGame.MainProc(hWnd, iMessage, wParam, lParam);
+	return DefWindowProc(hWnd, iMessage, wParam, lParam);
 }

@@ -30,19 +30,18 @@ using namespace std;
 #include "Header.h"
 #include "Macro.h"
 #include "Enum.h"
-#include "TimerManager.h"
 #include "ImageManager.h"
 #include "Input.h"
 #include "SceneManager.h"
 #include "CameraManager.h"
+#include "Timer.h"
 
-#define TIMER_MGR TimerManager::GetSingleton()
 #define KEY_MGR Input::GetSingleton()
 #define SCENE_MGR SceneManager::GetSingleton()
 #define IMG_MGR ImageManager::GetSingleton()
 #define CAM_MGR CameraManager::GetSingleton()
 
-#define DELTA_TIME TIMER_MGR->GetDeltaTime()
+#define DELTA_TIME Timer::GetDeltaTime();
 
 #define TILE_START_POS_X ((WIN_SIZE_X - (TILE_SIZE * TILE_COUNT_X)) / 2)
 #define TILE_START_POS_Y ((WIN_SIZE_Y - (TILE_SIZE * TILE_COUNT_Y)) / 2)
@@ -62,4 +61,3 @@ using namespace std;
 
 extern HWND g_hWnd;
 extern HINSTANCE g_hInstance;
-extern POINT g_ptMouse;
