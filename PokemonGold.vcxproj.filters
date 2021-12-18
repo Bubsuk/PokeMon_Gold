@@ -102,6 +102,12 @@
     <ClCompile Include="CityScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="IngameMap.cpp">
+      <Filter>TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h">
@@ -193,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="CityScene.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="IngameMap.h">
+      <Filter>TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

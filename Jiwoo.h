@@ -9,10 +9,11 @@ private:
 
 	eDir mState;
 
-	int frameX = 0;
-	int frameY = 0;
+	int mframeX = 0;
+	int mframeY = 0;
 
-	const float MAX_ANIM_TIME = 0.1f;
+	bool mAnimPlay;
+	const float mFlipAnimTime = 0.15f;
 	float mElapsedCount = 0.0f;
 
 public:

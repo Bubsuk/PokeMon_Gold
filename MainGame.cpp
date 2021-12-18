@@ -6,6 +6,7 @@
 #include "TestScene.h"
 #include "MapScene.h"
 #include "OpeningScene.h"
+#include "CityScene.h"
 
 // #define TILETOOL
 
@@ -16,11 +17,10 @@ HRESULT MainGame::Init()
 	IMG_MGR->Init();
 	SCENE_MGR->Init();
 
-
 	SCENE_MGR->AddScene(eSceneTag::TestScene, new TestScene);
 	SCENE_MGR->AddScene(eSceneTag::MapToolScene, new MapScene);
 	SCENE_MGR->AddScene(eSceneTag::OpeningScene, new OpeningScene);
-
+	SCENE_MGR->AddScene(eSceneTag::CityScene, new CityScene);
 
 	// 타이머 셋팅
 	mousePosX = 0;
@@ -36,7 +36,7 @@ HRESULT MainGame::Init()
 	POINT g_maxSize = {TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y};
 
 #else
-	SCENE_MGR->ChangeScene(eSceneTag::TestScene);
+	SCENE_MGR->ChangeScene(eSceneTag::CityScene);
 	POINT g_maxSize = { WIN_SIZE_X, WIN_SIZE_Y };
 
 #endif // TILETOOL

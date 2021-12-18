@@ -10,7 +10,8 @@ enum class eSceneTag
 	MapToolScene,
 	BattleScene,
 	TitleScene,
-	OpeningScene
+	OpeningScene,
+	CityScene
 };
 
 

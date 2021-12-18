@@ -6,9 +6,9 @@
 void ImageManager::Init()
 {
 	// Ä³¸¯ÅÍ
-	AddImage(eImageTag::Jiwoo_idle, "Image/Jiwoo_idle.bmp", 128, 128, 2, 2, true, RGB(255, 0, 255));
-	AddImage(eImageTag::Jiwoo_moveUD, "Image/character_run_UD.bmp", 224, 128, 4, 2, true, RGB(255, 0, 255));
-	AddImage(eImageTag::Jiwoo_moveRL, "Image/character_run_RL.bmp", 112, 128, 2, 2, true, RGB(255, 0, 255));
+	//AddImage(eImageTag::Jiwoo_idle, "Image/Jiwoo_idle.bmp", 128, 128, 2, 2, true, RGB(255, 0, 255));
+	AddImage(eImageTag::Jiwoo_moveUD, "Image/Jiwoo_UD.bmp", 280, 128, 5, 2, true, RGB(255, 0, 255));
+	AddImage(eImageTag::Jiwoo_moveRL, "Image/Jiwoo_RL.bmp", 171, 128, 3, 2, true, RGB(255, 0, 255));
 	AddImage(eImageTag::DoctorO, "Image/pokemon_O.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::SubO, "Image/pokemon_Ominion.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Mom_move, "Image/mom_move.bmp", 128, 128, 2, 2, true, RGB(255, 0, 255));

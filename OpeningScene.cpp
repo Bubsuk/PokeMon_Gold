@@ -30,7 +30,7 @@ void OpeningScene::Render(HDC hdc)
 		if (elapsedCnt > 2)
 		{
 			++cnt;
-			elapsedCnt = 0;
+			elapsedCnt = 0.0f;
 		}
 	}
 	else 
@@ -38,7 +38,7 @@ void OpeningScene::Render(HDC hdc)
 		if (elapsedCnt > 0.065)
 		{
 			++cnt;
-			elapsedCnt = 0;
+			elapsedCnt = 0.0f;
 		}
 	}
 

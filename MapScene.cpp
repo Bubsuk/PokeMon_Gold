@@ -1,12 +1,10 @@
 #include "stdafx.h"
 #include "MapScene.h"
 #include "MapEditor.h"
-#include "CommonFunction.h"
+
 
 HRESULT MapScene::Init()
 {
-    SetWindowSize(40, 40, TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y);
-
     mMapEditor = new MapEditor;
     mMapEditor->Init();
 

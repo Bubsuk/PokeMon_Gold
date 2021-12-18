@@ -6,48 +6,112 @@
 
 HRESULT Jiwoo::Init()
 {
-    mImage = IMG_MGR->FindImage(eImageTag::Jiwoo_idle);
     mImageRunRL = IMG_MGR->FindImage(eImageTag::Jiwoo_moveRL);
     mImageRunUD = IMG_MGR->FindImage(eImageTag::Jiwoo_moveUD);
 
-    if (mImage == nullptr || mImageRunRL == nullptr || mImageRunUD == nullptr)
+    if (mImageRunRL == nullptr || mImageRunUD == nullptr)
     {
         return E_FAIL;
     }
 
+    mAnimPlay = false;
 
     mPos.x = WIN_SIZE_X / 2 - 32;
     mPos.y = WIN_SIZE_Y / 2;
 
     mState = eDir::Idle;
 
+
     return S_OK;
 }
 
 void Jiwoo::Update()
 {
+    mElapsedCount += DELTA_TIME;
+
     if (Input::GetButtonDown(VK_DOWN))
     {
-      /*  mElapsedCount += DELTA_TIME;
-        if (mElapsedCount >= MAX_ANIM_TIME)
-        {
-            mElapsedCount -= MAX_ANIM_TIME;
-
-        }*/
         mState = eDir::Down;
+        mAnimPlay = true;
     }
     else if (Input::GetButton(VK_UP))
     {
         mState = eDir::Up;
+        mAnimPlay = true;
     }
     else if (Input::GetButton(VK_LEFT))
     {
         mState = eDir::Left;
+        mAnimPlay = true;
     }
     else if (Input::GetButton(VK_RIGHT))
     {
         mState = eDir::Right;
+        mAnimPlay = true;
     }
+
+   
+    if (mAnimPlay == true)
+    {
+        switch (mState)
+        {
+        case eDir::Down:
+            if (mElapsedCount >= mFlipAnimTime)
+            {
+                ++mframeX;
+                mElapsedCount = 0.0f;
+            }
+            if (mframeX == 4)
+            {
+                mframeX = 1;
+            }
+            break;
+        case eDir::Up:
+            if (mElapsedCount >= mFlipAnimTime)
+            {
+                ++mframeX;
+                mElapsedCount = 0.0f;
+            }
+            if (mframeX == 5)
+            {
+                mframeX = 1;
+            }
+            break;
+        case eDir::Right:
+            if (mElapsedCount >= mFlipAnimTime)
+            {
+                ++mframeX;
+                mElapsedCount = 0.0f;
+            }
+            if (mframeX == 3)
+            {
+                mframeX = 1;
+            }
+            break;
+        case eDir::Left:
+            if (mElapsedCount >= mFlipAnimTime)
+            {
+                ++mframeX;
+                mElapsedCount = 0.0f;
+            }
+            if (mframeX == 3)
+            {
+                mframeX = 1;
+            }
+            break;
+        default:
+            break;
+        }
+    }
+    
+    if (Input::GetButtonUp(VK_DOWN) || Input::GetButtonUp(VK_UP)
+        || Input::GetButtonUp(VK_LEFT) || Input::GetButtonUp(VK_RIGHT))
+    {
+        mAnimPlay = false;
+        mState == eDir::Idle;
+        mframeX = 0;
+    }
+    
 }
 
 void Jiwoo::Render(HDC hdc)
@@ -56,19 +120,19 @@ void Jiwoo::Render(HDC hdc)
     switch (mState)
     {
     case eDir::Idle:
-        mImage->Render(hdc, mPos.x, mPos.y, frameX + 1, frameY);
+        mImageRunUD->Render(hdc, mPos.x, mPos.y, mframeX, mframeY);
         break;
     case eDir::Up:
-        mImageRunUD->Render(hdc, mPos.x, mPos.y, frameX, frameY + 1);
+        mImageRunUD->Render(hdc, mPos.x, mPos.y, mframeX, mframeY + 1);
         break;
     case eDir::Down:
-        mImageRunUD->Render(hdc, mPos.x, mPos.y, frameX, frameY);
+        mImageRunUD->Render(hdc, mPos.x, mPos.y, mframeX, mframeY);
         break;
     case eDir::Right:
-        mImageRunRL->Render(hdc, mPos.x, mPos.y, frameX, frameY);
+        mImageRunRL->Render(hdc, mPos.x, mPos.y, mframeX, mframeY);
         break;
     case eDir::Left:
-        mImageRunRL->Render(hdc, mPos.x, mPos.y, frameX, frameY + 1);
+        mImageRunRL->Render(hdc, mPos.x, mPos.y, mframeX, mframeY + 1);
         break;
     }
     

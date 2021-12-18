@@ -4,6 +4,7 @@
 #include "Image.h"
 #include "CommonFunction.h"
 #include "Jiwoo.h"
+#include "Enum.h"
 #include <cmath>
 #include <map>
 

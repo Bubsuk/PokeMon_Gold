@@ -1,30 +1,16 @@
 #pragma once
 #include "GameEntity.h"
-
-typedef struct TagTile
-{
-	eTerrain Terrain;
-	RECT Rc;
-	POINT TilePos;
-
-} TILE_INFO, SAMPLE_TILE_INFO;
+#include "MapEditor.h"
 
 class Jiwoo;
 class Image;
-class MapEditor : public GameEntity
+class IngameMap : public GameEntity
 {
 public:
-	struct SampleMouse
-	{
-		POINT start = {};
-		POINT end = {};
-	};	
-
 
 protected:
 	Jiwoo* mTestJiwoo;
 
-	Image* mSampleTileImage;
 	Image* mDrawTileImage;
 	Image* mBackground;
 
@@ -34,10 +20,10 @@ protected:
 	TILE_INFO mTileInfo[TILE_COUNT_X * TILE_COUNT_Y];
 	SAMPLE_TILE_INFO mSampleTileInfo[SAMPLE_TILE_COUNT_X * SAMPLE_TILE_COUNT_Y];
 	SAMPLE_TILE_INFO mSelectedTile;
-	
+
 	eDir mDir;
 
-	bool mbControl  = {};
+	bool mbControl = {};
 	bool mbIsClick = {};
 	bool mbNeedRevise = {};
 
@@ -68,10 +54,9 @@ public:
 	virtual void Render(HDC hdc) override;
 	virtual void Release() override;
 
-	void SaveMap(string index);
 	void LoadMap(string index);
 
-	
+
 
 };
 
