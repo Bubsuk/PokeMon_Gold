@@ -16,6 +16,14 @@ private:
 	const float mFlipAnimTime = 0.15f;
 	float mElapsedCount = 0.0f;
 
+	bool mbControl = {};
+	POINT mMovePixel;
+	float mMoveSpeed = {};
+	bool mbNeedRevise = {};
+	POINT mDestPos;
+	float mOneTileTime = {};
+
+
 public:
 	virtual ~Jiwoo() {}
 	virtual HRESULT Init();
