@@ -303,7 +303,7 @@ void MapEditor::Update()
 			POINT clickPos
 				= { (Input::GetMousePosition().x - CAM_MGR->GetCamPos().x) / TILE_SIZE,
 				(Input::GetMousePosition().y - CAM_MGR->GetCamPos().y) / TILE_SIZE };
-
+			
 			for (int i = 0; i <= mClickArea.y; ++i)
 			{
 				for (int j = 0; j <= mClickArea.x; ++j)
@@ -354,8 +354,8 @@ void MapEditor::Render(HDC hdc)
 
 				//cout << (int)mTileInfo[0].Terrain << endl;
 
-				//Rectangle(hdc, (SAMPLE_TILE_COUNT_X - 1) * TILE_SIZE, 0, SAMPLE_TILE_COUNT_X * TILE_SIZE, SAMPLE_TILE_COUNT_Y * TILE_SIZE);
-				//Rectangle(hdc, 0, (SAMPLE_TILE_COUNT_Y - 1) * TILE_SIZE, SAMPLE_TILE_COUNT_X * TILE_SIZE, SAMPLE_TILE_COUNT_Y * TILE_SIZE);
+				Rectangle(hdc, (SAMPLE_TILE_COUNT_X - 1) * TILE_SIZE, 0, SAMPLE_TILE_COUNT_X * TILE_SIZE, SAMPLE_TILE_COUNT_Y * TILE_SIZE);
+				Rectangle(hdc, 0, (SAMPLE_TILE_COUNT_Y - 1) * TILE_SIZE, SAMPLE_TILE_COUNT_X * TILE_SIZE, SAMPLE_TILE_COUNT_Y * TILE_SIZE);
 			}
 			
 		}

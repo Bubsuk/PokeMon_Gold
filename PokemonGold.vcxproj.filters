@@ -25,6 +25,12 @@
     <Filter Include="TileMap">
       <UniqueIdentifier>{86611aa9-b64d-4b1f-9f1b-2097783c37fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character">
+      <UniqueIdentifier>{bbde8eff-51a8-4f93-b084-6f8c15e77bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Pokemon">
+      <UniqueIdentifier>{b4305856-d63f-4807-a633-060a9d5bfe57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,20 +60,11 @@
     <ClCompile Include="GameEntity.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Jiwoo.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="TestScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="MapEditor.cpp">
       <Filter>TileMap</Filter>
-    </ClCompile>
-    <ClCompile Include="OpeningScene.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MapScene.cpp">
       <Filter>Scene</Filter>
@@ -78,8 +75,29 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="OpeningScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Jiwoo.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
     <ClCompile Include="RandomManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonFactory.cpp">
+      <Filter>Character\Pokemon</Filter>
+    </ClCompile>
+    <ClCompile Include="Caterpie.cpp">
+      <Filter>Character\Pokemon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,20 +134,11 @@
     <ClInclude Include="GameObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Jiwoo.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="TestScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="MapEditor.h">
       <Filter>TileMap</Filter>
-    </ClInclude>
-    <ClInclude Include="OpeningScene.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Header.h">
       <Filter>헤더 파일</Filter>
@@ -152,8 +161,32 @@
     <ClInclude Include="stdafx.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="OpeningScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Jiwoo.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>Character</Filter>
+    </ClInclude>
     <ClInclude Include="RandomManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Pokemon.h">
+      <Filter>Character\Pokemon</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonFactory.h">
+      <Filter>Character\Pokemon</Filter>
+    </ClInclude>
+    <ClInclude Include="Caterpie.h">
+      <Filter>Character\Pokemon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

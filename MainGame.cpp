@@ -6,7 +6,7 @@
 #include "TestScene.h"
 #include "MapScene.h"
 
-#define TILETOOL
+// #define TILETOOL
 
 HRESULT MainGame::Init()
 {

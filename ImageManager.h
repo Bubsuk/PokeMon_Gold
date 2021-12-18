@@ -22,6 +22,9 @@ enum class eImageTag
 	// 타일
 	SampleTile, DrawTile,
 
+	// 타입이미지
+	PokeIcon
+
 };
 
 class Image;

@@ -64,6 +64,8 @@ void ImageManager::Init()
 	AddImage(eImageTag::Jangcro_R, "Image/pokemon/no_160B.bmp", 192, 192, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Jangcro_F, "Image/pokemon/no_160F.bmp", 180, 180, 1, 1, true, RGB(255, 0, 255));
 
+	// 포켓몬 타입이미지
+	AddImage(eImageTag::PokeIcon, "Image/menuUI/pokeicon.bmp", 2048, 191, 32, 3, true, RGB(255, 0, 255));
 
 	// 배경
 	AddImage(eImageTag::StartRoom, "Image/pokemon_start_home1.bmp", 640, 512);
@@ -72,7 +74,9 @@ void ImageManager::Init()
 	// 타일
 	AddImage(eImageTag::SampleTile, "Image/pokemon_tile.bmp", 600, 600, 15, 15, true, RGB(255, 0, 255));
 	AddImage(eImageTag::DrawTile, "Image/pokemon_tile.bmp", 960, 960, 15, 15, true, RGB(255, 0, 255));
-	
+
+	// UI
+
 }
 
 void ImageManager::Release()

@@ -2,6 +2,7 @@
 #include "Config.h"
 #include "Jiwoo.h"
 #include "Image.h"
+#include <vector>
 
 HRESULT Jiwoo::Init()
 {

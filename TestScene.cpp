@@ -2,6 +2,10 @@
 #include "TestScene.h"
 #include "Image.h"
 #include "Jiwoo.h"
+#include "Pokemon.h"
+#include "PokemonFactory.h"
+
+
 
 HRESULT TestScene::Init()
 {
@@ -9,7 +13,9 @@ HRESULT TestScene::Init()
 
     mJiwoo = new Jiwoo;
     mJiwoo->Init();
-
+    auto factory = PokemonFactory();
+    randomPokemon = factory.FactoryFunc(ePokemon::Caterpie);
+    randomPokemon->Init();
 
     return S_OK;
 }
@@ -17,6 +23,7 @@ HRESULT TestScene::Init()
 void TestScene::Update()
 {
     SAFE_UPDATE(mJiwoo);
+    SAFE_UPDATE(randomPokemon);
 }
 
 void TestScene::Render(HDC hdc)
@@ -27,11 +34,14 @@ void TestScene::Render(HDC hdc)
     {
         mBackGround->Render(hdc);
     }
-    
+   
+    randomPokemon->Render(hdc);
+
     mJiwoo->Render(hdc);
 }
 
 void TestScene::Release()
 {
     SAFE_RELEASE(mJiwoo);
+    SAFE_RELEASE(randomPokemon);
 }

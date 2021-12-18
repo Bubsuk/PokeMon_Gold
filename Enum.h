@@ -20,6 +20,52 @@ enum class eTerrain
     BottomBlock = 4,    // 아래막힘(점프)
     RightBlock = 5,     // 오른쪽막힘(점프)
     LeftBlock = 6,      // 왼쪽막힘(점프)
-    
-    
 };
+
+enum class ePokemon
+{
+    Caterpie, Dandegi, Butter,
+    Bbul, Ddak, DokChung, Gugu,
+    Pigeon, PigeonTwo, Ggorat,
+    Rat, Ggaebi, Ggaebidrill, Pika,
+    Richu, Chicorita, Bayleaf,
+    Meganium, Bcane, Riaco, Alligay,
+    Jangcro
+};
+
+enum class ePokemonType
+{
+    Bug,
+    Butterfly,
+    Bird,
+    Etc,
+    BigBird,
+    Pika
+};
+
+enum class Item
+{
+    Heal,
+    Antidote,
+    Paralysis,
+    TreeFruit,
+    AntiFruit
+};
+
+enum class SkillType
+{
+    Normal,
+    Fire,
+    Water,
+    Grass,
+    Flying,
+    Bug
+
+};
+
+enum class Gender
+{
+    Male, Female
+};
+
+// 포켓몬 상태 : 잠 독 마비 혼란 화상
