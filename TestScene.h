@@ -12,7 +12,7 @@ private:
 
 
 	Image* mBackGround = nullptr;
-
+	Image* aaa = nullptr;
 	
 
 

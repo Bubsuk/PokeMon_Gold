@@ -1,5 +1,20 @@
 #pragma once
-class OpeningScene
+#include "GameEntity.h"
+
+class Image;
+class OpeningScene : public GameEntity
 {
+private:
+	Image* mOpImg[102];
+	float elapsedCnt = {};
+	int cnt = {};
+	bool mOpPlay;
+
+public:
+	HRESULT Init();
+	void Update();
+	void Render(HDC hdc);
+	void Release();
+	
 };
 

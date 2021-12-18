@@ -6,11 +6,10 @@
 #include "PokemonFactory.h"
 
 
-
 HRESULT TestScene::Init()
 {
     mBackGround = IMG_MGR->FindImage(eImageTag::StartRoom);
-
+    aaa = IMG_MGR->FindImage(1);
     mJiwoo = new Jiwoo;
     mJiwoo->Init();
     auto factory = PokemonFactory();
@@ -34,7 +33,7 @@ void TestScene::Render(HDC hdc)
     {
         mBackGround->Render(hdc);
     }
-   
+    aaa->Render(hdc);
     randomPokemon->Render(hdc);
 
     mJiwoo->Render(hdc);

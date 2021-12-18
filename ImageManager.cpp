@@ -76,7 +76,17 @@ void ImageManager::Init()
 	AddImage(eImageTag::DrawTile, "Image/pokemon_tile.bmp", 960, 960, 15, 15, true, RGB(255, 0, 255));
 
 	// UI
-
+	for (int i = 0; i < 102; ++i)
+	{
+		static int num = 0;
+		char address[100];
+		++num;
+		string str = "Image/op_image/op_";
+		str += to_string(num);
+		str += ".bmp";
+		strcpy_s(address, str.c_str());
+		AddImage(num, address, 640, 576);
+	}
 }
 
 void ImageManager::Release()
@@ -86,6 +96,14 @@ void ImageManager::Release()
 	{
 		SAFE_RELEASE(it->second);
 		it = mapImages.erase(it);	// 다음 원소의 주소(iterator)가 갱신된다.
+	}
+	mapImages.clear();
+
+	map<int, Image*>::iterator iter;
+	for (iter = mapChunkImages.begin(); iter != mapChunkImages.end();)
+	{
+		SAFE_RELEASE(iter->second);
+		iter = mapChunkImages.erase(iter);	// 다음 원소의 주소(iterator)가 갱신된다.
 	}
 	mapImages.clear();
 }
@@ -126,10 +144,39 @@ Image* ImageManager::AddImage(eImageTag tag, const char* fileName, int width, in
 	return img;
 }
 
+Image* ImageManager::AddImage(int index, const char* fileName, int width, int height, bool isTrans, COLORREF transColor)
+{
+	// 이미 등록한 이미지는 nullptr을 반환
+	if (mapChunkImages.find(index) != mapChunkImages.end()) { return nullptr; }
+
+	Image* img = new Image;
+	if (FAILED(img->Init(fileName, width, height, isTrans, transColor)))
+	{
+		SAFE_RELEASE(img);
+		return nullptr;
+	}
+
+	mapChunkImages.insert(make_pair(index, img));
+
+	return img;
+}
+
+
 Image* ImageManager::FindImage(eImageTag tag)
 {
 	map<eImageTag, Image*>::iterator it = mapImages.find(tag);
 	if (it == mapImages.end())
+	{
+		return nullptr;
+	}
+
+	return it->second;
+}
+
+Image* ImageManager::FindImage(int index)
+{
+	map<int, Image*>::iterator it = mapChunkImages.find(index);
+	if (it == mapChunkImages.end())
 	{
 		return nullptr;
 	}
@@ -147,4 +194,16 @@ void ImageManager::DeleteImage(eImageTag tag)
 
 	SAFE_RELEASE(it->second);	// Image*	// Image 동적할당 해제
 	mapImages.erase(it);		// 맵에서 노드 삭제
+}
+
+void ImageManager::DeleteImage(int index)
+{
+	map<int, Image*>::iterator it = mapChunkImages.find(index);
+	if (it == mapChunkImages.end())
+	{
+		return;
+	}
+
+	SAFE_RELEASE(it->second);	// Image*	// Image 동적할당 해제
+	mapChunkImages.erase(it);		// 맵에서 노드 삭제
 }

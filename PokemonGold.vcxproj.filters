@@ -99,6 +99,9 @@
     <ClCompile Include="Caterpie.cpp">
       <Filter>Character\Pokemon</Filter>
     </ClCompile>
+    <ClCompile Include="CityScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="Caterpie.h">
       <Filter>Character\Pokemon</Filter>
+    </ClInclude>
+    <ClInclude Include="CityScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

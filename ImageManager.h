@@ -32,8 +32,10 @@ class ImageManager : public Singleton<ImageManager>
 {
 private:
 	map<eImageTag, Image*>	mapImages;
+	map<int, Image*> mapChunkImages;
 
 public:
+
 	void Init();
 	void Release();
 
@@ -44,7 +46,12 @@ public:
 		int maxFrameX, int maxFrameY,
 		bool isTrans = false, COLORREF transColor = NULL);
 
+	Image* AddImage(int index, const char* fileName, int width, int height,
+		bool isTrans = false, COLORREF transColor = NULL); // 오프닝 이미지 추가
+
 	Image* FindImage(eImageTag tag);	// 등록된 이미지 중에 필요한 이미지를 찾는 기능
+	Image* FindImage(int index);
 	void DeleteImage(eImageTag tag);	// 사용이 종료된 이미지를 등록 해제하는 기능
+	void DeleteImage(int index);
 };
 

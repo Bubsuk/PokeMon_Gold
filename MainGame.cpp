@@ -5,6 +5,7 @@
 #include "CommonFunction.h"
 #include "TestScene.h"
 #include "MapScene.h"
+#include "OpeningScene.h"
 
 // #define TILETOOL
 
@@ -18,8 +19,8 @@ HRESULT MainGame::Init()
 
 	SCENE_MGR->AddScene(eSceneTag::TestScene, new TestScene);
 	SCENE_MGR->AddScene(eSceneTag::MapToolScene, new MapScene);
+	SCENE_MGR->AddScene(eSceneTag::OpeningScene, new OpeningScene);
 
-	
 
 	// 타이머 셋팅
 	mousePosX = 0;

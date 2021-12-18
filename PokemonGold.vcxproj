@@ -144,6 +144,7 @@
     <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Caterpie.cpp" />
+    <ClCompile Include="CityScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Jiwoo.cpp" />
     <ClCompile Include="MapEditor.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="BattleScene.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Caterpie.h" />
+    <ClInclude Include="CityScene.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Extern.h" />
     <ClInclude Include="GameScene.h" />
