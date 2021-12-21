@@ -75,7 +75,7 @@ void ImageManager::Init()
 	AddImage(eImageTag::SampleTile, "Image/pokemon_tile.bmp", 600, 600, 15, 15, true, RGB(255, 0, 255));
 	AddImage(eImageTag::DrawTile, "Image/pokemon_tile.bmp", 960, 960, 15, 15, true, RGB(255, 0, 255));
 
-	// UI
+	// UI - OPENNING
 	for (int i = 0; i < 102; ++i)
 	{
 		static int num = 0;
@@ -87,6 +87,87 @@ void ImageManager::Init()
 		strcpy_s(address, str.c_str());
 		AddImage(num, address, 640, 576);
 	}
+
+	// UI - MENU
+	AddImage(eImageTag::DetectPoke, "Image/pokemon_mark.bmp", 32, 32);
+	AddImage(eImageTag::Dogam, "Image/menuUI/dogam_0.bmp", 650, 576);
+	AddImage(eImageTag::Gear, "Image/menuUI/gear_0.bmp", 650, 576);
+	AddImage(eImageTag::GearMinimap, "Image/menuUI/gear_1.bmp", 650, 576);
+	AddImage(eImageTag::Gear1, "Image/menuUI/gear_2.bmp", 650, 576);
+	AddImage(eImageTag::MenuDogam, "Image/menuUI/menu_1.bmp", 650, 576);
+	AddImage(eImageTag::MenuPoke, "Image/menuUI/menu_2.bmp", 650, 576);
+	AddImage(eImageTag::MenuBag, "Image/menuUI/menu_3.bmp", 650, 576);
+	AddImage(eImageTag::MenuGear, "Image/menuUI/menu_4.bmp", 650, 576);
+	AddImage(eImageTag::MenuPlayer, "Image/menuUI/menu_5.bmp", 650, 576);
+	AddImage(eImageTag::MenuSet, "Image/menuUI/menu_6.bmp", 650, 576);
+	AddImage(eImageTag::MenuClose, "Image/menuUI/menu_7.bmp", 650, 576);
+	
+	
+	AddImage(eImageTag::PokeSelect1, "Image/menuUI/pokeShift_0.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect2, "Image/menuUI/pokeShift_0.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect3, "Image/menuUI/pokeShift_0.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect4, "Image/menuUI/pokeShift_0.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect5, "Image/menuUI/pokeShift_0.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect6, "Image/menuUI/pokeShift_0.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelectCls, "Image/menuUI/pokeShift_0.bmp", 650, 576);
+
+	AddImage(eImageTag::PokePower, "Image/menuUI/power_0.bmp", 650, 576);
+
+	AddImage(eImageTag::Setting, "Image/menuUI/setting_0.bmp", 650, 576);
+	AddImage(eImageTag::SettingCLs, "Image/menuUI/setting_1.bmp", 650, 576);
+
+	AddImage(eImageTag::Status, "Image/menuUI/status_0.bmp", 650, 576);
+	AddImage(eImageTag::Status1, "Image/menuUI/status_1.bmp", 650, 576);
+
+	AddImage(eImageTag::CursorRight, "Image/battle/cursorBehavior.bmp", 32, 32);
+	AddImage(eImageTag::CursorBottom, "Image/battle/cursorBottom.bmp", 32, 32);
+
+	// UI - Battle
+	AddImage(eImageTag::Gender, "Image/battle_loading.bmp", 17920, 596, 28, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::BattleFlash, "Image/battle/flash_loading.bmp", 640, 576);
+	AddImage(eImageTag::BattleFrame, "Image/battle/battleBackground.bmp", 640, 576);
+	AddImage(eImageTag::BattleSkill, "Image/battle/backgroundSkill.bmp", 640, 289);
+	AddImage(eImageTag::BattleSelect, "Image/battle/selectBehavior.bmp", 640, 186);
+	AddImage(eImageTag::Gender, "Image/battle/gender.bmp", 7, 16, 1, 2, true, RGB(255, 0, 255));
+	AddImage(eImageTag::HpBar, "Image/battle/hpBar.bmp", 272, 24);
+	AddImage(eImageTag::ExpGauge, "Image/battle/expGauge.bmp", 256, 8);
+	AddImage(eImageTag::HpGauge, "Image/battle/hpGauge.bmp", 192, 8);
+	AddImage(eImageTag::HpGaugeBack, "Image/battle/cursorBottom.bmp", 192, 8);
+	AddImage(eImageTag::ExpGaugeBack, "Image/battle/expGaugeBack.bmp", 192, 8);
+	AddImage(eImageTag::PlayerImg, "Image/battle/playerImage.bmp", 188, 192);
+	AddImage(eImageTag::PokeBallState, "Image/battle/pokeballState.bmp", 28, 112, 1, 4, true, RGB(255, 0, 255));
+	AddImage(eImageTag::AppearPoke, "Image/battle/appearPokemon.bmp", 600, 200);
+
+	// UI - Shop
+	AddImage(eImageTag::HealingPoke, "Image/battle/appearPokemon.bmp", 500, 60, 10, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::BuyMonsterBall, "Image/shopUI/buy_1.bmp", 650, 576);
+	AddImage(eImageTag::Medi, "Image/shopUI/buy_2.bmp", 650, 576);
+	AddImage(eImageTag::SuperMedi, "Image/shopUI/buy_3.bmp", 650, 576);
+	AddImage(eImageTag::ShopCls, "Image/shopUI/buy_4.bmp", 650, 576);
+	AddImage(eImageTag::Buy, "Image/shopUI/shop_1.bmp", 650, 576);
+	AddImage(eImageTag::Sell, "Image/shopUI/shop_2.bmp", 650, 576);
+	AddImage(eImageTag::Nothing, "Image/shopUI/shop_3.bmp", 650, 576);
+
+	// Particle
+	AddImage(eImageTag::WalkGrass1, "Image/poketmon_grass1.bmp", 48, 36);
+	AddImage(eImageTag::WalkGrass2, "Image/poketmon_grass2.bmp", 45, 21);
+	AddImage(eImageTag::Shadow, "Image/character_shadow.bmp", 56, 64);
+
+
+	// End Scene
+	AddImage(eImageTag::End1, "Image/end_image/endingBackground1.bmp", 650, 576);
+	AddImage(eImageTag::End2, "Image/end_image/endingBackground2.bmp", 650, 576);
+	AddImage(eImageTag::End3, "Image/end_image/endingBackground3.bmp", 650, 576);
+	AddImage(eImageTag::End4, "Image/end_image/endingBackground4.bmp", 650, 576);
+	AddImage(eImageTag::EndPoke1, "Image/end_image/endingPokemon1.bmp", 192, 68);
+	AddImage(eImageTag::EndPoke2, "Image/end_image/endingPokemon1.bmp", 192, 68);
+	AddImage(eImageTag::EndPoke3, "Image/end_image/endingPokemon1.bmp", 192, 68);
+	AddImage(eImageTag::EndPoke4, "Image/end_image/endingPokemon1.bmp", 192, 68);
+
+	// Dialogue UI
+	AddImage(eImageTag::Dialogue, "Image/dialogueUI.bmp", 192, 68);
+
+
 }
 
 void ImageManager::Release()

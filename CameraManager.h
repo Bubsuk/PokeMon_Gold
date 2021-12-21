@@ -4,8 +4,9 @@
 
 class CameraManager : public Singleton<CameraManager>
 {
+public:
+	POINT mObjectPos;
 private:
-	POINT mObjectPos = {};
 	POINT mMaxPos = {};
 	// 보간에서 이동거리
 	POINT mStartPos;
@@ -22,7 +23,7 @@ public:
 	void MovePos(POINT& destPos, float durTime, eDir dir);
 
 	// 워프
-	void SetPos(POINT& warfPos);
+	void SetPos(int x, int y);
 
 };
 

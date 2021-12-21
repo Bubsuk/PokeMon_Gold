@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "GameEntity.h"
 
+
+
 HRESULT GameEntity::Init()
 {
 

@@ -141,16 +141,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Alligay.cpp" />
     <ClCompile Include="BattleScene.cpp" />
+    <ClCompile Include="BattleUiManager.cpp" />
+    <ClCompile Include="Bayleaf.cpp" />
+    <ClCompile Include="BbulChungE.cpp" />
+    <ClCompile Include="Bcane.cpp" />
+    <ClCompile Include="Butterfle.cpp" />
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Caterpie.cpp" />
+    <ClCompile Include="Chicorita.cpp" />
     <ClCompile Include="CityScene.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Dandegi.cpp" />
+    <ClCompile Include="DdakChungE.cpp" />
+    <ClCompile Include="DogamUiManager.cpp" />
+    <ClCompile Include="DokChungE.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GgaeBiCham.cpp" />
+    <ClCompile Include="GgaeBiDrill.cpp" />
+    <ClCompile Include="GgoRat.cpp" />
+    <ClCompile Include="Gugu.cpp" />
     <ClCompile Include="IngameMap.cpp" />
+    <ClCompile Include="InventoryManager.cpp" />
+    <ClCompile Include="Jangcro.cpp" />
     <ClCompile Include="Jiwoo.cpp" />
     <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="MapScene.cpp" />
+    <ClCompile Include="Meganium.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -160,8 +178,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="OpeningScene.cpp" />
+    <ClCompile Include="Pigeon.cpp" />
+    <ClCompile Include="PigeonTwo.cpp" />
+    <ClCompile Include="PikaChu.cpp" />
     <ClCompile Include="PokemonFactory.cpp" />
     <ClCompile Include="RandomManager.cpp" />
+    <ClCompile Include="Rat.cpp" />
+    <ClCompile Include="Riaco.cpp" />
+    <ClCompile Include="Richu.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -171,20 +195,38 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alligay.h" />
     <ClInclude Include="BattleScene.h" />
+    <ClInclude Include="BattleUiManager.h" />
+    <ClInclude Include="Bayleaf.h" />
+    <ClInclude Include="BbulChungE.h" />
+    <ClInclude Include="Bcane.h" />
+    <ClInclude Include="Butterfle.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Caterpie.h" />
+    <ClInclude Include="Chicorita.h" />
     <ClInclude Include="CityScene.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="Dandegi.h" />
+    <ClInclude Include="DdakChungE.h" />
+    <ClInclude Include="DogamUiManager.h" />
+    <ClInclude Include="DokChungE.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Extern.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GgaeBiCham.h" />
+    <ClInclude Include="GgaeBiDrill.h" />
+    <ClInclude Include="GgoRat.h" />
+    <ClInclude Include="Gugu.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="IngameMap.h" />
+    <ClInclude Include="InventoryManager.h" />
+    <ClInclude Include="Jangcro.h" />
     <ClInclude Include="Jiwoo.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MapScene.h" />
+    <ClInclude Include="Meganium.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="CommonFunction.h" />
     <ClInclude Include="Config.h" />
@@ -195,9 +237,15 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="OpeningScene.h" />
+    <ClInclude Include="Pigeon.h" />
+    <ClInclude Include="PigeonTwo.h" />
+    <ClInclude Include="PikaChu.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="PokemonFactory.h" />
     <ClInclude Include="RandomManager.h" />
+    <ClInclude Include="Rat.h" />
+    <ClInclude Include="Riaco.h" />
+    <ClInclude Include="Richu.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="stdafx.h" />

@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Config.h"
 #include "Jiwoo.h"
-#include "Image.h"
-#include <vector>
+#include "Image.h" 
+#include "Collider.h"
 
 HRESULT Jiwoo::Init()
 {
@@ -18,12 +18,17 @@ HRESULT Jiwoo::Init()
 
     mPos.x = WIN_SIZE_X / 2 - 32;
     mPos.y = WIN_SIZE_Y / 2;
+    //if ()
+    //{
+    //    mTileIn = 
+
+    //}
 
     mState = eDir::Idle;
 
     mbControl = true;
     mMoveSpeed = 600;
-    mMovePixel = { 0,0 };
+    CAM_MGR->mObjectPos = { 0,0 };
     mOneTileTime = 0.3f;
 
 
@@ -32,35 +37,27 @@ HRESULT Jiwoo::Init()
 
 void Jiwoo::Update()
 {
-    if (Input::GetButtonUp(VK_DOWN) || Input::GetButtonUp(VK_UP)
-        || Input::GetButtonUp(VK_LEFT) || Input::GetButtonUp(VK_RIGHT))
-    {
-        mAnimPlay = false;
-        mDir == eDir::Idle;
-        mframeX = 0;
-    }
+  
     
     if (mbControl == true)
     {
         if (Input::GetButton(VK_DOWN))
         {
             mDir = eDir::Down;
-            mMovePixel.y -= mMoveSpeed * DELTA_TIME;
-            CAM_MGR->SetPos(mMovePixel);
-
+            CAM_MGR->mObjectPos.y -= mMoveSpeed * DELTA_TIME;
             mAnimPlay = true;
             mbNeedRevise = false;
 
-            if (mMovePixel.y <= -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE *9)
+            if (CAM_MGR->mObjectPos.y <= -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE *9)
             {
-                mMovePixel.y = -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE * 9;
+                CAM_MGR->mObjectPos.y = -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE * 9;
                 mDestPos.y = -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE * 9;
             }
             else
             {
-                mDestPos.y = mMovePixel.y - TILE_SIZE - (mMovePixel.y % TILE_SIZE);
+                mDestPos.y = CAM_MGR->mObjectPos.y - TILE_SIZE - (CAM_MGR->mObjectPos.y % TILE_SIZE);
             }
-
+           
         }
         if (Input::GetButtonUp(VK_DOWN))
         {
@@ -70,20 +67,20 @@ void Jiwoo::Update()
         if (Input::GetButton(VK_UP))
         {
             mDir = eDir::Up;
-            mMovePixel.y += mMoveSpeed * DELTA_TIME;
-            CAM_MGR->SetPos(mMovePixel);
-
+            CAM_MGR->mObjectPos.y += mMoveSpeed * DELTA_TIME;
             mAnimPlay = true;
             mbNeedRevise = false;
 
-            if (mMovePixel.y >= 0)
+            
+
+            if (CAM_MGR->mObjectPos.y >= 0)
             {
                 mDestPos.y = 0;
-                mMovePixel.y = 0;
+                CAM_MGR->mObjectPos.y = 0;
             }
             else
             {
-                mDestPos.y = mMovePixel.y + TILE_SIZE - (TILE_SIZE + (mMovePixel.y % TILE_SIZE));
+                mDestPos.y = CAM_MGR->mObjectPos.y + TILE_SIZE - (TILE_SIZE + (CAM_MGR->mObjectPos.y % TILE_SIZE));
             }
         }
         if (Input::GetButtonUp(VK_UP))
@@ -94,20 +91,19 @@ void Jiwoo::Update()
         if (Input::GetButton(VK_LEFT))
         {
             mDir = eDir::Left;
-            mMovePixel.x += mMoveSpeed * DELTA_TIME;
-            CAM_MGR->SetPos(mMovePixel);
+            CAM_MGR->mObjectPos.x += mMoveSpeed * DELTA_TIME;
 
             mAnimPlay = true;
             mbNeedRevise = false;
 
-            if (mMovePixel.x >= 0)
+            if (CAM_MGR->mObjectPos.x >= 0)
             {
                 mDestPos.x = 0;
-                mMovePixel.x = 0;
+                CAM_MGR->mObjectPos.x = 0;
             }
             else
             {
-                mDestPos.x = mMovePixel.x + TILE_SIZE - (TILE_SIZE + (mMovePixel.x % TILE_SIZE));
+                mDestPos.x = CAM_MGR->mObjectPos.x + TILE_SIZE - (TILE_SIZE + (CAM_MGR->mObjectPos.x % TILE_SIZE));
             }
         }
         if (Input::GetButtonUp(VK_LEFT))
@@ -118,20 +114,19 @@ void Jiwoo::Update()
         if (Input::GetButton(VK_RIGHT))
         {
             mDir = eDir::Right;
-            mMovePixel.x -= mMoveSpeed * DELTA_TIME;
-            CAM_MGR->SetPos(mMovePixel);
+            CAM_MGR->mObjectPos.x -= mMoveSpeed * DELTA_TIME;
 
             mAnimPlay = true;
             mbNeedRevise = false;
 
-            if (mMovePixel.x <= -TILE_SIZE * TILE_COUNT_X + TILE_SIZE * 10)
+            if (CAM_MGR->mObjectPos.x <= -TILE_SIZE * TILE_COUNT_X + TILE_SIZE * 10)
             {
-                mMovePixel.x = -TILE_SIZE * TILE_COUNT_X + TILE_SIZE * 10;
+                CAM_MGR->mObjectPos.x = -TILE_SIZE * TILE_COUNT_X + TILE_SIZE * 10;
                 mDestPos.x = -TILE_SIZE * TILE_COUNT_X + TILE_SIZE * 10;
             }
             else
             {
-                mDestPos.x = mMovePixel.x - TILE_SIZE - (mMovePixel.x % TILE_SIZE);
+                mDestPos.x = CAM_MGR->mObjectPos.x - TILE_SIZE - (CAM_MGR->mObjectPos.x % TILE_SIZE);
             }
         }
         if (Input::GetButtonUp(VK_RIGHT))
@@ -144,24 +139,24 @@ void Jiwoo::Update()
     if (mbNeedRevise == true)
     {
         CAM_MGR->MovePos(mDestPos, mOneTileTime, mDir);
-        mMovePixel = CAM_MGR->GetCamPos();
+        CAM_MGR->mObjectPos = CAM_MGR->GetCamPos();
 
-        if (mDir == eDir::Right && mMovePixel.x <= mDestPos.x)
+        if (mDir == eDir::Right && CAM_MGR->mObjectPos.x <= mDestPos.x)
         {
             mbNeedRevise = false;
             mbControl = true;
         }
-        if (mDir == eDir::Left && mMovePixel.x >= mDestPos.x)
+        if (mDir == eDir::Left && CAM_MGR->mObjectPos.x >= mDestPos.x)
         {
             mbNeedRevise = false;
             mbControl = true;
         }
-        else if (mDir == eDir::Up && mMovePixel.y >= mDestPos.y)
+        else if (mDir == eDir::Up && CAM_MGR->mObjectPos.y >= mDestPos.y)
         {
             mbNeedRevise = false;
             mbControl = true;
         }
-        else if (mDir == eDir::Down && mMovePixel.y <= mDestPos.y)
+        else if (mDir == eDir::Down && CAM_MGR->mObjectPos.y <= mDestPos.y)
         {
             mbNeedRevise = false;
             mbControl = true;
@@ -223,6 +218,14 @@ void Jiwoo::Update()
         default:
             break;
         }
+    }
+
+    if (Input::GetButtonUp(VK_DOWN) || Input::GetButtonUp(VK_UP)
+        || Input::GetButtonUp(VK_LEFT) || Input::GetButtonUp(VK_RIGHT))
+    {
+        mAnimPlay = false;
+        mDir == eDir::Idle;
+        mframeX = 0;
     }
 
 }

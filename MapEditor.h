@@ -1,14 +1,6 @@
 #pragma once
 #include "GameEntity.h"
 
-typedef struct TagTile
-{
-	eTerrain Terrain;
-	RECT Rc;
-	POINT TilePos;
-
-} TILE_INFO, SAMPLE_TILE_INFO;
-
 class Jiwoo;
 class Image;
 class MapEditor : public GameEntity
@@ -31,7 +23,6 @@ protected:
 	RECT mSampleArea;
 	RECT mDrawArea;
 
-	TILE_INFO mTileInfo[TILE_COUNT_X * TILE_COUNT_Y];
 	SAMPLE_TILE_INFO mSampleTileInfo[SAMPLE_TILE_COUNT_X * SAMPLE_TILE_COUNT_Y];
 	SAMPLE_TILE_INFO mSelectedTile;
 	
@@ -41,14 +32,7 @@ protected:
 	bool mbIsClick = {};
 	bool mbNeedRevise = {};
 
-	float mRivisedDurTime = {};
-	float mOneTileTime = {};
-
-	int mMoveSpeed;
-	// 보간을 위한 타일 목표좌표
-	POINT mDestPos;
-	// 카메라
-	POINT mMovePixel;
+	
 	// 드래그로 타일 선택
 	POINT mClickStart;
 	POINT mCLickEnd;
@@ -71,7 +55,7 @@ public:
 	void SaveMap(string index);
 	void LoadMap(string index);
 
-	
+	//TILE_INFO* GetTileInfo() { return this->mTileInfo; }
 
 };
 

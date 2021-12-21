@@ -8,6 +8,8 @@ HRESULT CityScene::Init()
 	mCityMap->Init();
 	mCityMap->LoadMap("cityMap");
 
+	CAM_MGR->SetPos( -640, -320);
+
 	return S_OK;
 }
 

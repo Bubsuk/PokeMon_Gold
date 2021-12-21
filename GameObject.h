@@ -1,7 +1,6 @@
 #pragma once
 #include "GameEntity.h"
 
-
 class Image;
 //class Collider;
 class GameObject : public GameEntity
@@ -28,6 +27,8 @@ public:
 	void SetPosition(POINTFLOAT pos) { mPos = pos; }
 	eDir GetDirection() { return mDir; }
 	void SetDirection(eDir dir) { mDir = dir; }
+	
+	
 
 	//virtual void OnCollided(eCollisionDir dir, int tag) override;
 };

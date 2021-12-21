@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "IngameMap.h"
-//#include "MapEditor.h"
 #include "CameraManager.h"
 #include "Image.h"
 #include "CommonFunction.h"

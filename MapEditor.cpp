@@ -18,11 +18,6 @@ HRESULT MapEditor::Init()
 
 	mTestJiwoo = new Jiwoo;
 	mTestJiwoo->Init();
-
-	mMoveSpeed = 600;
-	mMovePixel = { 0,0 };
-
-	mOneTileTime = 0.3f;
 	
 	if (mSampleTileImage == nullptr)
 	{
@@ -120,132 +115,7 @@ HRESULT MapEditor::Init()
 
 void MapEditor::Update()
 {
-	
-
-	//if (mbControl == true)
-	//{
-	//	if (Input::GetButton(VK_DOWN))
-	//	{
-	//		mDir = eDir::Down;
-	//		mMovePixel.y -= mMoveSpeed * DELTA_TIME;
-	//		CAM_MGR->SetPos(mMovePixel);
-
-	//		mbNeedRevise = false;
-
-	//		if (mMovePixel.y <= -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE * 15)
-	//		{
-	//			mMovePixel.y = -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE * 15;
-	//			mDestPos.y = -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE * 15;
-	//		}
-	//		else
-	//		{
-	//			mDestPos.y = mMovePixel.y - TILE_SIZE - (mMovePixel.y % TILE_SIZE);
-	//		}
-	//		
-	//	}
-	//	if (Input::GetButtonUp(VK_DOWN))
-	//	{
-	//		mbControl = false;
-	//		mbNeedRevise = true;
-	//	}
-	//	if (Input::GetButton(VK_UP))
-	//	{
-	//		mDir = eDir::Up;
-	//		mMovePixel.y += mMoveSpeed * DELTA_TIME;
-	//		CAM_MGR->SetPos(mMovePixel);
-
-	//		mbNeedRevise = false;
-
-	//		if (mMovePixel.y >= 0)
-	//		{
-	//			mDestPos.y = 0;
-	//			mMovePixel.y = 0;
-	//		}
-	//		else
-	//		{
-	//			mDestPos.y = mMovePixel.y + TILE_SIZE - (TILE_SIZE + (mMovePixel.y % TILE_SIZE));
-	//		}
-	//	}
-	//	if (Input::GetButtonUp(VK_UP))
-	//	{
-	//		mbNeedRevise = true;
-	//		mbControl = false;
-	//	}
-	//	if (Input::GetButton(VK_LEFT))
-	//	{
-	//		mDir = eDir::Left;
-	//		mMovePixel.x += mMoveSpeed * DELTA_TIME;
-	//		CAM_MGR->SetPos(mMovePixel);
-
-	//		mbNeedRevise = false;
-
-	//		if (mMovePixel.x >= 0)
-	//		{
-	//			mDestPos.x = 0;
-	//			mMovePixel.x = 0;
-	//		}
-	//		else
-	//		{
-	//			mDestPos.x = mMovePixel.x + TILE_SIZE - (TILE_SIZE + (mMovePixel.x % TILE_SIZE));
-	//		}
-	//	}
-	//	if (Input::GetButtonUp(VK_LEFT))
-	//	{
-	//		mbNeedRevise = true;
-	//		mbControl = false;
-	//	}
-	//	if (Input::GetButton(VK_RIGHT))
-	//	{
-	//		mDir = eDir::Right;
-	//		mMovePixel.x -= mMoveSpeed * DELTA_TIME;
-	//		CAM_MGR->SetPos(mMovePixel);
-
-	//		mbNeedRevise = false;
-
-	//		if (mMovePixel.x <= -TILE_SIZE * TILE_COUNT_X + TILE_SIZE * 15)
-	//		{
-	//			mMovePixel.x = -TILE_SIZE * TILE_COUNT_X + TILE_SIZE * 15;
-	//			mDestPos.x = -TILE_SIZE * TILE_COUNT_X + TILE_SIZE * 15;
-	//		}
-	//		else
-	//		{
-	//			mDestPos.x = mMovePixel.x - TILE_SIZE - (mMovePixel.x % TILE_SIZE);
-	//		}
-	//	}
-	//	if (Input::GetButtonUp(VK_RIGHT))
-	//	{
-	//		mbNeedRevise = true;
-	//		mbControl = false;
-	//	}
-	//}
-	//// 보간
-	//if (mbNeedRevise == true)
-	//{
-	//	CAM_MGR->MovePos(mDestPos, mOneTileTime, mDir);
-	//	mMovePixel = CAM_MGR->GetCamPos();
-
-	//	if (mDir == eDir::Right && mMovePixel.x <= mDestPos.x)
-	//	{
-	//		mbNeedRevise = false;
-	//		mbControl = true;
-	//	}
-	//	if (mDir == eDir::Left && mMovePixel.x >= mDestPos.x)
-	//	{
-	//		mbNeedRevise = false;
-	//		mbControl = true;
-	//	}
-	//	else if (mDir == eDir::Up && mMovePixel.y >= mDestPos.y)
-	//	{
-	//		mbNeedRevise = false;
-	//		mbControl = true;
-	//	}
-	//	else if (mDir == eDir::Down && mMovePixel.y <= mDestPos.y)
-	//	{
-	//		mbNeedRevise = false;
-	//		mbControl = true;
-	//	}
-	//}
-	
+		
 	// 저장 부분
 	if (Input::GetButton(VK_CONTROL) && Input::GetButtonDown('S'))
 	{
@@ -322,7 +192,6 @@ void MapEditor::Update()
 	}
 
 	SAFE_UPDATE(mTestJiwoo);
-
 }
 
 void MapEditor::Render(HDC hdc)
@@ -377,19 +246,31 @@ void MapEditor::Render(HDC hdc)
 		}
 	}
 
-	// 테스트 지우
+	// 테스트 지우(컨트롤)
 	mTestJiwoo->Render(hdc);
-
-	//// 선택 타일 인덱스 표시
-	//wsprintf(mSampleText, "Sample Tile index : %d, %d", mClickStart.x, mClickStart.y);
-	//TextOut(hdc, WIN_SIZE_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 120, mSampleText, strlen(mSampleText));
+	 
 	// 샘플타일넘버
 	wsprintf(mSampleText, "Sample Tile index : %d", mClickStart.y * SAMPLE_TILE_COUNT_X + mClickStart.x);
 	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 120, mSampleText, strlen(mSampleText));
-	// 선택 타일 속성 표기
-	wsprintf(mSampleText, "Tile Terrain : %d", (int)mTileInfo[mClickStart.y * TILE_COUNT_X + mClickStart.x].Terrain);
-	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 160, mSampleText, strlen(mSampleText));
 
+	// 선택 타일 속성 표기
+	wsprintf(mSampleText, "Tile Terrain : %d", (int)mSampleTileInfo[mClickStart.y * SAMPLE_TILE_COUNT_X + mClickStart.x].Terrain);
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 150, mSampleText, strlen(mSampleText));
+
+	wsprintf(mSampleText, "Open = 0");
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 180, mSampleText, strlen(mSampleText));
+	wsprintf(mSampleText, "Grass = 1");
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 200, mSampleText, strlen(mSampleText));
+	wsprintf(mSampleText, "Close = 2");
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 220, mSampleText, strlen(mSampleText));
+	wsprintf(mSampleText, "Door = 3");
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 240, mSampleText, strlen(mSampleText));
+	wsprintf(mSampleText, "BottomBlock = 4");
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 260, mSampleText, strlen(mSampleText));
+	wsprintf(mSampleText, "RightBlock = 5");
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 280, mSampleText, strlen(mSampleText));
+	wsprintf(mSampleText, "LeftBlock = 6");
+	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 300, mSampleText, strlen(mSampleText));
 
 }
 

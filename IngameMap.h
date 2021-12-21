@@ -1,26 +1,13 @@
 #pragma once
-#include "GameEntity.h"
 #include "MapEditor.h"
 
 class Jiwoo;
 class Image;
-class IngameMap : public GameEntity
+class IngameMap : public MapEditor 
 {
 public:
 
 protected:
-	Jiwoo* mTestJiwoo;
-
-	Image* mDrawTileImage;
-	Image* mBackground;
-
-	RECT mSampleArea;
-	RECT mDrawArea;
-
-	TILE_INFO mTileInfo[TILE_COUNT_X * TILE_COUNT_Y];
-	SAMPLE_TILE_INFO mSampleTileInfo[SAMPLE_TILE_COUNT_X * SAMPLE_TILE_COUNT_Y];
-	SAMPLE_TILE_INFO mSelectedTile;
-
 	eDir mDir;
 
 	bool mbControl = {};
@@ -30,18 +17,12 @@ protected:
 	float mRivisedDurTime = {};
 	float mOneTileTime = {};
 
+
 	int mMoveSpeed;
+
+	POINT mMovePixel;
 	// 보간을 위한 타일 목표좌표
 	POINT mDestPos;
-	// 카메라
-	POINT mMovePixel;
-	// 드래그로 타일 선택
-	POINT mClickStart;
-	POINT mCLickEnd;
-	// 드래그 선택값의 절대값
-	POINT mClickArea;
-	// 샘플타일에서 선택된 타일의 좌표값
-	POINT mClickIndex;
 
 
 	string mSaveIndex = {};
@@ -55,8 +36,5 @@ public:
 	virtual void Release() override;
 
 	void LoadMap(string index);
-
-
-
 };
 

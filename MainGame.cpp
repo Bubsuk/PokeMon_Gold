@@ -8,7 +8,7 @@
 #include "OpeningScene.h"
 #include "CityScene.h"
 
-// #define TILETOOL
+//#define TILETOOL
 
 HRESULT MainGame::Init()
 {
@@ -36,10 +36,10 @@ HRESULT MainGame::Init()
 	POINT g_maxSize = {TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y};
 
 #else
-	SCENE_MGR->ChangeScene(eSceneTag::CityScene);
+	SCENE_MGR->ChangeScene(eSceneTag::TestScene);
 	POINT g_maxSize = { WIN_SIZE_X, WIN_SIZE_Y };
 
-#endif // TILETOOL
+#endif
 
 	SetWindowSize(40, 40, g_maxSize.x, g_maxSize.y);
 	backBuffer->Init("Image/mapImage.bmp", g_maxSize.x, g_maxSize.y);

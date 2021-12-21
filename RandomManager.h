@@ -8,5 +8,6 @@ private:
 public:
     static float WeightMaker();
 	static bool PercentMaker(int probability);
+	static int RandomPeeker(int a, int b);
 };
 

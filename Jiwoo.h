@@ -1,11 +1,14 @@
 #pragma once
 #include "GameObject.h"
 
+class Collider;
 class Jiwoo : public GameObject
 {
 private:
 	Image* mImageRunRL = nullptr;
 	Image* mImageRunUD = nullptr;
+
+	Collider* mCollider;
 
 	eDir mState;
 
@@ -13,15 +16,15 @@ private:
 	int mframeY = 0;
 
 	bool mAnimPlay;
+	bool mbControl = {};
+	bool mbNeedRevise = {};
+
 	const float mFlipAnimTime = 0.15f;
 	float mElapsedCount = 0.0f;
-
-	bool mbControl = {};
-	POINT mMovePixel;
 	float mMoveSpeed = {};
-	bool mbNeedRevise = {};
-	POINT mDestPos;
 	float mOneTileTime = {};
+
+	POINT mDestPos;
 
 
 public:

@@ -4,10 +4,11 @@
 class IngameMap;
 class CityScene : public GameEntity
 {
-private:
+public:
 	
 	IngameMap* mCityMap;
-
+	
+	
 
 public:
 	static POINT mCityPos;
@@ -16,5 +17,7 @@ public:
 	void Update();
 	void Render(HDC hdc);
 	void Release();
+
+
 };
 

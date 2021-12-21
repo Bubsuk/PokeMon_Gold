@@ -1,6 +1,7 @@
 #pragma once
 #include "GameEntity.h"
 
+class IngameMap;
 class Pokemon;
 class Jiwoo;
 class Image;
@@ -13,7 +14,8 @@ private:
 
 	Image* mBackGround = nullptr;
 	Image* aaa = nullptr;
-	
+	IngameMap* mCityMap;
+	TILE_INFO* mTileIn;
 
 
 public:
@@ -21,4 +23,6 @@ public:
 	void Update() override;
 	void Render(HDC hdc) override;
 	void Release() override;
+
+	
 };

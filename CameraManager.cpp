@@ -87,7 +87,8 @@ void CameraManager::MovePos(POINT& destPos, float durTime, eDir dir)
 	
 }
 
-void CameraManager::SetPos(POINT& movePos)
+void CameraManager::SetPos(int x, int y)
 {
-	mObjectPos = movePos;
+	mObjectPos.x = x;
+	mObjectPos.y = y;
 }

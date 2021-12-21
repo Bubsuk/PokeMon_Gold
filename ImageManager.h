@@ -23,7 +23,41 @@ enum class eImageTag
 	SampleTile, DrawTile,
 
 	// 타입이미지
-	PokeIcon
+	PokeIcon,
+
+	// Dialogue UI
+	Dialogue,
+
+	// Menu UI
+	Dogam, Gear, GearMinimap, Gear1, MenuDogam, MenuPoke, MenuBag, MenuGear,
+	MenuPlayer, MenuSet, MenuClose, DetectPoke,
+	
+	PokeSelect1, PokeSelect2, PokeSelect3, PokeSelect4, PokeSelect5, PokeSelect6, PokeSelectCls,
+	PokePower, Setting, SettingCLs,
+	Status, Status1,
+	CursorRight, CursorBottom,
+
+	// Battle UI
+	BattleLoading, BattleFlash,  BattleFrame, BattleSkill, BattleSelect, Gender, HpBar, ExpGauge, HpGauge, HpGaugeBack,
+	ExpGaugeBack, PlayerImg, PokeBallState,
+
+	// Shop UI
+	BuyMonsterBall, Medi, SuperMedi, ShopCls, Buy, Sell, Nothing,
+
+	// PokemonCenter
+	HealingPoke,
+
+	// Particle
+	AppearPoke, Attack, Attack3, Bind, Cut, Cut3, fire, Growth, Horn, Light, Move, MyConfusion, 
+	MyHorn, MyPoison, MyQuickAttack, MySandAttack, MyStringShot, Poison, RazorWind, Shine, Shock, 
+	SkyAttack, Slash, SmokeScreen, Snap, Spark, Squall, WildConfusion, WildHorn, WildPoisonSting, 
+	WildQuickAttack, WildSandAttack, WildStingShot, WalkGrass1, WalkGrass2, Shadow,
+
+	// End Scene
+	End1, End2, End3, End4, EndPoke1, EndPoke2, EndPoke3, EndPoke4,
+
+
+
 
 };
 

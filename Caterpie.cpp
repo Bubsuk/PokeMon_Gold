@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "Caterpie.h"
-#include "Image.h"
-#include "RandomManager.h"
 
 HRESULT Caterpie::Init()
 {
@@ -18,13 +16,16 @@ HRESULT Caterpie::Init()
 
 	
 	mPokeType = ePokemonType::Bug;
-	mSkill_1.SkillName = "몸통박치기";
-	mSkill_1.Attack = 35;
-	mSkill_1.AccuracyRate = 95;
 
-	mSkill_2.SkillName = "실뿜기"; // 입에서 뿜어낸 실을 휘감아서 상대의 스피드를 떨어뜨린다.
-	mSkill_2.Attack = 0;
-	mSkill_2.AccuracyRate = 95;
+	mPokeSkill.reserve(4);
+
+	mPokeSkill[0].SkillName = "몸통박치기";
+	mPokeSkill[0].Attack = 35;
+	mPokeSkill[0].AccuracyRate = 95;
+
+	mPokeSkill[1].SkillName = "실뿜기"; // 입에서 뿜어낸 실을 휘감아서 상대의 스피드를 떨어뜨린다.
+	mPokeSkill[1].Attack = 0;
+	mPokeSkill[1].AccuracyRate = 95;
 
 	mLv = 1;
 	mIdNum = "No. 010";
@@ -35,7 +36,7 @@ HRESULT Caterpie::Init()
 	mExp = 0;
 
 
-	return E_NOTIMPL;
+	return S_OK;
 }
 
 void Caterpie::Update()
@@ -48,7 +49,7 @@ void Caterpie::Update()
 		cout << "체력이 " << mMaxHp << "인 " << mName << "이 생성되었습니다." << endl;
 		mMaxHp = 40;
 		cout << "포켓몬 성별은 " << (int)mGender << "입니다." << endl;
-		cout << "스킬명은 " << mSkill_1.SkillName << endl;
+		cout << "스킬명은 " << mPokeSkill[0].SkillName << endl;
 
 		cout << RandomManager::WeightMaker() << endl;;
 	}
