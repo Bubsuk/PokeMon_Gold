@@ -67,7 +67,6 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 	// 윈도우 출력
 	ShowWindow(g_hWnd, nCmdShow);
 
-
 	// 메시지 큐에 있는 메시지 처리
 
 	MSG msg;

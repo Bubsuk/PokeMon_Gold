@@ -5,7 +5,7 @@ class Jiwoo;
 class Home1stScene : public GameEntity
 {
 public:
-	Jiwoo* mJiwoo;
+
 	POINT mTo2ndFloor;
 	POINT mToOutdoor;
 	POINT mToOutdoor2;

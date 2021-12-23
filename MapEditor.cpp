@@ -10,6 +10,10 @@
 
 HRESULT MapEditor::Init()
 {
+	//AddFontResource("gsc.ttf");
+
+	
+
 	mSampleTileImage = IMG_MGR->FindImage(eImageTag::SampleTile);
 	mDrawTileImage = IMG_MGR->FindImage(eImageTag::DrawTile);
 	mBackground = IMG_MGR->FindImage(eImageTag::Background);
@@ -198,6 +202,7 @@ void MapEditor::Update()
 
 void MapEditor::Render(HDC hdc)
 {
+	
 	mBackground->Render(hdc);
 
 	// 그리는 영역 표시
@@ -251,8 +256,11 @@ void MapEditor::Render(HDC hdc)
 	// 테스트 지우(컨트롤)
 	mTestJiwoo->Render(hdc);
 	 
+	hFont = CreateFont(15, 0, 0, 0, 400, 0, 0, 0, ANSI_CHARSET, 3, 2, 1,
+		18, TEXT("PokemonGSC"));
+	HFONT oldFont = (HFONT)SelectObject(hdc, hFont);
 	// 샘플타일넘버
-	wsprintf(mSampleText, "Sample Tile index : %d", mClickStart.y * SAMPLE_TILE_COUNT_X + mClickStart.x);
+	wsprintf(mSampleText, "샘플 타일 인덱스 : %d", mClickStart.y * SAMPLE_TILE_COUNT_X + mClickStart.x);
 	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 120, mSampleText, strlen(mSampleText));
 
 	// 선택 타일 속성 표기
@@ -274,6 +282,7 @@ void MapEditor::Render(HDC hdc)
 	wsprintf(mSampleText, "LeftBlock = 6");
 	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 300, mSampleText, strlen(mSampleText));
 
+	DeleteObject(SelectObject(hdc, oldFont));
 }
 
 void MapEditor::Release()

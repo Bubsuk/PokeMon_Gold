@@ -31,11 +31,12 @@ public:
 
 	const float mFlipAnimTime = 0.15f;
 	float mElapsedCount = 0.0f;
-	float mJumpCnt = 0.0f;
+	float mJumpCount = 0.0f;
 	float mMoveSpeed = {};
 	float mOneTileTime = {};
 
 	POINT mDestPos;
+	POINT mBarometerPos;
 
 
 public:
@@ -47,6 +48,8 @@ public:
 	virtual void Update();
 	virtual void Render(HDC hdc);
 	virtual void Release();
+
+	void Jump();
 
 	virtual ~Jiwoo() {}
 };

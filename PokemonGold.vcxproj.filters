@@ -168,6 +168,9 @@
     <ClCompile Include="DogamScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="PokemonManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h">
@@ -316,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="DogamScene.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonManager.h">
+      <Filter>Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

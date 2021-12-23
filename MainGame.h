@@ -19,6 +19,9 @@ private:
 	// ¹é¹öÆÛ
 	Image* backBuffer;
 
+	HFONT font;
+	HFONT oldFont;
+
 public:
 	HRESULT Init();
 	void Update();

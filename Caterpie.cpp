@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "Caterpie.h"
 
+
 HRESULT Caterpie::Init()
 {
 	mBackImg = IMG_MGR->FindImage(eImageTag::Caterpie_R);
 	mFrontImg = IMG_MGR->FindImage(eImageTag::Caterpie_F);
 	mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
 
-	mWeight = 1;
 
 	mName = "캐터피";
 
@@ -29,10 +29,10 @@ HRESULT Caterpie::Init()
 
 	mLv = 1;
 	mIdNum = "No. 010";
-	mMaxHp = 40;
+	mMaxHp = 40 * RandomManager::WeightMaker();
 	mHp = mMaxHp;
 
-	mMaxExp = 40;
+	mMaxExp = 40 * RandomManager::WeightMaker();
 	mExp = 0;
 
 
@@ -44,8 +44,6 @@ void Caterpie::Update()
 	
 	if (Input::GetButtonDown('Z'))
 	{
-		mWeight = RandomManager::WeightMaker();
-		mMaxHp = mWeight * mMaxHp;
 		cout << "체력이 " << mMaxHp << "인 " << mName << "이 생성되었습니다." << endl;
 		mMaxHp = 40;
 		cout << "포켓몬 성별은 " << (int)mGender << "입니다." << endl;

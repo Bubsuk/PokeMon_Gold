@@ -14,13 +14,13 @@ HRESULT Home2ndScene::Init()
 
 void Home2ndScene::Update()
 {
+	CON_MGR->Update();
 	if (CON_MGR->mState == eDir::Up &&
 		CAM_MGR->GetCamPos().x == mTo1stFloor.x 
 		&& CAM_MGR->GetCamPos().y == mTo1stFloor.y)
 	{
 		SCENE_MGR->ChangeScene(eSceneTag::Home1stScene);
 	}
-	SAFE_UPDATE(mJiwoo);
 }
 
 void Home2ndScene::Render(HDC hdc)

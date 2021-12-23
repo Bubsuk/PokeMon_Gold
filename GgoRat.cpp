@@ -3,19 +3,18 @@
 
 HRESULT GgoRat::Init()
 {
-	mBackImg = IMG_MGR->FindImage(eImageTag::Caterpie_R);
-	mFrontImg = IMG_MGR->FindImage(eImageTag::Caterpie_F);
+	mBackImg = IMG_MGR->FindImage(eImageTag::Ggorat_R);
+	mFrontImg = IMG_MGR->FindImage(eImageTag::Ggorat_F);
 	mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
 
-	mWeight = 1;
 
-	mName = "Ä³ÅÍÇÇ";
+	mName = "²¿·¿";
 
 	if (RandomManager::PercentMaker(50) == true) mGender = Gender::Male;
 	else mGender = Gender::Female;
 
 
-	mPokeType = ePokemonType::Bug;
+	mPokeType = ePokemonType::Etc;
 
 	mPokeSkill.push_back(mSkill);
 	mPokeSkill[0].SkillName = "¸öÅë¹ÚÄ¡±â";
@@ -23,16 +22,16 @@ HRESULT GgoRat::Init()
 	mPokeSkill[0].AccuracyRate = 95;
 
 	mPokeSkill.push_back(mSkill);
-	mPokeSkill[1].SkillName = "½Ç»Õ±â"; // ÀÔ¿¡¼­ »Õ¾î³½ ½ÇÀ» ÈÖ°¨¾Æ¼­ »ó´ëÀÇ ½ºÇÇµå¸¦ ¶³¾î¶ß¸°´Ù.
+	mPokeSkill[1].SkillName = "²¿¸®Èçµé±â";
 	mPokeSkill[1].Attack = 0;
-	mPokeSkill[1].AccuracyRate = 95;
+	mPokeSkill[1].AccuracyRate = 100;
 
 	mLv = 1;
-	mIdNum = "No. 010";
-	mMaxHp = 40;
+	mIdNum = "No. 019";
+	mMaxHp = 40 * RandomManager::WeightMaker();
 	mHp = mMaxHp;
 
-	mMaxExp = 40;
+	mMaxExp = 40 * RandomManager::WeightMaker();
 	mExp = 0;
 
 

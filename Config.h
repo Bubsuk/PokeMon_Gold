@@ -34,14 +34,17 @@ using namespace std;
 #include "Input.h"
 #include "SceneManager.h"
 #include "CameraManager.h"
+//#include "MapManager.h"
+//#include "Jiwoo.h"
+//#include "PokemonManager.h"
 #include "Timer.h"
 
-#define KEY_MGR Input::GetSingleton()
 #define SCENE_MGR SceneManager::GetSingleton()
 #define IMG_MGR ImageManager::GetSingleton()
 #define CAM_MGR CameraManager::GetSingleton()
 #define MAP_MGR MapManager::GetSingleton()
 #define CON_MGR Jiwoo::GetSingleton()
+#define POKE_MGR PokemonManager::GetSingleton()
 
 #define DELTA_TIME Timer::GetDeltaTime();
 

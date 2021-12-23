@@ -15,7 +15,7 @@ public:
 
 
 protected:
-
+	HFONT hFont;
 
 	Jiwoo* mTestJiwoo;
 
@@ -58,8 +58,6 @@ public:
 
 	void SaveMap(string index);
 	void LoadMap(string index);
-
-	//TILE_INFO* GetTileInfo() { return this->mTileInfo; }
 
 };
 

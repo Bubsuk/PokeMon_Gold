@@ -177,6 +177,7 @@
     <ClCompile Include="PikaChu.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="PokemonFactory.cpp" />
+    <ClCompile Include="PokemonManager.cpp" />
     <ClCompile Include="PokemonSkill.cpp" />
     <ClCompile Include="RandomManager.cpp" />
     <ClCompile Include="Riaco.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="PikaChu.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="PokemonFactory.h" />
+    <ClInclude Include="PokemonManager.h" />
     <ClInclude Include="PokemonSkill.h" />
     <ClInclude Include="RandomManager.h" />
     <ClInclude Include="Riaco.h" />

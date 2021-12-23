@@ -7,7 +7,6 @@ HRESULT Riaco::Init()
 	mFrontImg = IMG_MGR->FindImage(eImageTag::Caterpie_F);
 	mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
 
-	mWeight = 1;
 
 	mName = "Ä³ÅÍÇÇ";
 

@@ -123,6 +123,8 @@ void ImageManager::Init()
 
 	AddImage(eImageTag::CursorRight, "Image/battle/cursorBehavior.bmp", 32, 32);
 	AddImage(eImageTag::CursorBottom, "Image/battle/cursorBottom.bmp", 32, 32);
+	AddImage(eImageTag::DogamSelect, "Image/menuUI/dogam_select.bmp", 226, 62, true, RGB(255, 0, 255));
+
 
 	// UI - Battle
 	AddImage(eImageTag::Gender, "Image/battle_loading.bmp", 17920, 596, 28, 1, true, RGB(255, 0, 255));

@@ -2,6 +2,7 @@
 #include "GameEntity.h"
 #include "Image.h"
 #include "RandomManager.h"
+#include "PokemonManager.h"
 
 
 struct PokemonSkill
@@ -21,7 +22,7 @@ struct PokemonSkill
 
 
 class Image;
-class Pokemon
+class Pokemon : public PokemonManager
 {
 
 protected:
@@ -45,8 +46,6 @@ protected:
 	int mMaxHp = {};
 	int mExp = {};
 	int mMaxExp = {};
-	// 체력 랜덤설정을 위한 가중치
-	float mWeight;
 
 public:
 	virtual HRESULT Init() = 0;

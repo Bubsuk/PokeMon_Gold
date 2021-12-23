@@ -3,19 +3,17 @@
 
 HRESULT Chicorita::Init()
 {
-	mBackImg = IMG_MGR->FindImage(eImageTag::Caterpie_R);
-	mFrontImg = IMG_MGR->FindImage(eImageTag::Caterpie_F);
+	mBackImg = IMG_MGR->FindImage(eImageTag::Chicorita_R);
+	mFrontImg = IMG_MGR->FindImage(eImageTag::Chicorita_F);
 	mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
 
-	mWeight = 1;
+	mName = "치코리타";
 
-	mName = "캐터피";
-
-	if (RandomManager::PercentMaker(50) == true) mGender = Gender::Male;
+	if (RandomManager::PercentMaker(87) == true) mGender = Gender::Male;
 	else mGender = Gender::Female;
 
 
-	mPokeType = ePokemonType::Bug;
+	mPokeType = ePokemonType::Etc;
 
 	mPokeSkill.push_back(mSkill);
 	mPokeSkill[0].SkillName = "몸통박치기";
@@ -23,16 +21,16 @@ HRESULT Chicorita::Init()
 	mPokeSkill[0].AccuracyRate = 95;
 
 	mPokeSkill.push_back(mSkill);
-	mPokeSkill[1].SkillName = "실뿜기"; // 입에서 뿜어낸 실을 휘감아서 상대의 스피드를 떨어뜨린다.
+	mPokeSkill[1].SkillName = "울음소리";
 	mPokeSkill[1].Attack = 0;
-	mPokeSkill[1].AccuracyRate = 95;
+	mPokeSkill[1].AccuracyRate = 100;
 
 	mLv = 1;
-	mIdNum = "No. 010";
-	mMaxHp = 40;
+	mIdNum = "No. 152";
+	mMaxHp = 40 * RandomManager::WeightMaker();
 	mHp = mMaxHp;
 
-	mMaxExp = 40;
+	mMaxExp = 40 * RandomManager::WeightMaker();
 	mExp = 0;
 
 

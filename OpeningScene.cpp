@@ -58,7 +58,7 @@ void OpeningScene::Render(HDC hdc)
 
 	if (Input::GetButtonDown('Z'))
 	{
-
+		SCENE_MGR->ChangeScene(eSceneTag::Home2ndScene);
 	}
 	
 }

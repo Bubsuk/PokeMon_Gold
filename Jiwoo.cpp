@@ -26,6 +26,9 @@ HRESULT Jiwoo::Init()
     mPos.x = WIN_SIZE_X / 2 - 32;
     mPos.y = WIN_SIZE_Y / 2;
 
+    mBarometerPos.x = WIN_SIZE_X / 2 - 32;
+    mBarometerPos.y = WIN_SIZE_Y / 2;
+
     mJumpWeight = 350.0f;
     mJumpHeight = WIN_SIZE_Y / 2 - 32;
 
@@ -34,7 +37,7 @@ HRESULT Jiwoo::Init()
     mbControl = true;
     mMoveSpeed = 300;
     CAM_MGR->mObjectPos = { 0,0 };
-    mOneTileTime = 0.3f;
+    mOneTileTime = 0.5f;
 
 
     return S_OK;
@@ -43,8 +46,7 @@ HRESULT Jiwoo::Init()
 void Jiwoo::Update()
 { 
     mElapsedCount += DELTA_TIME;
-    mJumpCnt += 10.0f * DELTA_TIME;
-   
+  
     if (mbControl == true && mbJump == false && mbMenuSwitch == false)
     {
         if (Input::GetButton(VK_DOWN))
@@ -61,7 +63,7 @@ void Jiwoo::Update()
             }
             else
             {
-                if (CheckJump(mState) == true)
+                if (CheckJump() == true)
                 {
                     mbJump = true;
                     mDestPos.y = SetLimit(mState) + TILE_SIZE;
@@ -168,15 +170,13 @@ void Jiwoo::Update()
     // 점프
     if (mbJump == true)
     {
-        mPos.y = (1000 * mJumpCnt * mJumpCnt);
-        mDestPos.y = mDestPos.y + TILE_SIZE;
-        if (mPos.y >= WIN_SIZE_Y / 2)
+        Jump();
+
+        if (mPos.y >= mBarometerPos.y)
         {
             mPos.y = WIN_SIZE_Y / 2;
-            mJumpCnt = 0;
             mbJump = false;
         }
-        
     }
     // 보간
     if (mbNeedRevise == true)
@@ -185,9 +185,13 @@ void Jiwoo::Update()
         {
             CAM_MGR->MovePos(mDestPos, mOneTileTime * 2, mState);
         }
-        CAM_MGR->MovePos(mDestPos, mOneTileTime, mState);
+        else
+        {
+            CAM_MGR->MovePos(mDestPos, mOneTileTime, mState);
+        }
+        
         CAM_MGR->mObjectPos = CAM_MGR->GetCamPos();
-
+        
         if (mState == eDir::Right && CAM_MGR->mObjectPos.x <= mDestPos.x)
         {
             mbNeedRevise = false;
@@ -270,7 +274,7 @@ void Jiwoo::Update()
         || Input::GetButtonUp(VK_LEFT) || Input::GetButtonUp(VK_RIGHT))
     {
         mAnimPlay = false;
-        mState == eDir::Idle;
+       // mState == eDir::Idle;
         mframeX = 0;
     }
 
@@ -312,7 +316,7 @@ void Jiwoo::Render(HDC hdc)
         mImageRunRL->Render(hdc, mPos.x, mPos.y, mframeX, mframeY + 1);
         break;
     }
-    mShadow->Render(hdc, mPos.x, mPos.y + 5);
+    mShadow->Render(hdc, mBarometerPos.x, mBarometerPos.y + 5);
 
     if (mbMenuSwitch == true)
     {
@@ -324,4 +328,19 @@ void Jiwoo::Render(HDC hdc)
 void Jiwoo::Release()
 {
     GameObject::Release();
+}
+
+void Jiwoo::Jump()
+{
+    mElapsedCount += DELTA_TIME;
+
+    if (mPos.y >= mBarometerPos.y - 32)
+    {
+        mPos.y = mBarometerPos.y - mElapsedCount / 0.02f;
+    }
+    else if (mPos.y <= mBarometerPos.y - 32)
+    {
+        mPos.y = mBarometerPos.y - 32 + mElapsedCount / 0.04f;
+    }
+
 }

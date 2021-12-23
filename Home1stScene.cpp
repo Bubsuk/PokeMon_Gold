@@ -15,6 +15,8 @@ HRESULT Home1stScene::Init()
 
 void Home1stScene::Update()
 {
+	CON_MGR->Update();
+
 	if(CON_MGR->mState == eDir::Up &&
 		CAM_MGR->GetCamPos().x == mTo2ndFloor.x
 		&& CAM_MGR->GetCamPos().y == mTo2ndFloor.y)
@@ -32,7 +34,7 @@ void Home1stScene::Update()
 		SCENE_MGR->ChangeScene(eSceneTag::CityScene);
 	}
 
-	SAFE_UPDATE(mJiwoo);
+
 }
 
 void Home1stScene::Render(HDC hdc)

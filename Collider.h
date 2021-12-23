@@ -18,7 +18,7 @@ public:
 
 
 	int SetLimit(eDir dir);
-	bool CheckJump(eDir dir);
+	bool CheckJump();
 
 };
 

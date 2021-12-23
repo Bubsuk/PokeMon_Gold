@@ -13,7 +13,6 @@ HRESULT TestScene::Init()
     //aaa = IMG_MGR->FindImage(1);
     CON_MGR->Init();
     //mJiwooPos = mJiwoo->GetPosition();
-
     MAP_MGR->LoadMap("cityMap");
     
     CAM_MGR->SetPos(-500, -320);

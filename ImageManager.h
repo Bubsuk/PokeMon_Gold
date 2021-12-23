@@ -31,11 +31,11 @@ enum class eImageTag
 	// Menu UI
 	Dogam, Gear, GearMinimap, Gear1, MenuDogam, MenuPoke, MenuBag, MenuGear,
 	MenuPlayer, MenuSet, MenuClose, DetectPoke,
-	
+
 	PokeSelect1, PokeSelect2, PokeSelect3, PokeSelect4, PokeSelect5, PokeSelect6, PokeSelectCls,
 	PokePower, Setting, SettingCLs,
 	Status, Status1,
-	CursorRight, CursorBottom,
+	CursorRight, CursorBottom, DogamSelect,
 
 	// Battle UI
 	BattleLoading, BattleFlash,  BattleFrame, BattleSkill, BattleSelect, Gender, HpBar, ExpGauge, HpGauge, HpGaugeBack,

@@ -73,17 +73,29 @@ int Collider::SetLimit(eDir dir)
 	
 }
 
-bool Collider::CheckJump(eDir dir)
+bool Collider::CheckJump()
 {
-	int indexDoX = (288 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
-	int indexDoY = (288 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
 
-	if (MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Terrain == eTerrain::BottomBlock
-			|| MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Terrain == eTerrain::LeftBlock
-			||	MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Terrain == eTerrain::RightBlock)
+	int jumpPointX = 288 - CAM_MGR->GetCamPos().x;
+	int jumpPointY = 288 - CAM_MGR->GetCamPos().y;
+
+	int curIndexX = (288 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
+	int curIndexY = (288 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
+
+	if (MAP_MGR->GetTileInfo()[curIndexY * TILE_COUNT_X + curIndexX].Terrain == eTerrain::BottomBlock
+		&& MAP_MGR->GetTileInfo()[curIndexY * TILE_COUNT_X + curIndexX].Rc.bottom -40 >= jumpPointY)
 	{
 		return true;
 	}
-
-	return false;
+	else if (MAP_MGR->GetTileInfo()[curIndexY * TILE_COUNT_X + curIndexX].Terrain == eTerrain::LeftBlock
+		&& MAP_MGR->GetTileInfo()[curIndexY * TILE_COUNT_X + curIndexX].Rc.right == jumpPointX)
+	{
+		return true;
+	}
+	else if (MAP_MGR->GetTileInfo()[curIndexY * TILE_COUNT_X + curIndexX].Terrain == eTerrain::RightBlock
+		&& MAP_MGR->GetTileInfo()[curIndexY * TILE_COUNT_X + curIndexX].Rc.left == jumpPointX)
+	{
+		return true;
+	}
+	else return false;
 }

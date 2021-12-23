@@ -2,6 +2,18 @@
 #include "Config.h"
 #include "SceneManager.h"
 #include "GameEntity.h"
+#include "TestScene.h"
+#include "MapScene.h"
+#include "OpeningScene.h"
+#include "CityScene.h"
+#include "Home1stScene.h"
+#include "Home2ndScene.h"
+#include "CenterScene.h"
+#include "MartScene.h"
+#include "GymScene.h"
+#include "DrOLabScene.h"
+#include "BattleScene.h"
+#include "DogamScene.h"
 
 GameEntity* SceneManager::currScene = nullptr; // ÀÌÀü ¾À
 GameEntity* SceneManager::readyScene = nullptr; // Áö±Ý ¾²´Â ¾À
@@ -23,6 +35,18 @@ DWORD CALLBACK LoadingThread(LPVOID pvParam)
 
 void SceneManager::Init()
 {
+	SCENE_MGR->AddScene(eSceneTag::TestScene, new TestScene);
+	SCENE_MGR->AddScene(eSceneTag::MapToolScene, new MapScene);
+	SCENE_MGR->AddScene(eSceneTag::OpeningScene, new OpeningScene);
+	SCENE_MGR->AddScene(eSceneTag::Home1stScene, new Home1stScene);
+	SCENE_MGR->AddScene(eSceneTag::Home2ndScene, new Home2ndScene);
+	SCENE_MGR->AddScene(eSceneTag::CityScene, new CityScene);
+	SCENE_MGR->AddScene(eSceneTag::CenterScene, new CenterScene);
+	SCENE_MGR->AddScene(eSceneTag::MartScene, new MartScene);
+	SCENE_MGR->AddScene(eSceneTag::GymScene, new GymScene);
+	SCENE_MGR->AddScene(eSceneTag::DrOScene, new DrOLabScene);
+	SCENE_MGR->AddScene(eSceneTag::BattleScene, new BattleScene);
+	SCENE_MGR->AddScene(eSceneTag::DogamScene, new DogamScene);
 }
 
 void SceneManager::Release()

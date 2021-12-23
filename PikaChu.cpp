@@ -3,13 +3,11 @@
 
 HRESULT PikaChu::Init()
 {
-	mBackImg = IMG_MGR->FindImage(eImageTag::Caterpie_R);
-	mFrontImg = IMG_MGR->FindImage(eImageTag::Caterpie_F);
+	mBackImg = IMG_MGR->FindImage(eImageTag::Pika_R);
+	mFrontImg = IMG_MGR->FindImage(eImageTag::Pika_F);
 	mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
 
-	mWeight = 1;
-
-	mName = "캐터피";
+	mName = "피카츄";
 
 	if (RandomManager::PercentMaker(50) == true) mGender = Gender::Male;
 	else mGender = Gender::Female;
@@ -28,7 +26,7 @@ HRESULT PikaChu::Init()
 	mPokeSkill[1].AccuracyRate = 95;
 
 	mLv = 1;
-	mIdNum = "No. 010";
+	mIdNum = "No. 025";
 	mMaxHp = 40;
 	mHp = mMaxHp;
 
