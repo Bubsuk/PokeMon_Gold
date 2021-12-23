@@ -17,20 +17,23 @@ HRESULT Bayleaf::Init()
 
 	mPokeType = ePokemonType::Etc;
 
-	mPokeSkill.reserve(4);
-
+	
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[0].SkillName = "몸통박치기";
 	mPokeSkill[0].Attack = 35;
 	mPokeSkill[0].AccuracyRate = 95;
 
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[1].SkillName = "울음소리";
 	mPokeSkill[1].Attack = 0;
 	mPokeSkill[1].AccuracyRate = 100;
 
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[2].SkillName = "잎날가르기";
 	mPokeSkill[2].Attack = 55;
 	mPokeSkill[2].AccuracyRate = 95;
 
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[3].SkillName = "리플렉터";
 	mPokeSkill[3].Attack = 0;
 	mPokeSkill[3].AccuracyRate = 0;

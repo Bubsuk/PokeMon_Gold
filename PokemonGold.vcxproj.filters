@@ -34,6 +34,9 @@
     <Filter Include="Collider">
       <UniqueIdentifier>{5b820ad3-267a-4fa7-b02a-2e3eee0c2be4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character\Pokemon\PokemonManage">
+      <UniqueIdentifier>{bc2a4457-20bb-4d86-a350-48099f9b928d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,17 +99,8 @@
     <ClCompile Include="RandomManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="PokemonFactory.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="Caterpie.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
     <ClCompile Include="CityScene.cpp">
       <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="IngameMap.cpp">
-      <Filter>TileMap</Filter>
     </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>Collider</Filter>
@@ -114,74 +108,65 @@
     <ClCompile Include="BattleUiManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="DogamUiManager.cpp">
+    <ClCompile Include="MenuManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="InventoryManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Alligay.cpp">
-      <Filter>Character\Pokemon</Filter>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Bayleaf.cpp">
-      <Filter>Character\Pokemon</Filter>
+    <ClCompile Include="CenterScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="BbulChungE.cpp">
-      <Filter>Character\Pokemon</Filter>
+    <ClCompile Include="DrOLabScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GymScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Home1stScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Home2ndScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MartScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Bcane.cpp">
       <Filter>Character\Pokemon</Filter>
     </ClCompile>
-    <ClCompile Include="Butterfle.cpp">
+    <ClCompile Include="Caterpie.cpp">
       <Filter>Character\Pokemon</Filter>
     </ClCompile>
     <ClCompile Include="Chicorita.cpp">
       <Filter>Character\Pokemon</Filter>
     </ClCompile>
-    <ClCompile Include="Dandegi.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="DdakChungE.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="DokChungE.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="GgaeBiCham.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="GgaeBiDrill.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
     <ClCompile Include="GgoRat.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="Gugu.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="Jangcro.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="Meganium.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="Pigeon.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
-    <ClCompile Include="PigeonTwo.cpp">
       <Filter>Character\Pokemon</Filter>
     </ClCompile>
     <ClCompile Include="PikaChu.cpp">
       <Filter>Character\Pokemon</Filter>
     </ClCompile>
-    <ClCompile Include="Rat.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
     <ClCompile Include="Riaco.cpp">
       <Filter>Character\Pokemon</Filter>
     </ClCompile>
-    <ClCompile Include="Richu.cpp">
+    <ClCompile Include="Pokemon.cpp">
       <Filter>Character\Pokemon</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonSkill.cpp">
+      <Filter>Character\Pokemon\PokemonManage</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonFactory.cpp">
+      <Filter>Character\Pokemon\PokemonManage</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogueManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="DogamScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -263,20 +248,8 @@
     <ClInclude Include="RandomManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Pokemon.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="PokemonFactory.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="Caterpie.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
     <ClInclude Include="CityScene.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="IngameMap.h">
-      <Filter>TileMap</Filter>
     </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Collider</Filter>
@@ -284,74 +257,65 @@
     <ClInclude Include="BattleUiManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="DogamUiManager.h">
+    <ClInclude Include="MenuManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="InventoryManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Richu.h">
-      <Filter>Character\Pokemon</Filter>
+    <ClInclude Include="MapManager.h">
+      <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Alligay.h">
-      <Filter>Character\Pokemon</Filter>
+    <ClInclude Include="CenterScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Bayleaf.h">
-      <Filter>Character\Pokemon</Filter>
+    <ClInclude Include="DrOLabScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="BbulChungE.h">
-      <Filter>Character\Pokemon</Filter>
+    <ClInclude Include="Home1stScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Home2ndScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GymScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MartScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Bcane.h">
       <Filter>Character\Pokemon</Filter>
     </ClInclude>
-    <ClInclude Include="Butterfle.h">
+    <ClInclude Include="Caterpie.h">
       <Filter>Character\Pokemon</Filter>
     </ClInclude>
     <ClInclude Include="Chicorita.h">
       <Filter>Character\Pokemon</Filter>
     </ClInclude>
-    <ClInclude Include="Dandegi.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="DdakChungE.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="DokChungE.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="GgaeBiCham.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="GgaeBiDrill.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
     <ClInclude Include="GgoRat.h">
       <Filter>Character\Pokemon</Filter>
     </ClInclude>
-    <ClInclude Include="Gugu.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="Jangcro.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="Meganium.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="Pigeon.h">
-      <Filter>Character\Pokemon</Filter>
-    </ClInclude>
-    <ClInclude Include="PigeonTwo.h">
+    <ClInclude Include="Riaco.h">
       <Filter>Character\Pokemon</Filter>
     </ClInclude>
     <ClInclude Include="PikaChu.h">
       <Filter>Character\Pokemon</Filter>
     </ClInclude>
-    <ClInclude Include="Rat.h">
-      <Filter>Character\Pokemon</Filter>
+    <ClInclude Include="PokemonSkill.h">
+      <Filter>Character\Pokemon\PokemonManage</Filter>
     </ClInclude>
-    <ClInclude Include="Riaco.h">
-      <Filter>Character\Pokemon</Filter>
+    <ClInclude Include="PokemonFactory.h">
+      <Filter>Character\Pokemon\PokemonManage</Filter>
+    </ClInclude>
+    <ClInclude Include="Pokemon.h">
+      <Filter>Character\Pokemon\PokemonManage</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogueManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="DogamScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

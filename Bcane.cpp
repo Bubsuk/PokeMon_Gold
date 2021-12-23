@@ -9,26 +9,26 @@ HRESULT Bcane::Init()
 
 	mWeight = 1;
 
-	mName = "캐터피";
+	mName = "브케인";
 
-	if (RandomManager::PercentMaker(50) == true) mGender = Gender::Male;
+	if (RandomManager::PercentMaker(87) == true) mGender = Gender::Male;
 	else mGender = Gender::Female;
 
 
 	mPokeType = ePokemonType::Bug;
 
-	mPokeSkill.reserve(4);
-
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[0].SkillName = "몸통박치기";
 	mPokeSkill[0].Attack = 35;
 	mPokeSkill[0].AccuracyRate = 95;
-
-	mPokeSkill[1].SkillName = "실뿜기"; // 입에서 뿜어낸 실을 휘감아서 상대의 스피드를 떨어뜨린다.
+	
+	mPokeSkill.push_back(mSkill);
+	mPokeSkill[1].SkillName = "실뿜기";
 	mPokeSkill[1].Attack = 0;
 	mPokeSkill[1].AccuracyRate = 95;
 
 	mLv = 1;
-	mIdNum = "No. 010";
+	mIdNum = "No. 155";
 	mMaxHp = 40;
 	mHp = mMaxHp;
 

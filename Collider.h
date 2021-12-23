@@ -7,22 +7,18 @@ class Collider : public GameEntity
 private:
 	IngameMap* mCity;
 	IngameMap* mEtc;
-	TILE_INFO* mColTile;
 
+	
 	RECT mPlayer;
 
 	eDir mColDir;
 
-	int mUpIndexX;
-	int mUpIndexY;
 
 public:
-	HRESULT Init(eDir dir, POINT currPos, eSceneTag scene);
-	void Update();
-	void Render(HDC hdc);
-	void Release();
 
-	void SetLimit();
+
+	int SetLimit(eDir dir);
+	bool CheckJump(eDir dir);
 
 };
 

@@ -17,15 +17,15 @@ HRESULT Caterpie::Init()
 	
 	mPokeType = ePokemonType::Bug;
 
-	mPokeSkill.reserve(4);
+	mPokeSkill.push_back(mSkill);
+	mCaterSkill[0].SkillName = "몸통박치기";
+	mCaterSkill[0].Attack = 35;
+	mCaterSkill[0].AccuracyRate = 95;
 
-	mPokeSkill[0].SkillName = "몸통박치기";
-	mPokeSkill[0].Attack = 35;
-	mPokeSkill[0].AccuracyRate = 95;
-
-	mPokeSkill[1].SkillName = "실뿜기"; // 입에서 뿜어낸 실을 휘감아서 상대의 스피드를 떨어뜨린다.
-	mPokeSkill[1].Attack = 0;
-	mPokeSkill[1].AccuracyRate = 95;
+	mPokeSkill.push_back(mSkill);
+	mCaterSkill[1].SkillName = "실뿜기"; // 입에서 뿜어낸 실을 휘감아서 상대의 스피드를 떨어뜨린다.
+	mCaterSkill[1].Attack = 0;
+	mCaterSkill[1].AccuracyRate = 95;
 
 	mLv = 1;
 	mIdNum = "No. 010";

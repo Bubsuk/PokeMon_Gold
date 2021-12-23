@@ -6,6 +6,8 @@ class CameraManager : public Singleton<CameraManager>
 {
 public:
 	POINT mObjectPos;
+	POINT mWarfPos;
+
 private:
 	POINT mMaxPos = {};
 	// 보간에서 이동거리
@@ -24,6 +26,9 @@ public:
 
 	// 워프
 	void SetPos(int x, int y);
+	// 문 사용 워프
+	void SetWarfPos(POINT warfPos);
+	POINT GetWarfPos();
 
 };
 

@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "PokemonFactory.h"
 #include "Caterpie.h"
+#include "PikaChu.h"
+#include "Chicorita.h"
+#include "Bcane.h"
+#include "Riaco.h"
+#include "GgoRat.h"
 
 
 
@@ -11,41 +16,20 @@ Pokemon* PokemonFactory::FactoryFunc(ePokemon pokemon)
 	case ePokemon::Caterpie:
 		return new Caterpie();
 		break;
-	case ePokemon::Dandegi:
-		break;
-	case ePokemon::Butter:
-		break;
-	case ePokemon::Bbul:
-		break;
-	case ePokemon::Ddak:
-		break;
-	case ePokemon::DokChung:
-		break;
-	case ePokemon::Gugu:
-		break;
-	case ePokemon::Rat:
-		break;
-	case ePokemon::Ggaebi:
-		break;
-	case ePokemon::Ggaebidrill:
-		break;
 	case ePokemon::Pika:
-		break;
-	case ePokemon::Richu:
+		return new PikaChu;
 		break;
 	case ePokemon::Chicorita:
-		break;
-	case ePokemon::Bayleaf:
-		break;
-	case ePokemon::Meganium:
+		return new Chicorita;
 		break;
 	case ePokemon::Bcane:
+		return new Bcane;
 		break;
 	case ePokemon::Riaco:
+		return new Riaco;
 		break;
-	case ePokemon::Alligay:
-		break;
-	case ePokemon::Jangcro:
+	case ePokemon::Ggorat:
+		return new GgoRat;
 		break;
 	default:
 		break;

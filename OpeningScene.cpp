@@ -8,10 +8,11 @@ HRESULT OpeningScene::Init()
 	elapsedCnt = 0;
 	cnt = 0;
 
-	for (int i = 0; i < 102; ++i)
+	for (int i = 0; i < 112; ++i)
 	{
 		mOpImg[i] = IMG_MGR->FindImage(i + 1);
 	}
+	
 
 	return S_OK;
 }
@@ -33,7 +34,7 @@ void OpeningScene::Render(HDC hdc)
 			elapsedCnt = 0.0f;
 		}
 	}
-	else 
+	else if(1 <= cnt && cnt <= 101)
 	{
 		if (elapsedCnt > 0.065)
 		{
@@ -42,12 +43,24 @@ void OpeningScene::Render(HDC hdc)
 		}
 	}
 
-
-	if (cnt == 102)
+	if (102 <= cnt && cnt <= 111)
 	{
-		// 체인지씬으로 바꾸기
-		mOpPlay = false;
+		if (elapsedCnt > 0.085)
+		{
+			++cnt;
+			elapsedCnt = 0.0f;
+		}
 	}
+	if (cnt == 111)
+	{
+		cnt = 102;
+	}
+
+	if (Input::GetButtonDown('Z'))
+	{
+
+	}
+	
 }
 
 void OpeningScene::Release()

@@ -76,7 +76,7 @@ void ImageManager::Init()
 	AddImage(eImageTag::DrawTile, "Image/pokemon_tile.bmp", 960, 960, 15, 15, true, RGB(255, 0, 255));
 
 	// UI - OPENNING
-	for (int i = 0; i < 102; ++i)
+	for (int i = 0; i < 112; ++i)
 	{
 		static int num = 0;
 		char address[100];
@@ -88,19 +88,21 @@ void ImageManager::Init()
 		AddImage(num, address, 640, 576);
 	}
 
+
 	// UI - MENU
 	AddImage(eImageTag::DetectPoke, "Image/pokemon_mark.bmp", 32, 32);
 	AddImage(eImageTag::Dogam, "Image/menuUI/dogam_0.bmp", 650, 576);
 	AddImage(eImageTag::Gear, "Image/menuUI/gear_0.bmp", 650, 576);
 	AddImage(eImageTag::GearMinimap, "Image/menuUI/gear_1.bmp", 650, 576);
 	AddImage(eImageTag::Gear1, "Image/menuUI/gear_2.bmp", 650, 576);
-	AddImage(eImageTag::MenuDogam, "Image/menuUI/menu_1.bmp", 650, 576);
-	AddImage(eImageTag::MenuPoke, "Image/menuUI/menu_2.bmp", 650, 576);
-	AddImage(eImageTag::MenuBag, "Image/menuUI/menu_3.bmp", 650, 576);
-	AddImage(eImageTag::MenuGear, "Image/menuUI/menu_4.bmp", 650, 576);
-	AddImage(eImageTag::MenuPlayer, "Image/menuUI/menu_5.bmp", 650, 576);
-	AddImage(eImageTag::MenuSet, "Image/menuUI/menu_6.bmp", 650, 576);
-	AddImage(eImageTag::MenuClose, "Image/menuUI/menu_7.bmp", 650, 576);
+
+	AddImage(eImageTag::MenuDogam, "Image/menuUI/menu_1.bmp", 257, 576);
+	AddImage(eImageTag::MenuPoke, "Image/menuUI/menu_2.bmp", 257, 576);
+	AddImage(eImageTag::MenuBag, "Image/menuUI/menu_3.bmp", 257, 576);
+	AddImage(eImageTag::MenuGear, "Image/menuUI/menu_4.bmp", 257, 576);
+	AddImage(eImageTag::MenuPlayer, "Image/menuUI/menu_5.bmp", 257, 576);
+	AddImage(eImageTag::MenuSet, "Image/menuUI/menu_6.bmp", 257, 576);
+	AddImage(eImageTag::MenuClose, "Image/menuUI/menu_7.bmp", 257, 576);
 	
 	
 	AddImage(eImageTag::PokeSelect1, "Image/menuUI/pokeShift_0.bmp", 650, 576);
@@ -151,7 +153,7 @@ void ImageManager::Init()
 	// Particle
 	AddImage(eImageTag::WalkGrass1, "Image/poketmon_grass1.bmp", 48, 36);
 	AddImage(eImageTag::WalkGrass2, "Image/poketmon_grass2.bmp", 45, 21);
-	AddImage(eImageTag::Shadow, "Image/character_shadow.bmp", 56, 64);
+	AddImage(eImageTag::Shadow, "Image/character_shadow.bmp", 56, 64, 1, 1, true, RGB(255, 0, 255));
 
 
 	// End Scene

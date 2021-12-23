@@ -1,9 +1,10 @@
 #pragma once
 #include "GameEntity.h"
+#include "MapManager.h"
 
 class Jiwoo;
 class Image;
-class MapEditor : public GameEntity
+class MapEditor : public GameEntity, MapManager
 {
 public:
 	struct SampleMouse
@@ -14,6 +15,8 @@ public:
 
 
 protected:
+
+
 	Jiwoo* mTestJiwoo;
 
 	Image* mSampleTileImage;
@@ -23,6 +26,7 @@ protected:
 	RECT mSampleArea;
 	RECT mDrawArea;
 
+	TILE_INFO mTileInfo[TILE_COUNT_X * TILE_COUNT_Y];
 	SAMPLE_TILE_INFO mSampleTileInfo[SAMPLE_TILE_COUNT_X * SAMPLE_TILE_COUNT_Y];
 	SAMPLE_TILE_INFO mSelectedTile;
 	

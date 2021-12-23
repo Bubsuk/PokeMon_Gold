@@ -2,51 +2,88 @@
 #include "Enum.h"
 #include "Collider.h"
 #include "Config.h"
-#include "IngameMap.h"
-#include "CityScene.h"
+#include "MapManager.h"
 
 
-HRESULT Collider::Init(eDir dir, POINT currPos, eSceneTag scene)
+int Collider::SetLimit(eDir dir)
 {
-	mUpIndexX = (288 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
-	mUpIndexY = (224 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
+	mPlayer.left = 256 - CAM_MGR->GetCamPos().x;
+	mPlayer.right = 320 - CAM_MGR->GetCamPos().x;
+	mPlayer.top = 256 - CAM_MGR->GetCamPos().y;
+	mPlayer.bottom = 320 - CAM_MGR->GetCamPos().y;
 
-	mCity = new IngameMap;
-	mCity->Init();
-	mCity->LoadMap("cityMap");
-
-	mColDir = dir;
-
-	switch (scene)
+	switch (dir)
 	{
-	case eSceneTag::CityScene:
-		mColTile = mCity->GetTileInfo();
+	case eDir::Up:
+	{
+		int indexUpX = (288 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
+		int indexUpY = (224 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
+
+		if (mPlayer.top <= MAP_MGR->GetTileInfo()[indexUpY * TILE_COUNT_X + indexUpX].Rc.bottom &&
+			(MAP_MGR->GetTileInfo()[indexUpY * TILE_COUNT_X + indexUpX].Terrain == eTerrain::Close
+			|| MAP_MGR->GetTileInfo()[indexUpY * TILE_COUNT_X + indexUpX].Terrain == eTerrain::BottomBlock))
+		{
+			return CAM_MGR->mObjectPos.y = 256 - MAP_MGR->GetTileInfo()[indexUpY * TILE_COUNT_X + indexUpX].Rc.bottom;
+		}
+		else return CAM_MGR->mObjectPos.y + TILE_SIZE - (TILE_SIZE + (CAM_MGR->mObjectPos.y % TILE_SIZE));
 		break;
 	}
-
-	return S_OK;
-}
-
-void Collider::Update()
-{
-	if (mColDir == eDir::Up && mColTile[mUpIndexY * TILE_COUNT_X + mUpIndexX].Terrain == eTerrain::Close)
+	case eDir::Down:
 	{
-		CAM_MGR->mObjectPos.y = mColTile[mUpIndexY * TILE_COUNT_X + mUpIndexX].Rc.bottom;
+		int indexDoX = (288 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
+		int indexDoY = (352 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
+		
+		if (mPlayer.bottom >= MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Rc.top	&&
+			MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Terrain == eTerrain::Close)
+		{
+			return CAM_MGR->mObjectPos.y = 310 - MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Rc.top;
+		}
+		else return CAM_MGR->mObjectPos.y - TILE_SIZE - (CAM_MGR->mObjectPos.y % TILE_SIZE);
+		break;
 	}
-}
+	case eDir::Left:
+	{
+		int indexLeX = (224 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
+		int indexLeY = (288 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
 
-void Collider::Render(HDC hdc)
-{
-}
+		if (mPlayer.left <= MAP_MGR->GetTileInfo()[indexLeY * TILE_COUNT_X + indexLeX].Rc.right &&
+			(MAP_MGR->GetTileInfo()[indexLeY * TILE_COUNT_X + indexLeX].Terrain == eTerrain::Close
+				|| MAP_MGR->GetTileInfo()[indexLeY * TILE_COUNT_X + indexLeX].Terrain == eTerrain::RightBlock))
+		{
+			return CAM_MGR->mObjectPos.x = 256 - MAP_MGR->GetTileInfo()[indexLeY * TILE_COUNT_X + indexLeX].Rc.right;
+		}
+		else return CAM_MGR->mObjectPos.x + TILE_SIZE - (TILE_SIZE + (CAM_MGR->mObjectPos.x % TILE_SIZE));
+		break;
+	}
+	case eDir::Right:
+	{
+		int indexRiX = (352 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
+		int indexRiY = (288 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
 
-void Collider::Release()
-{
-}
-
-void Collider::SetLimit()
-{
+		if (mPlayer.right >= MAP_MGR->GetTileInfo()[indexRiY * TILE_COUNT_X + indexRiX].Rc.left &&
+			(MAP_MGR->GetTileInfo()[indexRiY * TILE_COUNT_X + indexRiX].Terrain == eTerrain::Close
+			|| MAP_MGR->GetTileInfo()[indexRiY * TILE_COUNT_X + indexRiX].Terrain == eTerrain::LeftBlock))
+		{
+			return CAM_MGR->mObjectPos.x = 320 - MAP_MGR->GetTileInfo()[indexRiY * TILE_COUNT_X + indexRiX].Rc.left;
+		}
+		else return CAM_MGR->mObjectPos.x - TILE_SIZE - (CAM_MGR->mObjectPos.x % TILE_SIZE);
+		break;
+	}
+	}
 	
+}
 
-	
+bool Collider::CheckJump(eDir dir)
+{
+	int indexDoX = (288 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
+	int indexDoY = (288 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
 
+	if (MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Terrain == eTerrain::BottomBlock
+			|| MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Terrain == eTerrain::LeftBlock
+			||	MAP_MGR->GetTileInfo()[indexDoY * TILE_COUNT_X + indexDoX].Terrain == eTerrain::RightBlock)
+	{
+		return true;
+	}
+
+	return false;
 }

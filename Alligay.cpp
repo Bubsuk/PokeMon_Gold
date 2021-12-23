@@ -18,20 +18,24 @@ HRESULT Alligay::Init()
 
 	mPokeType = ePokemonType::Etc;
 
-	mPokeSkill.reserve(4);
 
+	mPokeSkill.
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[0].SkillName = "할퀴기";
 	mPokeSkill[0].Attack = 40;
 	mPokeSkill[0].AccuracyRate = 100;
 
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[1].SkillName = "째려보기"; 
 	mPokeSkill[1].Attack = 0;
 	mPokeSkill[1].AccuracyRate = 100;
 
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[2].SkillName = "분노";
 	mPokeSkill[2].Attack = 20;
 	mPokeSkill[2].AccuracyRate = 100;
 
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[3].SkillName = "물대포";
 	mPokeSkill[3].Attack = 40;
 	mPokeSkill[3].AccuracyRate = 100;

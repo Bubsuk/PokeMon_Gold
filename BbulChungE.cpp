@@ -17,12 +17,13 @@ HRESULT BbulChungE::Init()
 
 	mPokeType = ePokemonType::Bug;
 
-	mPokeSkill.reserve(4);
-
+	
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[0].SkillName = "µ¶Ä§";
 	mPokeSkill[0].Attack = 40;
 	mPokeSkill[0].AccuracyRate = 100;
 
+	mPokeSkill.push_back(mSkill);
 	mPokeSkill[1].SkillName = "½Ç»Õ±â";
 	mPokeSkill[1].Attack = 0;
 	mPokeSkill[1].AccuracyRate = 100;

@@ -40,6 +40,8 @@ using namespace std;
 #define SCENE_MGR SceneManager::GetSingleton()
 #define IMG_MGR ImageManager::GetSingleton()
 #define CAM_MGR CameraManager::GetSingleton()
+#define MAP_MGR MapManager::GetSingleton()
+#define CON_MGR Jiwoo::GetSingleton()
 
 #define DELTA_TIME Timer::GetDeltaTime();
 

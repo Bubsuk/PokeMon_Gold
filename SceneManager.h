@@ -4,12 +4,15 @@
 enum class eSceneTag
 {
 	None,
-	CharacterScene,
+	Home1stScene,
+	Home2ndScene,
+	DrOScene,
+	MartScene,
+	CenterScene,
+	GymScene,
 	TestScene,
-	PhysicsScene,
 	MapToolScene,
 	BattleScene,
-	TitleScene,
 	OpeningScene,
 	CityScene
 };

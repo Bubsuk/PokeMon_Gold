@@ -1,26 +1,37 @@
 #pragma once
 #include "GameObject.h"
+#include "Collider.h"
+#include "Singleton.h"
 
-class Collider;
-class Jiwoo : public GameObject
+class MenuManager;
+class Jiwoo : public Singleton<Jiwoo>, GameObject, Collider
 {
-private:
+public:
 	Image* mImageRunRL = nullptr;
 	Image* mImageRunUD = nullptr;
+	Image* mShadow;
 
 	Collider* mCollider;
 
 	eDir mState;
 
+	MenuManager* mMenu;
+
+	
 	int mframeX = 0;
 	int mframeY = 0;
+
+	float mJumpWeight;
+	int mJumpHeight;
 
 	bool mAnimPlay;
 	bool mbControl = {};
 	bool mbNeedRevise = {};
+	bool mbJump = {};
 
 	const float mFlipAnimTime = 0.15f;
 	float mElapsedCount = 0.0f;
+	float mJumpCnt = 0.0f;
 	float mMoveSpeed = {};
 	float mOneTileTime = {};
 
@@ -28,11 +39,15 @@ private:
 
 
 public:
-	virtual ~Jiwoo() {}
+	bool mbMenuSwitch;
+	bool mbControlSwitch;
+
+
 	virtual HRESULT Init();
 	virtual void Update();
 	virtual void Render(HDC hdc);
 	virtual void Release();
 
+	virtual ~Jiwoo() {}
 };
 

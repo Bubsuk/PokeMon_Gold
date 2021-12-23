@@ -24,6 +24,7 @@ POINT		g_maxSize;
 
 
 
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage,
 	WPARAM wParam, LPARAM lParam);
 

@@ -63,9 +63,11 @@ HRESULT MapEditor::Init()
 				|| (i * SAMPLE_TILE_COUNT_X + j) == 24 || (i * SAMPLE_TILE_COUNT_X + j) == 25 || (50 <= (i * SAMPLE_TILE_COUNT_X + j)
 				&& (i * SAMPLE_TILE_COUNT_X + j) <= 52) || (i * SAMPLE_TILE_COUNT_X + j) == 58 || (i * SAMPLE_TILE_COUNT_X + j) == 77
 				|| (i * SAMPLE_TILE_COUNT_X + j) == 78 || (i * SAMPLE_TILE_COUNT_X + j) == 80 || (i * SAMPLE_TILE_COUNT_X + j) == 158
-				|| (i * SAMPLE_TILE_COUNT_X + j) == 159 || (176 <= (i * SAMPLE_TILE_COUNT_X + j) && (i * SAMPLE_TILE_COUNT_X + j) <= 178)
+				|| (i * SAMPLE_TILE_COUNT_X + j) == 159 || (i * SAMPLE_TILE_COUNT_X + j) == 160 
+				|| (176 <= (i * SAMPLE_TILE_COUNT_X + j) && (i * SAMPLE_TILE_COUNT_X + j) <= 178)
 				|| (191 <= (i * SAMPLE_TILE_COUNT_X + j) && (i * SAMPLE_TILE_COUNT_X + j) <= 193) || (206 <= (i * SAMPLE_TILE_COUNT_X + j)
-				&& (i * SAMPLE_TILE_COUNT_X + j) <= 208) || (i * SAMPLE_TILE_COUNT_X + j) == 211)
+				&& (i * SAMPLE_TILE_COUNT_X + j) <= 208) || (i * SAMPLE_TILE_COUNT_X + j) == 211 || (i * SAMPLE_TILE_COUNT_X + j) == 202 
+				|| (i * SAMPLE_TILE_COUNT_X + j) == 203)
 			{
 				mSampleTileInfo[i * SAMPLE_TILE_COUNT_X + j].Terrain = eTerrain::Open;
 			}
@@ -222,7 +224,7 @@ void MapEditor::Render(HDC hdc)
 					mTileInfo[i * TILE_COUNT_X + j].TilePos.x,
 					mTileInfo[i * TILE_COUNT_X + j].TilePos.y);
 
-				//cout << (int)mTileInfo[0].Terrain << endl;
+			
 
 				Rectangle(hdc, (SAMPLE_TILE_COUNT_X - 1) * TILE_SIZE, 0, SAMPLE_TILE_COUNT_X * TILE_SIZE, SAMPLE_TILE_COUNT_Y * TILE_SIZE);
 				Rectangle(hdc, 0, (SAMPLE_TILE_COUNT_Y - 1) * TILE_SIZE, SAMPLE_TILE_COUNT_X * TILE_SIZE, SAMPLE_TILE_COUNT_Y * TILE_SIZE);

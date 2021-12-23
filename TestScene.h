@@ -10,12 +10,11 @@ class TestScene : public GameEntity
 private:
 	Jiwoo* mJiwoo;
 	Pokemon* randomPokemon;
-
+	POINT mJiwooPos;
 
 	Image* mBackGround = nullptr;
 	Image* aaa = nullptr;
-	IngameMap* mCityMap;
-	TILE_INFO* mTileIn;
+
 
 
 public:

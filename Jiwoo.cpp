@@ -3,31 +3,36 @@
 #include "Jiwoo.h"
 #include "Image.h" 
 #include "Collider.h"
+#include "MenuManager.h"
 
 HRESULT Jiwoo::Init()
 {
     mImageRunRL = IMG_MGR->FindImage(eImageTag::Jiwoo_moveRL);
     mImageRunUD = IMG_MGR->FindImage(eImageTag::Jiwoo_moveUD);
+    mShadow = IMG_MGR->FindImage(eImageTag::Shadow);
 
     if (mImageRunRL == nullptr || mImageRunUD == nullptr)
     {
         return E_FAIL;
     }
 
+    mMenu = new MenuManager;
+    mMenu->Init();
+
     mAnimPlay = false;
-
-    mPos.x = WIN_SIZE_X / 2 - 32;
-    mPos.y = WIN_SIZE_Y / 2;
-    //if ()
-    //{
-    //    mTileIn = 
-
-    //}
 
     mState = eDir::Idle;
 
+    mPos.x = WIN_SIZE_X / 2 - 32;
+    mPos.y = WIN_SIZE_Y / 2;
+
+    mJumpWeight = 350.0f;
+    mJumpHeight = WIN_SIZE_Y / 2 - 32;
+
+    mbControlSwitch = true;
+    mbMenuSwitch = false;
     mbControl = true;
-    mMoveSpeed = 600;
+    mMoveSpeed = 300;
     CAM_MGR->mObjectPos = { 0,0 };
     mOneTileTime = 0.3f;
 
@@ -36,16 +41,17 @@ HRESULT Jiwoo::Init()
 }
 
 void Jiwoo::Update()
-{
-  
-    
-    if (mbControl == true)
+{ 
+    mElapsedCount += DELTA_TIME;
+    mJumpCnt += 10.0f * DELTA_TIME;
+   
+    if (mbControl == true && mbJump == false && mbMenuSwitch == false)
     {
         if (Input::GetButton(VK_DOWN))
         {
-            mDir = eDir::Down;
+            mState = eDir::Down;
             CAM_MGR->mObjectPos.y -= mMoveSpeed * DELTA_TIME;
-            mAnimPlay = true;
+            mAnimPlay = true; 
             mbNeedRevise = false;
 
             if (CAM_MGR->mObjectPos.y <= -TILE_SIZE * TILE_COUNT_Y + TILE_SIZE *9)
@@ -55,23 +61,33 @@ void Jiwoo::Update()
             }
             else
             {
-                mDestPos.y = CAM_MGR->mObjectPos.y - TILE_SIZE - (CAM_MGR->mObjectPos.y % TILE_SIZE);
+                if (CheckJump(mState) == true)
+                {
+                    mbJump = true;
+                    mDestPos.y = SetLimit(mState) + TILE_SIZE;
+                }
+                else
+                {
+                    mDestPos.y = SetLimit(mState);
+                }
             }
            
         }
         if (Input::GetButtonUp(VK_DOWN))
         {
-            mbControl = false;
-            mbNeedRevise = true;
+            mbControl = true;
+            if (CAM_MGR->mObjectPos.y % TILE_SIZE == 0)
+            {
+                mbNeedRevise = false;
+            }
+            else mbNeedRevise = true;
         }
         if (Input::GetButton(VK_UP))
         {
-            mDir = eDir::Up;
+            mState = eDir::Up;
             CAM_MGR->mObjectPos.y += mMoveSpeed * DELTA_TIME;
             mAnimPlay = true;
             mbNeedRevise = false;
-
-            
 
             if (CAM_MGR->mObjectPos.y >= 0)
             {
@@ -80,17 +96,21 @@ void Jiwoo::Update()
             }
             else
             {
-                mDestPos.y = CAM_MGR->mObjectPos.y + TILE_SIZE - (TILE_SIZE + (CAM_MGR->mObjectPos.y % TILE_SIZE));
+                mDestPos.y = SetLimit(mState);
             }
         }
         if (Input::GetButtonUp(VK_UP))
         {
-            mbNeedRevise = true;
-            mbControl = false;
+            mbControl = true;
+            if (CAM_MGR->mObjectPos.y % TILE_SIZE == 0)
+            {
+                mbNeedRevise = false;
+            }
+            else mbNeedRevise = true;
         }
         if (Input::GetButton(VK_LEFT))
         {
-            mDir = eDir::Left;
+            mState = eDir::Left;
             CAM_MGR->mObjectPos.x += mMoveSpeed * DELTA_TIME;
 
             mAnimPlay = true;
@@ -103,17 +123,22 @@ void Jiwoo::Update()
             }
             else
             {
-                mDestPos.x = CAM_MGR->mObjectPos.x + TILE_SIZE - (TILE_SIZE + (CAM_MGR->mObjectPos.x % TILE_SIZE));
+                mDestPos.x = SetLimit(mState);
+                
             }
         }
         if (Input::GetButtonUp(VK_LEFT))
         {
-            mbNeedRevise = true;
-            mbControl = false;
+            mbControl = true;
+            if (CAM_MGR->mObjectPos.x % TILE_SIZE == 0)
+            {
+                mbNeedRevise = false;
+            }
+            else mbNeedRevise = true;
         }
         if (Input::GetButton(VK_RIGHT))
         {
-            mDir = eDir::Right;
+            mState = eDir::Right;
             CAM_MGR->mObjectPos.x -= mMoveSpeed * DELTA_TIME;
 
             mAnimPlay = true;
@@ -126,37 +151,59 @@ void Jiwoo::Update()
             }
             else
             {
-                mDestPos.x = CAM_MGR->mObjectPos.x - TILE_SIZE - (CAM_MGR->mObjectPos.x % TILE_SIZE);
+                mDestPos.x = SetLimit(mState);
             }
         }
         if (Input::GetButtonUp(VK_RIGHT))
         {
-            mbNeedRevise = true;
-            mbControl = false;
+            mbControl = true;
+            if (CAM_MGR->mObjectPos.x % TILE_SIZE == 0)
+            {
+                mbNeedRevise = false;
+            }
+            else mbNeedRevise = true;
         }
+    }
+
+    // 점프
+    if (mbJump == true)
+    {
+        mPos.y = (1000 * mJumpCnt * mJumpCnt);
+        mDestPos.y = mDestPos.y + TILE_SIZE;
+        if (mPos.y >= WIN_SIZE_Y / 2)
+        {
+            mPos.y = WIN_SIZE_Y / 2;
+            mJumpCnt = 0;
+            mbJump = false;
+        }
+        
     }
     // 보간
     if (mbNeedRevise == true)
     {
-        CAM_MGR->MovePos(mDestPos, mOneTileTime, mDir);
+        if (mbJump == true)
+        {
+            CAM_MGR->MovePos(mDestPos, mOneTileTime * 2, mState);
+        }
+        CAM_MGR->MovePos(mDestPos, mOneTileTime, mState);
         CAM_MGR->mObjectPos = CAM_MGR->GetCamPos();
 
-        if (mDir == eDir::Right && CAM_MGR->mObjectPos.x <= mDestPos.x)
+        if (mState == eDir::Right && CAM_MGR->mObjectPos.x <= mDestPos.x)
         {
             mbNeedRevise = false;
             mbControl = true;
         }
-        if (mDir == eDir::Left && CAM_MGR->mObjectPos.x >= mDestPos.x)
+        if (mState == eDir::Left && CAM_MGR->mObjectPos.x >= mDestPos.x)
         {
             mbNeedRevise = false;
             mbControl = true;
         }
-        else if (mDir == eDir::Up && CAM_MGR->mObjectPos.y >= mDestPos.y)
+        else if (mState == eDir::Up && CAM_MGR->mObjectPos.y >= mDestPos.y)
         {
             mbNeedRevise = false;
             mbControl = true;
         }
-        else if (mDir == eDir::Down && CAM_MGR->mObjectPos.y <= mDestPos.y)
+        else if (mState == eDir::Down && CAM_MGR->mObjectPos.y <= mDestPos.y)
         {
             mbNeedRevise = false;
             mbControl = true;
@@ -164,12 +211,9 @@ void Jiwoo::Update()
     }
     
     // Animation
-
-    mElapsedCount += DELTA_TIME;
-
     if (mAnimPlay == true)
     {
-        switch (mDir)
+        switch (mState)
         {
         case eDir::Down:
             if (mElapsedCount >= mFlipAnimTime)
@@ -218,22 +262,39 @@ void Jiwoo::Update()
         default:
             break;
         }
+
+   
     }
 
     if (Input::GetButtonUp(VK_DOWN) || Input::GetButtonUp(VK_UP)
         || Input::GetButtonUp(VK_LEFT) || Input::GetButtonUp(VK_RIGHT))
     {
         mAnimPlay = false;
-        mDir == eDir::Idle;
+        mState == eDir::Idle;
         mframeX = 0;
     }
+
+
+    // 메뉴 진입
+    if (Input::GetButton(VK_RETURN))
+    {
+        mMenu->mMenuCnt = 0;
+        mbMenuSwitch = true;
+        mbControlSwitch = false;
+    }
+    if (Input::GetButton('X'))
+    {
+        mbMenuSwitch = false;
+        mbControlSwitch = true;
+    }
+
+    mMenu->Update();
 
 }
 
 void Jiwoo::Render(HDC hdc)
 {
-    
-    switch (mDir)
+    switch (mState)
     {
     case eDir::Idle:
         mImageRunUD->Render(hdc, mPos.x, mPos.y, mframeX, mframeY);
@@ -251,7 +312,12 @@ void Jiwoo::Render(HDC hdc)
         mImageRunRL->Render(hdc, mPos.x, mPos.y, mframeX, mframeY + 1);
         break;
     }
-    
+    mShadow->Render(hdc, mPos.x, mPos.y + 5);
+
+    if (mbMenuSwitch == true)
+    {
+        mMenu->Render(hdc);
+    }
 }
 
 

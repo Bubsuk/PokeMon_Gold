@@ -10,7 +10,7 @@ HRESULT MapScene::Init()
 
     if (mMapEditor == nullptr)
     {
-        cout << "aa" << '\n';
+        cout << "문제가 있음" << '\n';
         return E_FAIL;
     }
 

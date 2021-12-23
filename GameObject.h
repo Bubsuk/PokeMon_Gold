@@ -9,7 +9,7 @@ protected:
 	Image* mImage = nullptr;
 	//Collider* mCollider = nullptr;
 
-	POINTFLOAT mPos = {};
+	POINT mPos = {};
 	eDir mDir = eDir::Idle;
 	//const POINTFLOAT DIR_VALUE[4] = { {0, -1}, {-1, 0}, {0, 1}, {1, 0} };
 
@@ -23,8 +23,8 @@ public:
 	virtual void Render();
 
 	//inline Collider* GetCollider() { return mCollider; }
-	POINTFLOAT GetPosition() { return mPos; }
-	void SetPosition(POINTFLOAT pos) { mPos = pos; }
+	POINT GetPosition() { return mPos; }
+	void SetPosition(POINT pos) { mPos = pos; }
 	eDir GetDirection() { return mDir; }
 	void SetDirection(eDir dir) { mDir = dir; }
 	

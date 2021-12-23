@@ -32,9 +32,12 @@ protected:
 	string mName;
 	Gender mGender;
 	ePokemonType mPokeType;
-	vector<PokemonSkill> mPokeSkill;
 
-	vector<Item> mItem;
+	vector<PokemonSkill> mPokeSkill;
+	PokemonSkill mSkill;
+
+
+	
 
 	int mLv = {};
 	string mIdNum = "No. 0";

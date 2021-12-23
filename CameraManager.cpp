@@ -76,14 +76,6 @@ void CameraManager::MovePos(POINT& destPos, float durTime, eDir dir)
 		
 		break;
 	}
-
-	//while (mElapsedTime <= durTime)
-	//{
-	//	mElapsedTime += DELTA_TIME;
-	//	mObjectPos.x = mStartPos.x + (mDestPos.x - mStartPos.x) * mElapsedTime / durTime;
-	//	mObjectPos.y = mStartPos.y + (mDestPos.y - mStartPos.y) * mElapsedTime / durTime;
-	//	cout << mElapsedTime << endl;
-	//}
 	
 }
 
@@ -91,4 +83,15 @@ void CameraManager::SetPos(int x, int y)
 {
 	mObjectPos.x = x;
 	mObjectPos.y = y;
+}
+
+void CameraManager::SetWarfPos(POINT warfPos)
+{
+	mWarfPos.x = warfPos.x;
+	mWarfPos.y = warfPos.y;
+}
+
+POINT CameraManager::GetWarfPos()
+{
+	return mWarfPos;
 }

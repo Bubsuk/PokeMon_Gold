@@ -1,13 +1,18 @@
 #pragma once
+#include "GameEntity.h"
 
+class Jiwoo;
 class Image;
-class DogamUiManager
+class MenuManager : public GameEntity
 {
-	Image* mDogam;
+public:
+	Jiwoo* mJiwoo;
 
 	Image* mGear1;
 	Image* mGear2;
 	Image* mGear3;
+
+	int mMenuCnt;
 
 	Image* mMenuDogam;
 	Image* mMenuPoke;
@@ -32,5 +37,13 @@ class DogamUiManager
 
 	Image* mPlayerStat1;
 	Image* mPlayerStat2;
+
+	bool mbMenu;
+
+public:
+	HRESULT Init();
+	void Update();
+	void Render(HDC hdc);
+	void Release();
 };
 

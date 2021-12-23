@@ -6,6 +6,7 @@ class OpeningScene : public GameEntity
 {
 private:
 	Image* mOpImg[102];
+	Image* mMainOpImg[10];
 	float elapsedCnt = {};
 	int cnt = {};
 	bool mOpPlay;

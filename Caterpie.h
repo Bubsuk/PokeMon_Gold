@@ -3,6 +3,9 @@
 
 class Caterpie : public Pokemon
 {
+private:
+	vector<PokemonSkill> mCaterSkill;
+
 public:
 	HRESULT Init() override;
 	void Update() override;

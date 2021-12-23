@@ -3,8 +3,8 @@
 #include "SceneManager.h"
 #include "GameEntity.h"
 
-GameEntity* SceneManager::currScene = nullptr;
-GameEntity* SceneManager::readyScene = nullptr;
+GameEntity* SceneManager::currScene = nullptr; // 이전 씬
+GameEntity* SceneManager::readyScene = nullptr; // 지금 쓰는 씬
 GameEntity* SceneManager::loadingScene = nullptr;
 
 DWORD CALLBACK LoadingThread(LPVOID pvParam)
@@ -84,6 +84,7 @@ int SceneManager::GetSceneData(string key)
 	return mapSceneData[key];
 }
 
+// 사용하는 함수
 HRESULT SceneManager::ChangeScene(eSceneTag tag)
 {
 	map<eSceneTag, GameEntity*>::iterator it = mapScenes.find(tag);

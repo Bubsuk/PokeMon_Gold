@@ -1,17 +1,19 @@
 #pragma once
 #include "GameEntity.h"
 
-class IngameMap;
+class Jiwoo;
 class CityScene : public GameEntity
 {
 public:
-	
-	IngameMap* mCityMap;
-	
-	
+	Jiwoo* mJiwoo;
 
+	POINT mToCenter;
+	POINT mToMart;
+	POINT mToGym;
+	POINT mToDrO;
+	
 public:
-	static POINT mCityPos;
+
 
 	HRESULT Init();
 	void Update();
