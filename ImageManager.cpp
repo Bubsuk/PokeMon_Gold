@@ -87,9 +87,12 @@ void ImageManager::Init()
 		strcpy_s(address, str.c_str());
 		AddImage(num, address, 640, 576);
 	}
+	AddImage(eImageTag::BlackBack, "Image/Black.bmp", 650, 576);
+	AddImage(eImageTag::DoctorOBig, "Image/OBaksa.bmp", 152, 218);
 
 
 	// UI - MENU
+	AddImage(eImageTag::WhiteCursor, "Image/WhiteCursor.bmp", 32, 32);
 	AddImage(eImageTag::DetectPoke, "Image/pokemon_mark.bmp", 32, 32);
 	AddImage(eImageTag::Dogam, "Image/menuUI/dogam_0.bmp", 650, 576);
 	AddImage(eImageTag::Gear, "Image/menuUI/gear_0.bmp", 650, 576);
@@ -169,7 +172,7 @@ void ImageManager::Init()
 	AddImage(eImageTag::EndPoke4, "Image/end_image/endingPokemon1.bmp", 192, 68);
 
 	// Dialogue UI
-	AddImage(eImageTag::Dialogue, "Image/dialogueUI.bmp", 192, 68);
+	AddImage(eImageTag::Dialogue, "Image/dialogueUI.bmp", 650, 576, 1, 1, true, RGB(255, 0, 255));
 
 
 }

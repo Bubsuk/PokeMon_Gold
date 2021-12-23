@@ -14,7 +14,7 @@ Pokemon* PokemonFactory::FactoryFunc(ePokemon pokemon)
 	switch(pokemon)
 	{
 	case ePokemon::Caterpie:
-		return new Caterpie();
+		return new Caterpie;
 		break;
 	case ePokemon::Pika:
 		return new PikaChu;

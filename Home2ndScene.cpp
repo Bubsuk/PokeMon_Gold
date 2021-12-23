@@ -7,7 +7,7 @@ HRESULT Home2ndScene::Init()
 {
 	CON_MGR->Init();
 	MAP_MGR->LoadMap("etcMap");
-	CAM_MGR->SetPos(-5376, -64);
+	CAM_MGR->SetPos(-5120, -192);
 	mTo1stFloor = { -5376, 0 };
 	return S_OK;
 }

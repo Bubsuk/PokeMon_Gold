@@ -6,6 +6,6 @@ class Pokemon;
 class PokemonFactory
 {
 public:
-	virtual Pokemon* FactoryFunc(ePokemon pokemon);
+	static Pokemon* FactoryFunc(ePokemon pokemon);
 };
 

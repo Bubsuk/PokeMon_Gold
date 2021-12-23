@@ -11,6 +11,9 @@ public:
 	POINT mSelectPos;
 
 	int mSelectCnt;
+
+	char mSampleText[256];
+	string str;
 	
 public:
 	HRESULT Init();

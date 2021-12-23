@@ -2,13 +2,14 @@
 #include "GameEntity.h"
 #include "Image.h"
 #include "RandomManager.h"
-#include "PokemonManager.h"
+#include "Singleton.h"
 
 
 struct PokemonSkill
 {
 	string SkillName = "default";
 	SkillType Type;
+	Image* SkillImg;
 	
 	// 필수 구현
 	int Attack = {};
@@ -22,26 +23,29 @@ struct PokemonSkill
 
 
 class Image;
-class Pokemon : public PokemonManager
+class Pokemon
 {
 
-protected:
+public:
 	Image* mBackImg;
 	Image* mFrontImg;
 	Image* mTypeImg;
 
 	string mName;
+	char chName[256];
 	Gender mGender;
 	ePokemonType mPokeType;
 
 	vector<PokemonSkill> mPokeSkill;
 	PokemonSkill mSkill;
 
-
+	
 	
 
 	int mLv = {};
 	string mIdNum = "No. 0";
+	char chIdNum[256];
+
 	int mHp = {};
 	int mMaxHp = {};
 	int mExp = {};
@@ -53,8 +57,8 @@ public:
 	virtual void Render(HDC hdc) = 0;
 	virtual void Release() = 0;
 
-	virtual void SetHp(int hp) { this->mHp = hp; }
 
+	
 	virtual ~Pokemon() {};
 
 };

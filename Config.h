@@ -34,6 +34,7 @@ using namespace std;
 #include "Input.h"
 #include "SceneManager.h"
 #include "CameraManager.h"
+#include "TextManager.h"
 //#include "MapManager.h"
 //#include "Jiwoo.h"
 //#include "PokemonManager.h"
@@ -45,6 +46,7 @@ using namespace std;
 #define MAP_MGR MapManager::GetSingleton()
 #define CON_MGR Jiwoo::GetSingleton()
 #define POKE_MGR PokemonManager::GetSingleton()
+#define TXT_MGR TextManager::GetSingleton()
 
 #define DELTA_TIME Timer::GetDeltaTime();
 

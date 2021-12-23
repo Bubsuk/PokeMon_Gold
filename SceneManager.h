@@ -15,7 +15,8 @@ enum class eSceneTag
 	BattleScene,
 	OpeningScene,
 	CityScene,
-	DogamScene
+	DogamScene,
+	DrOOPen
 };
 
 

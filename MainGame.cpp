@@ -5,7 +5,7 @@
 #include "CommonFunction.h"
 
 
- #define TILETOOL
+//#define TILETOOL
 
 HRESULT MainGame::Init()
 {
@@ -13,8 +13,7 @@ HRESULT MainGame::Init()
 	Timer::Init();
 	IMG_MGR->Init();
 	SCENE_MGR->Init();
-
-	
+	TXT_MGR->Init();
 
 	// 타이머 셋팅
 	mousePosX = 0;
@@ -44,7 +43,7 @@ HRESULT MainGame::Init()
 	POINT g_maxSize = {TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y};
 
 #else
-	SCENE_MGR->ChangeScene(eSceneTag::DogamScene);
+	SCENE_MGR->ChangeScene(eSceneTag::OpeningScene);
 	POINT g_maxSize = { WIN_SIZE_X, WIN_SIZE_Y };
 
 #endif
@@ -62,16 +61,19 @@ void MainGame::Update()
 
 void MainGame::Render(HDC hdc)
 {
-	/*font = CreateFont(50, 0, 0, 0, 400, 0, 0, 0, ANSI_CHARSET, 3, 2, 1,
+	SetTextColor(backBuffer->GetMemDC(), RGB(0, 0, 0));
+	/*font = CreateFont(36, 0, 0, 0, 700, 0, 0, 0, ANSI_CHARSET, 3, 2, 1,
 		18, TEXT("PokemonGSC"));*/
-	//oldFont = (HFONT)SelectObject(backBuffer->GetMemDC(), font);
+	font = CreateFont(40, 0, 0, 0, 700, 0, 0, 0, DEFAULT_CHARSET, OUT_STROKE_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY,
+		DEFAULT_PITCH | FF_SWISS, TEXT("PokemonGSC"));
+	oldFont = (HFONT)SelectObject(backBuffer->GetMemDC(), font);
 	
 	HDC hBackBufferDC = backBuffer->GetMemDC();
 	PatBlt(hBackBufferDC, 0, 0, backBuffer->GetWidth(), backBuffer->GetHeight(), WHITENESS);
 
 	SCENE_MGR->Render(hBackBufferDC);
 
-	//DeleteObject(SelectObject(backBuffer->GetMemDC(), oldFont));
+	DeleteObject(SelectObject(backBuffer->GetMemDC(), oldFont));
 	backBuffer->Render(hdc);
 	
 }

@@ -1,7 +1,8 @@
 #pragma once
 #include "Singleton.h"
+#include "Pokemon.h"
 
-class Pokemon;
+
 class PokemonManager : public Singleton<PokemonManager>
 {
 public:

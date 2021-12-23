@@ -5,7 +5,7 @@ enum class eImageTag
 {
 	// 캐릭터
 	Char_shadow, Jiwoo_idle, Jiwoo_moveUD, Jiwoo_moveRL, DoctorO,
-	SubO, Mom_move, Mom_idle, Mart, Nurse, Master, Master_sub,
+	SubO, Mom_move, Mom_idle, Mart, Nurse, Master, Master_sub, DoctorOBig,
 
 	// 포켓몬
 	Caterpie_R, Caterpie_F, Dandegi_R, Dandegi_F, Butter_R, Butter_F,
@@ -29,8 +29,8 @@ enum class eImageTag
 	Dialogue,
 
 	// Menu UI
-	Dogam, Gear, GearMinimap, Gear1, MenuDogam, MenuPoke, MenuBag, MenuGear,
-	MenuPlayer, MenuSet, MenuClose, DetectPoke,
+	BlackBack, Dogam, Gear, GearMinimap, Gear1, MenuDogam, MenuPoke, MenuBag, MenuGear,
+	MenuPlayer, MenuSet, MenuClose, DetectPoke, WhiteCursor,
 
 	PokeSelect1, PokeSelect2, PokeSelect3, PokeSelect4, PokeSelect5, PokeSelect6, PokeSelectCls,
 	PokePower, Setting, SettingCLs,

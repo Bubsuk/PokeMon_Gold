@@ -153,13 +153,7 @@
     <ClCompile Include="Riaco.cpp">
       <Filter>Character\Pokemon</Filter>
     </ClCompile>
-    <ClCompile Include="Pokemon.cpp">
-      <Filter>Character\Pokemon</Filter>
-    </ClCompile>
     <ClCompile Include="PokemonSkill.cpp">
-      <Filter>Character\Pokemon\PokemonManage</Filter>
-    </ClCompile>
-    <ClCompile Include="PokemonFactory.cpp">
       <Filter>Character\Pokemon\PokemonManage</Filter>
     </ClCompile>
     <ClCompile Include="DialogueManager.cpp">
@@ -170,6 +164,18 @@
     </ClCompile>
     <ClCompile Include="PokemonManager.cpp">
       <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonFactory.cpp">
+      <Filter>Character\Pokemon\PokemonManage</Filter>
+    </ClCompile>
+    <ClCompile Include="Pokemon.cpp">
+      <Filter>Character\Pokemon\PokemonManage</Filter>
+    </ClCompile>
+    <ClCompile Include="TextManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="DrOOpeningScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -308,9 +314,6 @@
     <ClInclude Include="PokemonSkill.h">
       <Filter>Character\Pokemon\PokemonManage</Filter>
     </ClInclude>
-    <ClInclude Include="PokemonFactory.h">
-      <Filter>Character\Pokemon\PokemonManage</Filter>
-    </ClInclude>
     <ClInclude Include="Pokemon.h">
       <Filter>Character\Pokemon\PokemonManage</Filter>
     </ClInclude>
@@ -322,6 +325,15 @@
     </ClInclude>
     <ClInclude Include="PokemonManager.h">
       <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonFactory.h">
+      <Filter>Character\Pokemon\PokemonManage</Filter>
+    </ClInclude>
+    <ClInclude Include="TextManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="DrOOpeningScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

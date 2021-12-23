@@ -17,12 +17,13 @@ void PokemonManager::KillPoke(Pokemon* monster)
 
 void PokemonManager::StartPoke()
 {
-	mTestBcane = new Bcane;
-	mTestPika = new PikaChu;
+	mTestBcane = PokemonFactory::FactoryFunc(ePokemon::Bcane);
+	mTestPika = PokemonFactory::FactoryFunc(ePokemon::Pika);
 	mPokeDogam.push_back(mTestBcane);
 	mPokeDogam.push_back(mTestPika);
 
 	cout << "Create Pokemons" << endl;
+	cout << mTestBcane->mName << endl;
 
 }
 

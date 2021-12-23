@@ -152,6 +152,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="DialogueManager.cpp" />
     <ClCompile Include="DogamScene.cpp" />
+    <ClCompile Include="DrOOpeningScene.cpp" />
     <ClCompile Include="MenuManager.cpp" />
     <ClCompile Include="DrOLabScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
@@ -187,6 +188,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="TextManager.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +203,7 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="DialogueManager.h" />
     <ClInclude Include="DogamScene.h" />
+    <ClInclude Include="DrOOpeningScene.h" />
     <ClInclude Include="MenuManager.h" />
     <ClInclude Include="DrOLabScene.h" />
     <ClInclude Include="Enum.h" />
@@ -239,6 +242,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TestScene.h" />
+    <ClInclude Include="TextManager.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
