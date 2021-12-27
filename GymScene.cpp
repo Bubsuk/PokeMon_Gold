@@ -5,9 +5,9 @@
 
 HRESULT GymScene::Init()
 {
-	CON_MGR->Init();
 	MAP_MGR->LoadMap("etcMap");
 	CAM_MGR->SetPos(-1280, -896);
+	
 
 	return S_OK;
 }
@@ -15,9 +15,7 @@ HRESULT GymScene::Init()
 void GymScene::Update()
 {
 	CON_MGR->Update();
-	if (CON_MGR->mState == eDir::Down &&
-		(-1280 <= CAM_MGR->GetCamPos().x && CAM_MGR->GetCamPos().x <= -1216)
-		&& (CAM_MGR->GetCamPos().y <= -896))
+	if (CON_MGR->mState == eDir::Down && Collider::CheckDoor() == true)
 	{
 		POINT outDoor;
 		outDoor.x = -1216;
@@ -36,5 +34,4 @@ void GymScene::Render(HDC hdc)
 
 void GymScene::Release()
 {
-	CON_MGR->Release();
 }

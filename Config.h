@@ -1,11 +1,4 @@
 #pragma once
-#include <Windows.h>
-#include <stdlib.h>
-#include <math.h>
-#include <vector>
-#include <map>
-#include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -31,14 +24,14 @@ using namespace std;
 #include "Macro.h"
 #include "Enum.h"
 #include "ImageManager.h"
+#include "Timer.h"
 #include "Input.h"
 #include "SceneManager.h"
 #include "CameraManager.h"
 #include "TextManager.h"
-//#include "MapManager.h"
-//#include "Jiwoo.h"
-//#include "PokemonManager.h"
-#include "Timer.h"
+#include "InventoryManager.h"
+
+
 
 #define SCENE_MGR SceneManager::GetSingleton()
 #define IMG_MGR ImageManager::GetSingleton()
@@ -47,6 +40,7 @@ using namespace std;
 #define CON_MGR Jiwoo::GetSingleton()
 #define POKE_MGR PokemonManager::GetSingleton()
 #define TXT_MGR TextManager::GetSingleton()
+#define ITEM_MGR InventoryManager::GetSingleton()
 
 #define DELTA_TIME Timer::GetDeltaTime();
 

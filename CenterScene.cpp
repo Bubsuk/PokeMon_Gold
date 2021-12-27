@@ -6,9 +6,9 @@
 
 HRESULT CenterScene::Init()
 {
-	CON_MGR->Init();
 	MAP_MGR->LoadMap("etcMap");
 	CAM_MGR->SetPos(-256, -448);
+	
 
 	return S_OK;
 }
@@ -16,6 +16,7 @@ HRESULT CenterScene::Init()
 void CenterScene::Update()
 {
 	CON_MGR->Update();
+
 	if (CON_MGR->mState == eDir::Down && 
 		(-256 <= CAM_MGR->GetCamPos().x && CAM_MGR->GetCamPos().x <= -192)
 		&& (CAM_MGR->GetCamPos().y <= -448))
@@ -37,5 +38,5 @@ void CenterScene::Render(HDC hdc)
 
 void CenterScene::Release()
 {
-	CON_MGR->Release();
+	
 }

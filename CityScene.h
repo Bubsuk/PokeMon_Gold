@@ -1,11 +1,9 @@
 #pragma once
 #include "GameEntity.h"
 
-class Jiwoo;
 class CityScene : public GameEntity
 {
 public:
-	Jiwoo* mJiwoo;
 
 	POINT mToCenter;
 	POINT mToMart;

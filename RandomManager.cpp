@@ -16,12 +16,12 @@ float RandomManager::WeightMaker()
 	return weight;
 }
 
-// probability %의 확률로 true를 리턴한다.
+// probability / 10000 의 확률로 true를 리턴한다.
 bool RandomManager::PercentMaker(int probability)
 {
 	random_device rd;
 	mt19937 gen(rd());
-	uniform_int_distribution<> distrib(1, 100);
+	uniform_int_distribution<> distrib(1, 10000);
 
 	int value = distrib(gen);
 	

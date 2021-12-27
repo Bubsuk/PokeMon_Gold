@@ -37,6 +37,8 @@ enum class eImageTag
 	Status, Status1,
 	CursorRight, CursorBottom, DogamSelect,
 
+	Bag1, Bag2, Bag3, Bag4,
+
 	// Battle UI
 	BattleLoading, BattleFlash,  BattleFrame, BattleSkill, BattleSelect, Gender, HpBar, ExpGauge, HpGauge, HpGaugeBack,
 	ExpGaugeBack, PlayerImg, PokeBallState,
@@ -49,12 +51,14 @@ enum class eImageTag
 
 	// Particle
 	AppearPoke, Attack, Attack3, Bind, Cut, Cut3, fire, Growth, Horn, Light, Move, MyConfusion, 
-	MyHorn, MyPoison, MyQuickAttack, MySandAttack, MyStringShot, Poison, RazorWind, Shine, Shock, 
+	MyHorn, MyPoison, MyQuickAttack, MySandAttack, MyStringShot, Poison, RazorWind, Shine, ElectricShock,
 	SkyAttack, Slash, SmokeScreen, Snap, Spark, Squall, WildConfusion, WildHorn, WildPoisonSting, 
-	WildQuickAttack, WildSandAttack, WildStingShot, WalkGrass1, WalkGrass2, Shadow,
+	WildQuickAttack, WildSandAttack, WildStingShot, WalkGrass1, WalkGrass2, Shadow, Monsterball,
 
 	// End Scene
 	End1, End2, End3, End4, EndPoke1, EndPoke2, EndPoke3, EndPoke4,
+
+	PokeBall
 
 
 

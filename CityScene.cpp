@@ -6,18 +6,15 @@
 
 HRESULT CityScene::Init()
 {
-	CON_MGR->Init();
 	MAP_MGR->LoadMap("cityMap");
+
 	POINT startPos = CAM_MGR->GetWarfPos();
 	CAM_MGR->SetPos(startPos.x, startPos.y);
+
 	mToCenter = { -2048, -1344 };
 	mToMart = { -640, -832 };
 	mToGym = { -1216, -832 };
 	mToDrO = { -6976, -1088 };
-
-	
-	
-
 	
 	return S_OK;
 }
@@ -47,22 +44,16 @@ void CityScene::Update()
 	{
 		SCENE_MGR->ChangeScene(eSceneTag::DrOScene);
 	}
-	/*cout << CAM_MGR->GetCamPos().x << endl;
-	cout << CAM_MGR->GetCamPos().y << endl << endl;*/
-
 	
-
 }
 
 void CityScene::Render(HDC hdc)
 {
 	MAP_MGR->DrawMap(hdc);
-	
 	CON_MGR->Render(hdc);
 
 }
 
 void CityScene::Release()
 {
-	CON_MGR->Release();
 }

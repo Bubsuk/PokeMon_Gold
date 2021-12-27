@@ -2,19 +2,21 @@
 #include "GameEntity.h"
 
 class Image;
-class DogamScene : public GameEntity
+class Bag : public GameEntity
 {
 public:
-	Image* mDogamMain;
-	Image* mDogamSelect;
+	Image* mBag1;
+	Image* mBag2;
+	Image* mBag3;
+	Image* mBag4;
 
-	POINT mSelectPos;
+	int mBagCnt;
 
-	int mSelectCnt;
+	bool mbControl;
 
 	char mSampleText[256];
-	string str;
 	
+
 public:
 	HRESULT Init();
 	void Update();

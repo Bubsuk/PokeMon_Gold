@@ -5,19 +5,16 @@
 
 HRESULT DrOLabScene::Init()
 {
-	CON_MGR->Init();
 	MAP_MGR->LoadMap("etcMap");
 	CAM_MGR->SetPos(-3328, -640);
-
+	
 	return S_OK;
 }
 
 void DrOLabScene::Update()
 {
 	CON_MGR->Update();
-	if (CON_MGR->mState == eDir::Down &&
-		(-3328 <= CAM_MGR->GetCamPos().x && CAM_MGR->GetCamPos().x <= -3264)
-		&& (CAM_MGR->GetCamPos().y <= -640))
+	if (CON_MGR->mState == eDir::Down && Collider::CheckDoor() == true)
 	{
 		POINT outDoor;
 		outDoor.x = -6976;
@@ -36,5 +33,4 @@ void DrOLabScene::Render(HDC hdc)
 
 void DrOLabScene::Release()
 {
-	CON_MGR->Release();
 }

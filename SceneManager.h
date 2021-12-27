@@ -30,6 +30,9 @@ private:
 	map<string, int> mapSceneData;
 
 public:
+
+	bool mbStartScene;
+
 	static GameEntity* currScene;		// 현재 출력 중인 씬
 	static GameEntity* readyScene;		// 준비 중인 씬
 	static GameEntity* loadingScene;	// 로딩 씬

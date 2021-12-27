@@ -5,7 +5,7 @@ class Jiwoo;
 class MartScene : public GameEntity
 {
 public:
-	Jiwoo* mJiwoo;
+	POINT mToCity;
 
 public:
 

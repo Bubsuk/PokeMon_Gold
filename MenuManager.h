@@ -1,12 +1,18 @@
 #pragma once
 #include "GameEntity.h"
 
-class Jiwoo;
+class Bag;
+class MenuPokemon;
+class Dogam;
 class Image;
 class MenuManager : public GameEntity
 {
 public:
-	Jiwoo* mJiwoo;
+
+	Dogam* mDogam;
+	MenuPokemon* mPokemon;
+	Bag* mBag;
+
 
 	Image* mGear1;
 	Image* mGear2;
@@ -39,6 +45,13 @@ public:
 	Image* mPlayerStat2;
 
 	bool mbMenu;
+	bool mbMenuCon;
+
+	bool mbDogam;
+	bool mbPokemon;
+	bool mbBag;
+	bool mbGear;
+
 
 public:
 	HRESULT Init();

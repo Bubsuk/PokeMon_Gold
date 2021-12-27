@@ -2,8 +2,10 @@
 #include "Config.h"
 #include "Jiwoo.h"
 #include "Image.h" 
-#include "Collider.h"
 #include "MenuManager.h"
+#include "Collider.h"
+#include "RandomManager.h"
+#include "PokemonManager.h"
 
 HRESULT Jiwoo::Init()
 {
@@ -32,12 +34,19 @@ HRESULT Jiwoo::Init()
     mJumpWeight = 350.0f;
     mJumpHeight = WIN_SIZE_Y / 2 - 32;
 
+    mbNeedRevise = false;
     mbControlSwitch = true;
     mbMenuSwitch = false;
     mbControl = true;
+    mbCoolTime = true;
+
+    mElapsedCount = 0.0f;
+    mCoolTimeCnt = 0.0f;
+
     mMoveSpeed = 300;
     CAM_MGR->mObjectPos = { 0,0 };
     mOneTileTime = 0.5f;
+
 
 
     return S_OK;
@@ -45,7 +54,18 @@ HRESULT Jiwoo::Init()
 
 void Jiwoo::Update()
 { 
+    if (mbMenuSwitch == true)
+    {
+        mMenu->Update();
+    }
+
     mElapsedCount += DELTA_TIME;
+    mCoolTimeCnt += DELTA_TIME;
+    if (mCoolTimeCnt > 3.0f)
+    {
+        mbCoolTime = false;
+    }
+
   
     if (mbControl == true && mbJump == false && mbMenuSwitch == false)
     {
@@ -167,17 +187,18 @@ void Jiwoo::Update()
         }
     }
 
-    // 점프
-    if (mbJump == true)
-    {
-        Jump();
+    //// 점프
+    //if (mbJump == true)
+    //{
+    //    Jump();
 
-        if (mPos.y >= mBarometerPos.y)
-        {
-            mPos.y = WIN_SIZE_Y / 2;
-            mbJump = false;
-        }
-    }
+    //    if (mPos.y >= mBarometerPos.y)
+    //    {
+    //        mPos.y = WIN_SIZE_Y / 2;
+    //        mbJump = false;
+    //    }
+    //}
+    // 
     // 보간
     if (mbNeedRevise == true)
     {
@@ -266,7 +287,6 @@ void Jiwoo::Update()
         default:
             break;
         }
-
    
     }
 
@@ -278,21 +298,74 @@ void Jiwoo::Update()
         mframeX = 0;
     }
 
+    // 포켓몬 발견
+    if (CheckGrass() == true && mbCoolTime == false)
+    {
+        if (RandomManager::PercentMaker(2000) == true)
+        {
+            switch (RandomManager::RandomPeeker(0, 5))
+            {
+            case 0:
+                POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Bcane);
+                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
+                break;
+            case 1:
+                POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Caterpie);
+                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
+                break;
+            case 2:
+                POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Chicorita);
+                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
+                break;
+            case 3:
+                POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Ggorat);
+                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
+                break;
+            case 4:
+                POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Pika);
+                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
+                break;
+            case 5:
+                POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Riaco);
+                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
+                break;
+            default:
+                break;
+            }
+            mbDetected = true;
+            mbCoolTime = true;
+            mCoolTimeCnt = 0.0f;
+        }
+    }
+
+    if (mbDetected == true && mElapsedCount > 0.5f)
+    {
+        // 배틀씬 전환
+        POINT tempPos = CAM_MGR->GetCamPos();
+        tempPos.x += 50;
+        tempPos.y += 50;
+        CAM_MGR->SetWarfPos(tempPos);
+        SCENE_MGR->ChangeScene(eSceneTag::BattleScene);
+        mbDetected = false;
+    }
+
 
     // 메뉴 진입
     if (Input::GetButton(VK_RETURN))
     {
-        mMenu->mMenuCnt = 0;
         mbMenuSwitch = true;
         mbControlSwitch = false;
     }
-    if (Input::GetButton('X'))
+    if (Input::GetButton('Z') && mMenu->mMenuCnt == 6)
     {
         mbMenuSwitch = false;
         mbControlSwitch = true;
-    }
 
-    mMenu->Update();
+        mMenu->mbMenuCon = true;
+        mMenu->mbDogam = false;
+        mMenu->mbPokemon = false;
+        mMenu->mbGear = false;
+    }
 
 }
 
@@ -325,10 +398,6 @@ void Jiwoo::Render(HDC hdc)
 }
 
 
-void Jiwoo::Release()
-{
-    GameObject::Release();
-}
 
 void Jiwoo::Jump()
 {
@@ -342,5 +411,12 @@ void Jiwoo::Jump()
     {
         mPos.y = mBarometerPos.y - 32 + mElapsedCount / 0.04f;
     }
+
+}
+
+void Jiwoo::Release()
+{
+    SAFE_RELEASE(mCollider);
+    SAFE_RELEASE(mMenu);
 
 }

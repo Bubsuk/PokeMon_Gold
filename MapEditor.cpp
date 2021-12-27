@@ -64,7 +64,7 @@ HRESULT MapEditor::Init()
 
 			// 타일별 속성 지정
 			if ((0 <= (i * SAMPLE_TILE_COUNT_X + j) && (i * SAMPLE_TILE_COUNT_X + j) <= 7) || (i * SAMPLE_TILE_COUNT_X + j) == 9
-				|| (i * SAMPLE_TILE_COUNT_X + j) == 24 || (i * SAMPLE_TILE_COUNT_X + j) == 25 || (50 <= (i * SAMPLE_TILE_COUNT_X + j)
+				|| (50 <= (i * SAMPLE_TILE_COUNT_X + j)
 				&& (i * SAMPLE_TILE_COUNT_X + j) <= 52) || (i * SAMPLE_TILE_COUNT_X + j) == 58 || (i * SAMPLE_TILE_COUNT_X + j) == 77
 				|| (i * SAMPLE_TILE_COUNT_X + j) == 78 || (i * SAMPLE_TILE_COUNT_X + j) == 80 || (i * SAMPLE_TILE_COUNT_X + j) == 158
 				|| (i * SAMPLE_TILE_COUNT_X + j) == 159 || (i * SAMPLE_TILE_COUNT_X + j) == 160 
@@ -79,7 +79,7 @@ HRESULT MapEditor::Init()
 			{
 				mSampleTileInfo[i * SAMPLE_TILE_COUNT_X + j].Terrain = eTerrain::Grass;
 			}
-			else if ((21 <= (i * SAMPLE_TILE_COUNT_X + j) && (i * SAMPLE_TILE_COUNT_X + j) <= 23 || (i * SAMPLE_TILE_COUNT_X + j) == 112
+			else if ((21 <= (i * SAMPLE_TILE_COUNT_X + j) && (i * SAMPLE_TILE_COUNT_X + j) <= 25 || (i * SAMPLE_TILE_COUNT_X + j) == 112
 					|| (i * SAMPLE_TILE_COUNT_X + j) == 162))
 			{
 				mSampleTileInfo[i * SAMPLE_TILE_COUNT_X + j].Terrain = eTerrain::Door;

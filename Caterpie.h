@@ -1,7 +1,8 @@
 #pragma once
 #include "Pokemon.h"
+#include "PokemonSkill.h"
 
-class Caterpie : public Pokemon
+class Caterpie : public Pokemon, PokemonSkill
 {
 
 public:
@@ -11,6 +12,8 @@ public:
 		mFrontImg = IMG_MGR->FindImage(eImageTag::Caterpie_F);
 		mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
 
+		mTypeIndexX = 14;
+		mTypeIndexY = 1;
 
 		mName = "캐터피";
 		strcpy_s(chName, mName.c_str());
@@ -18,18 +21,27 @@ public:
 		if (RandomManager::PercentMaker(50) == true) mGender = Gender::Male;
 		else mGender = Gender::Female;
 
-
+		mPokeSpecies = ePokemon::Caterpie;
 		mPokeType = ePokemonType::Bug;
 
-		mPokeSkill.push_back(mSkill);
-		mPokeSkill[0].SkillName = "몸통박치기";
-		mPokeSkill[0].Attack = 35;
-		mPokeSkill[0].AccuracyRate = 95;
+		PokemonSkill* mSkill1 = new PokemonSkill;
+		mSkill1->mSkillName = "몸통박치기";
+		mSkill1->eType = SkillType::Normal;
+		mSkill1->mAttack = 30;
+		mSkill1->mAccuracyRate = 95;
+		mSkill1->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
+		mPokeSkill.emplace_back(mSkill1);
 
-		mPokeSkill.push_back(mSkill);
-		mPokeSkill[1].SkillName = "실뿜기"; // 입에서 뿜어낸 실을 휘감아서 상대의 스피드를 떨어뜨린다.
-		mPokeSkill[1].Attack = 0;
-		mPokeSkill[1].AccuracyRate = 95;
+		PokemonSkill* mSkill2 = new PokemonSkill;
+		mSkill2->mSkillName = "실뿜기"; // 입에서 뿜어낸 실을 휘감아서 상대의 스피드를 떨어뜨린다.
+		mSkill2->eType = SkillType::Bug;
+		mSkill2->mAttack = 0;
+		mSkill2->mAccuracyRate = 95;
+		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
+		mPokeSkill.emplace_back(mSkill2);
+		
+
+		
 
 		mLv = 1;
 		mIdNum = "No. 010";

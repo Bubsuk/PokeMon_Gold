@@ -25,13 +25,15 @@ enum class eTerrain
 
 enum class ePokemon
 {
-    Caterpie, Dandegi, Butter,
-    Bbul, Ddak, DokChung, Gugu,
-    Pigeon, PigeonTwo, Ggorat,
-    Rat, Ggaebi, Ggaebidrill, Pika,
-    Richu, Chicorita, Bayleaf,
-    Meganium, Bcane, Riaco, Alligay,
-    Jangcro
+    Caterpie,
+    Ggorat,
+    Pika,
+    Chicorita, Bcane, Riaco, 
+    Alligay,
+    /*Jangcro, Dandegi, Butter, Bbul, Ddak,
+    DokChung, Gugu, Pigeon, PigeonTwo,
+    Ggaebi, Ggaebidrill, Richu, Bayleaf,
+    Meganium, Rat*/
 };
 
 enum class ePokemonType

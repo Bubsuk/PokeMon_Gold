@@ -99,3 +99,33 @@ bool Collider::CheckJump()
 	}
 	else return false;
 }
+
+bool Collider::CheckGrass()
+{
+	int curIndexX = (288 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
+	int curIndexY = (288 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
+
+	if (MAP_MGR->GetTileInfo()[curIndexY * TILE_COUNT_X + curIndexX].Terrain == eTerrain::Grass)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Collider::CheckDoor()
+{
+	int curIndexX = (288 - CAM_MGR->GetCamPos().x) / TILE_SIZE;
+	int curIndexY = (288 - CAM_MGR->GetCamPos().y) / TILE_SIZE;
+
+	if (MAP_MGR->GetTileInfo()[curIndexY * TILE_COUNT_X + curIndexX].Terrain == eTerrain::Door)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

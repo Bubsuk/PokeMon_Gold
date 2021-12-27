@@ -1,7 +1,9 @@
 #pragma once
 #include "Pokemon.h"
+#include "PokemonSkill.h"
 
-class Bcane : public Pokemon
+
+class Bcane : public Pokemon, PokemonSkill
 {
 public:
 	Bcane()
@@ -10,24 +12,33 @@ public:
 		mFrontImg = IMG_MGR->FindImage(eImageTag::Bcane_F);
 		mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
 
+		mTypeIndexX = 14;
+		mTypeIndexY = 0;
+
 		mName = "브케인";
 
 		strcpy_s(chName, mName.c_str());
 		if (RandomManager::PercentMaker(87) == true) mGender = Gender::Male;
 		else mGender = Gender::Female;
 
-
+		mPokeSpecies = ePokemon::Bcane;
 		mPokeType = ePokemonType::Etc;
 
-		mPokeSkill.push_back(mSkill);
-		mPokeSkill[0].SkillName = "몸통박치기";
-		mPokeSkill[0].Attack = 35;
-		mPokeSkill[0].AccuracyRate = 95;
+		PokemonSkill* mSkill1 = new PokemonSkill;
+		mPokeSkill.emplace_back(mSkill1);
+		mSkill1->mSkillName = "몸통박치기";
+		mSkill1->eType = SkillType::Normal;
+		mSkill1->mAttack = 30;
+		mSkill1->mAccuracyRate = 95;
+		mSkill1->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
 
-		mPokeSkill.push_back(mSkill);
-		mPokeSkill[1].SkillName = "째려보기";
-		mPokeSkill[1].Attack = 0;
-		mPokeSkill[1].AccuracyRate = 100;
+		PokemonSkill* mSkill2 = new PokemonSkill;
+		mPokeSkill.emplace_back(mSkill2);
+		mSkill2->mSkillName = "째려보기";
+		mSkill2->eType = SkillType::Normal;
+		mSkill2->mAttack = 0;
+		mSkill2->mAccuracyRate = 100;
+		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
 
 		mLv = 1;
 		mIdNum = "No. 155";
@@ -37,7 +48,9 @@ public:
 		mMaxExp = 40 * RandomManager::WeightMaker();
 		mExp = 0;
 	}
-
+	~Bcane()
+	{
+	}
 	HRESULT Init() override;
 	void Update() override;
 	void Render(HDC hdc) override;

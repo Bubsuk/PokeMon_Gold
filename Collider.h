@@ -19,6 +19,8 @@ public:
 
 	int SetLimit(eDir dir);
 	bool CheckJump();
+	bool CheckGrass();
+	static bool CheckDoor();
 
 };
 

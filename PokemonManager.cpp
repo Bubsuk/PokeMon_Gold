@@ -1,13 +1,38 @@
 #include "stdafx.h"
 #include "PokemonManager.h"
-#include "Pokemon.h"
-#include "PokemonFactory.h"
-#include "Bcane.h"
+#include "Caterpie.h"
 #include "PikaChu.h"
+#include "Chicorita.h"
+#include "Bcane.h"
+#include "Riaco.h"
+#include "GgoRat.h"
+
+
+
+void PokemonManager::Init()
+{
+	// 오박사 NPC로 포켓몬 받으면 지울 것
+	PIKACHU = FactoryFunc(ePokemon::Pika);
+	CHIKO = FactoryFunc(ePokemon::Chicorita);
+
+	mJiwooPokemon.emplace_back(PIKACHU);
+	mJiwooPokemon.emplace_back(CHIKO);
+	RegistDogam(PIKACHU);
+	RegistDogam(CHIKO);
+	///////////////////////////////////////
+}
+
+void PokemonManager::RegistDogam(Pokemon* monster)
+{
+	mPokeDogam.emplace_back(monster->mPokeSpecies, monster);
+
+	sort(mPokeDogam.begin(), mPokeDogam.end());
+	mPokeDogam.erase(unique(mPokeDogam.begin(), mPokeDogam.end()), mPokeDogam.end());
+}
 
 void PokemonManager::CatchPoke(Pokemon* monster)
 {
-	mPokeDogam.push_back(monster);
+	mJiwooPokemon.emplace_back(monster);
 }
 
 void PokemonManager::KillPoke(Pokemon* monster)
@@ -15,16 +40,32 @@ void PokemonManager::KillPoke(Pokemon* monster)
 	SAFE_DELETE(monster);
 }
 
-void PokemonManager::StartPoke()
+
+Pokemon* PokemonManager::FactoryFunc(ePokemon pokemon)
 {
-	mTestBcane = PokemonFactory::FactoryFunc(ePokemon::Bcane);
-	mTestPika = PokemonFactory::FactoryFunc(ePokemon::Pika);
-	mPokeDogam.push_back(mTestBcane);
-	mPokeDogam.push_back(mTestPika);
-
-	cout << "Create Pokemons" << endl;
-	cout << mTestBcane->mName << endl;
-
+	switch (pokemon)
+	{
+	case ePokemon::Caterpie:
+		return new Caterpie;
+		break;
+	case ePokemon::Pika:
+		return new PikaChu;
+		break;
+	case ePokemon::Chicorita:
+		return new Chicorita;
+		break;
+	case ePokemon::Bcane:
+		return new Bcane;
+		break;
+	case ePokemon::Riaco:
+		return new Riaco;
+		break;
+	case ePokemon::Ggorat:
+		return new GgoRat;
+		break;
+	default:
+		break;
+	}
 }
 
 

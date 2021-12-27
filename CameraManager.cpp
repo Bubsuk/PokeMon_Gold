@@ -95,3 +95,5 @@ POINT CameraManager::GetWarfPos()
 {
 	return mWarfPos;
 }
+
+

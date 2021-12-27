@@ -4,7 +4,7 @@
 
 HRESULT OpeningScene::Init()
 {
-	mOpPlay = true;
+	mOpPlay = false;
 	elapsedCnt = 0;
 	cnt = 0;
 
@@ -34,9 +34,17 @@ void OpeningScene::Render(HDC hdc)
 			elapsedCnt = 0.0f;
 		}
 	}
-	else if(1 <= cnt && cnt <= 101)
+	else if(1 <= cnt && cnt < 101)
 	{
 		if (elapsedCnt > 0.065)
+		{
+			++cnt;
+			elapsedCnt = 0.0f;
+		}
+	}
+	if (cnt == 101)
+	{
+		if (elapsedCnt > 2)
 		{
 			++cnt;
 			elapsedCnt = 0.0f;
@@ -45,6 +53,7 @@ void OpeningScene::Render(HDC hdc)
 
 	if (102 <= cnt && cnt <= 111)
 	{
+		mOpPlay = true;
 		if (elapsedCnt > 0.085)
 		{
 			++cnt;
@@ -56,11 +65,13 @@ void OpeningScene::Render(HDC hdc)
 		cnt = 102;
 	}
 
-	if (Input::GetButtonDown('Z'))
+	if (mOpPlay == true)
 	{
-		SCENE_MGR->ChangeScene(eSceneTag::DrOOPen);
-	}
-	
+		if (Input::GetButtonDown('Z'))
+		{
+			SCENE_MGR->ChangeScene(eSceneTag::DrOOPen);
+		}
+	}	
 }
 
 void OpeningScene::Release()

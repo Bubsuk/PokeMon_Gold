@@ -141,8 +141,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bag.cpp" />
     <ClCompile Include="BattleScene.cpp" />
-    <ClCompile Include="BattleUiManager.cpp" />
     <ClCompile Include="Bcane.cpp" />
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Caterpie.cpp" />
@@ -150,12 +150,10 @@
     <ClCompile Include="Chicorita.cpp" />
     <ClCompile Include="CityScene.cpp" />
     <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="DialogueManager.cpp" />
-    <ClCompile Include="DogamScene.cpp" />
+    <ClCompile Include="Dogam.cpp" />
     <ClCompile Include="DrOOpeningScene.cpp" />
     <ClCompile Include="MenuManager.cpp" />
     <ClCompile Include="DrOLabScene.cpp" />
-    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GgoRat.cpp" />
     <ClCompile Include="GymScene.cpp" />
     <ClCompile Include="Home1stScene.cpp" />
@@ -166,6 +164,7 @@
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="MapScene.cpp" />
     <ClCompile Include="MartScene.cpp" />
+    <ClCompile Include="MenuPokemon.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -177,7 +176,6 @@
     <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="PikaChu.cpp" />
     <ClCompile Include="Pokemon.cpp" />
-    <ClCompile Include="PokemonFactory.cpp" />
     <ClCompile Include="PokemonManager.cpp" />
     <ClCompile Include="PokemonSkill.cpp" />
     <ClCompile Include="RandomManager.cpp" />
@@ -192,8 +190,8 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bag.h" />
     <ClInclude Include="BattleScene.h" />
-    <ClInclude Include="BattleUiManager.h" />
     <ClInclude Include="Bcane.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Caterpie.h" />
@@ -201,14 +199,12 @@
     <ClInclude Include="Chicorita.h" />
     <ClInclude Include="CityScene.h" />
     <ClInclude Include="Collider.h" />
-    <ClInclude Include="DialogueManager.h" />
-    <ClInclude Include="DogamScene.h" />
+    <ClInclude Include="Dogam.h" />
     <ClInclude Include="DrOOpeningScene.h" />
     <ClInclude Include="MenuManager.h" />
     <ClInclude Include="DrOLabScene.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Extern.h" />
-    <ClInclude Include="GameScene.h" />
     <ClInclude Include="GgoRat.h" />
     <ClInclude Include="GymScene.h" />
     <ClInclude Include="Header.h" />
@@ -221,6 +217,7 @@
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="MapScene.h" />
     <ClInclude Include="MartScene.h" />
+    <ClInclude Include="MenuPokemon.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="CommonFunction.h" />
     <ClInclude Include="Config.h" />
@@ -233,7 +230,6 @@
     <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="PikaChu.h" />
     <ClInclude Include="Pokemon.h" />
-    <ClInclude Include="PokemonFactory.h" />
     <ClInclude Include="PokemonManager.h" />
     <ClInclude Include="PokemonSkill.h" />
     <ClInclude Include="RandomManager.h" />

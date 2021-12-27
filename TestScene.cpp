@@ -2,7 +2,6 @@
 #include "TestScene.h"
 #include "Jiwoo.h"
 #include "Pokemon.h"
-#include "PokemonFactory.h"
 #include "MapManager.h"
 #include "Collider.h"
 
@@ -11,7 +10,6 @@ HRESULT TestScene::Init()
 {
     //mBackGround = IMG_MGR->FindImage(eImageTag::StartRoom);
     //aaa = IMG_MGR->FindImage(1);
-    CON_MGR->Init();
     //mJiwooPos = mJiwoo->GetPosition();
     MAP_MGR->LoadMap("cityMap");
     
@@ -48,7 +46,5 @@ void TestScene::Render(HDC hdc)
 
 void TestScene::Release()
 {
-    CON_MGR->Release();
-   // SAFE_RELEASE(randomPokemon);
   
 }

@@ -5,22 +5,34 @@
 
 HRESULT Home2ndScene::Init()
 {
-	CON_MGR->Init();
 	MAP_MGR->LoadMap("etcMap");
-	CAM_MGR->SetPos(-5120, -192);
+	if (SCENE_MGR->mbStartScene == true)
+	{
+		CAM_MGR->SetPos(-5120, -192);
+	}
+	else
+	{
+		POINT startPos = CAM_MGR->GetWarfPos();
+		CAM_MGR->SetPos(startPos.x, startPos.y);
+	}
+
 	mTo1stFloor = { -5376, 0 };
+
 	return S_OK;
 }
 
 void Home2ndScene::Update()
 {
-	CON_MGR->Update();
-	if (CON_MGR->mState == eDir::Up &&
-		CAM_MGR->GetCamPos().x == mTo1stFloor.x 
-		&& CAM_MGR->GetCamPos().y == mTo1stFloor.y)
+	
+	if (CON_MGR->mState == eDir::Up && Collider::CheckDoor() == true)
 	{
+		SCENE_MGR->mbStartScene = false;
+		POINT warfPos = { -5375, -64 };
+		CAM_MGR->SetWarfPos(warfPos);
 		SCENE_MGR->ChangeScene(eSceneTag::Home1stScene);
 	}
+
+	CON_MGR->Update();
 }
 
 void Home2ndScene::Render(HDC hdc)
@@ -31,5 +43,4 @@ void Home2ndScene::Render(HDC hdc)
 
 void Home2ndScene::Release()
 {
-	CON_MGR->Release();
 }

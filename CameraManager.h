@@ -7,6 +7,7 @@ class CameraManager : public Singleton<CameraManager>
 public:
 	POINT mObjectPos;
 	POINT mWarfPos;
+	bool mMenuScene;
 
 private:
 	POINT mMaxPos = {};
@@ -29,6 +30,7 @@ public:
 	// 문 사용 워프
 	void SetWarfPos(POINT warfPos);
 	POINT GetWarfPos();
+
 
 };
 

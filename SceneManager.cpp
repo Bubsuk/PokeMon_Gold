@@ -13,7 +13,6 @@
 #include "GymScene.h"
 #include "DrOLabScene.h"
 #include "BattleScene.h"
-#include "DogamScene.h"
 #include "DrOOpeningScene.h"
 
 GameEntity* SceneManager::currScene = nullptr; // ÀÌÀü ¾À
@@ -47,8 +46,9 @@ void SceneManager::Init()
 	SCENE_MGR->AddScene(eSceneTag::GymScene, new GymScene);
 	SCENE_MGR->AddScene(eSceneTag::DrOScene, new DrOLabScene);
 	SCENE_MGR->AddScene(eSceneTag::BattleScene, new BattleScene);
-	SCENE_MGR->AddScene(eSceneTag::DogamScene, new DogamScene);
 	SCENE_MGR->AddScene(eSceneTag::DrOOPen, new DrOOpeningScene);
+
+	mbStartScene = true;
 }
 
 void SceneManager::Release()

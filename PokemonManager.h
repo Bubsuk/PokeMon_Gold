@@ -6,15 +6,23 @@
 class PokemonManager : public Singleton<PokemonManager>
 {
 public:
-	Pokemon* mTestBcane;
-	Pokemon* mTestPika;
+	Pokemon* mTempPokemon;
 
-	vector<Pokemon*> mPokeDogam;
+	// 오박사 NPC로 포켓몬 받으면 지울 것
+	Pokemon* PIKACHU;
+	Pokemon* CHIKO;
+	/////////////////////////////////////
 
+
+	vector<pair<ePokemon, Pokemon*>> mPokeDogam;
+	vector<Pokemon*> mJiwooPokemon;
+
+	void Init();
+	void RegistDogam(Pokemon* monster);
 	void CatchPoke(Pokemon* monster);
 	void KillPoke(Pokemon* moster);
 
-	void StartPoke();
+	static Pokemon* FactoryFunc(ePokemon pokemon);
 
 };
 

@@ -3,24 +3,7 @@
 #include "Image.h"
 #include "RandomManager.h"
 #include "Singleton.h"
-
-
-struct PokemonSkill
-{
-	string SkillName = "default";
-	SkillType Type;
-	Image* SkillImg;
-	
-	// 필수 구현
-	int Attack = {};
-	int AccuracyRate = {};
-	// 구현 고민 중
-	int Shield = {};
-	int SpecialAtt = {};
-	int SpecialShield = {};
-	int Speed = {};
-};
-
+#include "PokemonSkill.h"
 
 class Image;
 class Pokemon
@@ -31,16 +14,21 @@ public:
 	Image* mFrontImg;
 	Image* mTypeImg;
 
+	int mTypeIndexX;
+	int mTypeIndexY;
+	
+
 	string mName;
 	char chName[256];
 	Gender mGender;
+	ePokemon mPokeSpecies;
 	ePokemonType mPokeType;
 
-	vector<PokemonSkill> mPokeSkill;
-	PokemonSkill mSkill;
 
-	
-	
+	PokemonSkill* mSkill;
+	vector<PokemonSkill*> mPokeSkill;
+
+
 
 	int mLv = {};
 	string mIdNum = "No. 0";
@@ -59,6 +47,9 @@ public:
 
 
 	
-	virtual ~Pokemon() {};
+	virtual ~Pokemon() 
+	{
+		SAFE_DELETE(mSkill);
+	};
 
 };

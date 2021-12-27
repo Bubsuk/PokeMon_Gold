@@ -5,20 +5,17 @@
 
 HRESULT MartScene::Init()
 {
-	CON_MGR->Init();
 	MAP_MGR->LoadMap("etcMap");
 	CAM_MGR->SetPos(-2112, -384);
 
+	mToCity = { -2112, -384 };
 	return S_OK;
 }
 
 void MartScene::Update()
 {
-	
-	SAFE_UPDATE(mJiwoo);
-	if (CON_MGR->mState == eDir::Down &&
-		(-2112 <= CAM_MGR->GetCamPos().x && CAM_MGR->GetCamPos().x <= -2048)
-		&& (CAM_MGR->GetCamPos().y <= -384))
+	CON_MGR->Update();
+	if (CON_MGR->mState == eDir::Down && Collider::CheckDoor() == true)
 	{
 		POINT outDoor;
 		outDoor.x = -640;
@@ -36,5 +33,5 @@ void MartScene::Render(HDC hdc)
 
 void MartScene::Release()
 {
-	CON_MGR->Release();
+
 }

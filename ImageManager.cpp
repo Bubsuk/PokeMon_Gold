@@ -89,6 +89,7 @@ void ImageManager::Init()
 	}
 	AddImage(eImageTag::BlackBack, "Image/Black.bmp", 650, 576);
 	AddImage(eImageTag::DoctorOBig, "Image/OBaksa.bmp", 152, 218);
+	AddImage(eImageTag::PokeBall, "Image/pokemon_ball.bmp", 48, 48);
 
 
 	// UI - MENU
@@ -109,12 +110,12 @@ void ImageManager::Init()
 	
 	
 	AddImage(eImageTag::PokeSelect1, "Image/menuUI/pokeShift_0.bmp", 650, 576);
-	AddImage(eImageTag::PokeSelect2, "Image/menuUI/pokeShift_0.bmp", 650, 576);
-	AddImage(eImageTag::PokeSelect3, "Image/menuUI/pokeShift_0.bmp", 650, 576);
-	AddImage(eImageTag::PokeSelect4, "Image/menuUI/pokeShift_0.bmp", 650, 576);
-	AddImage(eImageTag::PokeSelect5, "Image/menuUI/pokeShift_0.bmp", 650, 576);
-	AddImage(eImageTag::PokeSelect6, "Image/menuUI/pokeShift_0.bmp", 650, 576);
-	AddImage(eImageTag::PokeSelectCls, "Image/menuUI/pokeShift_0.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect2, "Image/menuUI/pokeShift_1.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect3, "Image/menuUI/pokeShift_2.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect4, "Image/menuUI/pokeShift_3.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect5, "Image/menuUI/pokeShift_4.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelect6, "Image/menuUI/pokeShift_5.bmp", 650, 576);
+	AddImage(eImageTag::PokeSelectCls, "Image/menuUI/pokeShift_6.bmp", 650, 576);
 
 	AddImage(eImageTag::PokePower, "Image/menuUI/power_0.bmp", 650, 576);
 
@@ -128,22 +129,29 @@ void ImageManager::Init()
 	AddImage(eImageTag::CursorBottom, "Image/battle/cursorBottom.bmp", 32, 32);
 	AddImage(eImageTag::DogamSelect, "Image/menuUI/dogam_select.bmp", 226, 62, true, RGB(255, 0, 255));
 
+	// UI - Bag
+	AddImage(eImageTag::Bag1, "Image/bag/bag_0.bmp", 650, 576);
+	AddImage(eImageTag::Bag2, "Image/bag/bag_1.bmp", 650, 576);
+	AddImage(eImageTag::Bag3, "Image/bag/bag_2.bmp", 650, 576);
+	AddImage(eImageTag::Bag4, "Image/bag/bag_3.bmp", 650, 576);
 
 	// UI - Battle
-	AddImage(eImageTag::Gender, "Image/battle_loading.bmp", 17920, 596, 28, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::BattleLoading, "Image/battle_loading.bmp", 17920, 596, 28, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::BattleFlash, "Image/battle/flash_loading.bmp", 640, 576);
 	AddImage(eImageTag::BattleFrame, "Image/battle/battleBackground.bmp", 640, 576);
-	AddImage(eImageTag::BattleSkill, "Image/battle/backgroundSkill.bmp", 640, 289);
+	AddImage(eImageTag::BattleSkill, "Image/battle/backgroundSkill.bmp", 640, 289, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::BattleSelect, "Image/battle/selectBehavior.bmp", 640, 186);
-	AddImage(eImageTag::Gender, "Image/battle/gender.bmp", 7, 16, 1, 2, true, RGB(255, 0, 255));
-	AddImage(eImageTag::HpBar, "Image/battle/hpBar.bmp", 272, 24);
+	AddImage(eImageTag::Gender, "Image/battle/gender.bmp", 28, 64, 1, 2, true, RGB(255, 0, 255));
+	AddImage(eImageTag::HpBar, "Image/battle/hpBar.bmp", 272, 24, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::ExpGauge, "Image/battle/expGauge.bmp", 256, 8);
 	AddImage(eImageTag::HpGauge, "Image/battle/hpGauge.bmp", 192, 8);
 	AddImage(eImageTag::HpGaugeBack, "Image/battle/cursorBottom.bmp", 192, 8);
 	AddImage(eImageTag::ExpGaugeBack, "Image/battle/expGaugeBack.bmp", 192, 8);
-	AddImage(eImageTag::PlayerImg, "Image/battle/playerImage.bmp", 188, 192);
+	AddImage(eImageTag::PlayerImg, "Image/battle/playerImage.bmp", 188, 192, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::PokeBallState, "Image/battle/pokeballState.bmp", 28, 112, 1, 4, true, RGB(255, 0, 255));
-	AddImage(eImageTag::AppearPoke, "Image/battle/appearPokemon.bmp", 600, 200);
+	AddImage(eImageTag::AppearPoke, "Image/battle/appearPokemon.bmp", 600, 200, 3, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::Monsterball, "Image/battle/Monsterball.bmp", 20, 20, 1, 1, true, RGB(255, 0, 255));
+
 
 	// UI - Shop
 	AddImage(eImageTag::HealingPoke, "Image/battle/appearPokemon.bmp", 500, 60, 10, 1, true, RGB(255, 0, 255));
@@ -159,6 +167,9 @@ void ImageManager::Init()
 	AddImage(eImageTag::WalkGrass1, "Image/poketmon_grass1.bmp", 48, 36);
 	AddImage(eImageTag::WalkGrass2, "Image/poketmon_grass2.bmp", 45, 21);
 	AddImage(eImageTag::Shadow, "Image/character_shadow.bmp", 56, 64, 1, 1, true, RGB(255, 0, 255));
+
+	AddImage(eImageTag::ElectricShock, "Image/battle/skill/shock.bmp", 138, 42, 3, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::Slash, "Image/battle/skill/slash.bmp", 480, 60, 8, 1, true, RGB(255, 0, 255));
 
 
 	// End Scene

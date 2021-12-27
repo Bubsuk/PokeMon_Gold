@@ -10,24 +10,38 @@ public:
 		mFrontImg = IMG_MGR->FindImage(eImageTag::Pika_F);
 		mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
 
+		mTypeIndexX = 6;
+		mTypeIndexY = 0;
+
 		mName = "피카츄";
 		strcpy_s(chName, mName.c_str());
 
-		if (RandomManager::PercentMaker(50) == true) mGender = Gender::Male;
-		else mGender = Gender::Female;
+		if (RandomManager::PercentMaker(50) == true)
+		{
+			mGender = Gender::Male;
+		}
+		else
+		{
+			mGender = Gender::Female;
+		}
 
-
+		mPokeSpecies = ePokemon::Pika;
 		mPokeType = ePokemonType::Pika;
 
-		mPokeSkill.push_back(mSkill);
-		mPokeSkill[0].SkillName = "전기쇼크";
-		mPokeSkill[0].Attack = 40;
-		mPokeSkill[0].AccuracyRate = 100;
+		PokemonSkill* mSkill1 = new PokemonSkill;
+		mPokeSkill.emplace_back(mSkill1);
+		mSkill1->mSkillName = "전기쇼크";
+		mSkill1->mAttack = 30;
+		mSkill1->mAccuracyRate = 100;
+		mSkill1->mSkillImg = IMG_MGR->FindImage(eImageTag::ElectricShock);
 
-		mPokeSkill.push_back(mSkill);
-		mPokeSkill[1].SkillName = "울음소리";
-		mPokeSkill[1].Attack = 0;
-		mPokeSkill[1].AccuracyRate = 100;
+		PokemonSkill* mSkill2 = new PokemonSkill;
+		mPokeSkill.emplace_back(mSkill2);
+		mSkill2->mSkillName = "울음소리";
+		mSkill2->eType = SkillType::Normal;
+		mSkill2->mAttack = 0;
+		mSkill2->mAccuracyRate = 100;
+		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
 
 		mLv = 1;
 		mIdNum = "No. 025";
