@@ -8,13 +8,19 @@ class Image;
 class TestScene : public GameEntity
 {
 private:
-	Jiwoo* mJiwoo;
-	Pokemon* randomPokemon;
-	POINT mJiwooPos;
+	Image* mMonsterball;
+	Image* mMonsterGoalIn;
 
-	Image* mBackGround = nullptr;
-	Image* aaa = nullptr;
+	int mGoalInFrameX;
 
+	float mElapsedCnt;
+
+
+	int mMonsterballPosX;
+	int mMonsterballPosY;
+	float mBallSpeed;
+	float mGravity;
+	int mHeightLimit;
 
 
 public:

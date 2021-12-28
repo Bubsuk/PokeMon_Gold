@@ -49,7 +49,7 @@ HRESULT MainGame::Init()
 	POINT g_maxSize = {TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y};
 
 #else
-	SCENE_MGR->ChangeScene(eSceneTag::Home2ndScene);
+	SCENE_MGR->ChangeScene(eSceneTag::OpeningScene);
 	POINT g_maxSize = { WIN_SIZE_X, WIN_SIZE_Y };
 
 #endif
@@ -68,10 +68,11 @@ void MainGame::Update()
 void MainGame::Render(HDC hdc)
 {
 	SetTextColor(backBuffer->GetMemDC(), RGB(0, 0, 0));
+	SetBkColor(hdc, RGB(248, 248, 248));
+	SetBkMode(hdc, TRANSPARENT);
 	font = CreateFont(40, 0, 0, 0, 700, 0, 0, 0, DEFAULT_CHARSET, OUT_STROKE_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY,
 		DEFAULT_PITCH | FF_SWISS, TEXT("PokemonGSC"));
 	oldFont = (HFONT)SelectObject(backBuffer->GetMemDC(), font);
-	SetBkMode(hdc, TRANSPARENT);
 	
 	HDC hBackBufferDC = backBuffer->GetMemDC();
 	PatBlt(hBackBufferDC, 0, 0, backBuffer->GetWidth(), backBuffer->GetHeight(), WHITENESS);

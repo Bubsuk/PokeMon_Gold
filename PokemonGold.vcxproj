@@ -142,9 +142,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bag.cpp" />
+    <ClCompile Include="BattleManager.cpp" />
     <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="Bcane.cpp" />
     <ClCompile Include="CameraManager.cpp" />
+    <ClCompile Include="CatchPokemon.cpp" />
     <ClCompile Include="Caterpie.cpp" />
     <ClCompile Include="CenterScene.cpp" />
     <ClCompile Include="Chicorita.cpp" />
@@ -152,6 +154,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Dogam.cpp" />
     <ClCompile Include="DrOOpeningScene.cpp" />
+    <ClCompile Include="Fight.cpp" />
     <ClCompile Include="MenuManager.cpp" />
     <ClCompile Include="DrOLabScene.cpp" />
     <ClCompile Include="GgoRat.cpp" />
@@ -165,6 +168,7 @@
     <ClCompile Include="MapScene.cpp" />
     <ClCompile Include="MartScene.cpp" />
     <ClCompile Include="MenuPokemon.cpp" />
+    <ClCompile Include="MonsterAppear.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -191,9 +195,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bag.h" />
+    <ClInclude Include="BattleManager.h" />
     <ClInclude Include="BattleScene.h" />
     <ClInclude Include="Bcane.h" />
     <ClInclude Include="CameraManager.h" />
+    <ClInclude Include="CatchPokemon.h" />
     <ClInclude Include="Caterpie.h" />
     <ClInclude Include="CenterScene.h" />
     <ClInclude Include="Chicorita.h" />
@@ -201,6 +207,7 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Dogam.h" />
     <ClInclude Include="DrOOpeningScene.h" />
+    <ClInclude Include="Fight.h" />
     <ClInclude Include="MenuManager.h" />
     <ClInclude Include="DrOLabScene.h" />
     <ClInclude Include="Enum.h" />
@@ -218,6 +225,7 @@
     <ClInclude Include="MapScene.h" />
     <ClInclude Include="MartScene.h" />
     <ClInclude Include="MenuPokemon.h" />
+    <ClInclude Include="MonsterAppear.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="CommonFunction.h" />
     <ClInclude Include="Config.h" />

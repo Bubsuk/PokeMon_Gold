@@ -12,6 +12,8 @@ HRESULT Dogam::Init()
 
 	mSelectPos = { WIN_SIZE_X - 202, 70};
 
+	mbDogam = false;
+
 	return S_OK;
 }
 
@@ -25,6 +27,11 @@ void Dogam::Update()
 	{
 		--mSelectCnt;
 	}
+	if (Input::GetButtonDown('X'))
+	{
+		mbDogam = false;
+	}
+
 
 	mSelectPos.y = 75 + (mSelectCnt * 70);
 

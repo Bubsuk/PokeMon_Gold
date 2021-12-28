@@ -1,8 +1,9 @@
 #pragma once
-#include "GameEntity.h"
+#include "BattleManager.h"
+#include "MenuManager.h"
 
 class Image;
-class Bag : public GameEntity
+class Bag : public BattleManager, MenuManager
 {
 public:
 	Image* mBag1;
@@ -11,8 +12,13 @@ public:
 	Image* mBag4;
 
 	int mBagCnt;
+	int mProgressCnt;
 
 	bool mbControl;
+	bool mbBag;
+	bool mbMonsterball;
+
+
 
 	char mSampleText[256];
 	

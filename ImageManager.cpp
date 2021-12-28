@@ -89,7 +89,7 @@ void ImageManager::Init()
 	}
 	AddImage(eImageTag::BlackBack, "Image/Black.bmp", 650, 576);
 	AddImage(eImageTag::DoctorOBig, "Image/OBaksa.bmp", 152, 218);
-	AddImage(eImageTag::PokeBall, "Image/pokemon_ball.bmp", 48, 48);
+	AddImage(eImageTag::PokeBall, "Image/pokemon_ball.bmp", 48, 48, true, RGB(255, 0, 255));
 
 
 	// UI - MENU
@@ -151,7 +151,7 @@ void ImageManager::Init()
 	AddImage(eImageTag::PokeBallState, "Image/battle/pokeballState.bmp", 28, 112, 1, 4, true, RGB(255, 0, 255));
 	AddImage(eImageTag::AppearPoke, "Image/battle/appearPokemon.bmp", 600, 200, 3, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Monsterball, "Image/battle/Monsterball.bmp", 20, 20, 1, 1, true, RGB(255, 0, 255));
-
+	AddImage(eImageTag::Blind, "Image/Blind.bmp", 159, 206);
 
 	// UI - Shop
 	AddImage(eImageTag::HealingPoke, "Image/battle/appearPokemon.bmp", 500, 60, 10, 1, true, RGB(255, 0, 255));

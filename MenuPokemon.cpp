@@ -21,7 +21,7 @@ HRESULT MenuPokemon::Init()
 
     mIconPosY = 0;
 
-	mbControl = true;
+	mbMenu = false;
     mbPowerWindow = false;
 
     return S_OK;
@@ -29,39 +29,39 @@ HRESULT MenuPokemon::Init()
 
 void MenuPokemon::Update()
 {
-	if (mbControl == true)
-	{
-		if (Input::GetButtonDown(VK_DOWN))
-		{
-			++mPokeCnt;
-		}
-		if (Input::GetButtonDown(VK_UP))
-		{
-			--mPokeCnt;
-		}
 
-		if (mPokeCnt <= 0)
-		{
-			mPokeCnt = 0;
-		}
-		if (!POKE_MGR->mJiwooPokemon.empty())
-		{
-			if (mPokeCnt >= POKE_MGR->mJiwooPokemon.size() - 1)
-			{
-				mPokeCnt = POKE_MGR->mJiwooPokemon.size() - 1;
-			}
-		}
-		
-		if (Input::GetButtonDown('A'))
-		{
-			mbPowerWindow = true;
-		}
-		if (Input::GetButtonDown('X'))
-		{
-			mbPowerWindow = false;
-		}
-		
+	if (Input::GetButtonDown(VK_DOWN))
+	{
+		++mPokeCnt;
 	}
+	if (Input::GetButtonDown(VK_UP))
+	{
+		--mPokeCnt;
+	}
+
+	if (mPokeCnt <= 0)
+	{
+		mPokeCnt = 0;
+	}
+	if (!POKE_MGR->mJiwooPokemon.empty())
+	{
+		if (mPokeCnt >= POKE_MGR->mJiwooPokemon.size() - 1)
+		{
+			mPokeCnt = POKE_MGR->mJiwooPokemon.size() - 1;
+		}
+	}
+		
+	if (Input::GetButtonDown('A'))
+	{
+		mbPowerWindow = true;
+	}
+	if (Input::GetButtonDown('X'))
+	{
+		mbMenu = false;
+		mPokeCnt = 0;
+	}
+		
+
 }
 
 void MenuPokemon::Render(HDC hdc)

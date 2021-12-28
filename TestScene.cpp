@@ -8,43 +8,42 @@
 
 HRESULT TestScene::Init()
 {
-    //mBackGround = IMG_MGR->FindImage(eImageTag::StartRoom);
-    //aaa = IMG_MGR->FindImage(1);
-    //mJiwooPos = mJiwoo->GetPosition();
-    MAP_MGR->LoadMap("cityMap");
-    
-    CAM_MGR->SetPos(-500, -320);
-    
+    mMonsterball = IMG_MGR->FindImage(eImageTag::PokeBall);
+    mMonsterGoalIn = IMG_MGR->FindImage(eImageTag::AppearPoke);
+
+    mGoalInFrameX = 3;
+
+    mElapsedCnt = 0.0f;
+
+    mMonsterballPosX = 0;
+    mMonsterballPosY = 500;
+    mBallSpeed = 150.0f;
+    mGravity = 800.0f;
+    mHeightLimit = 80;
 
     return S_OK;
 }
 
 void TestScene::Update()
 {
-    // 지우 위 타일좌표
-   
+    float a = DELTA_TIME;
+    mElapsedCnt += (a * 100.0f);
 
-    CON_MGR->Update();
-    //SAFE_UPDATE(randomPokemon);
+    mMonsterballPosX += 300 * DELTA_TIME
+    mMonsterballPosY -= 150 * DELTA_TIME - mElapsedCnt * mGravity;
 
+    //float a = DELTA_TIME;
+    cout << mElapsedCnt << endl;
+    cout << mMonsterballPosX << endl;
+    cout << mMonsterballPosY << endl << endl;
 }
 
 void TestScene::Render(HDC hdc)
 {
-   // PatBlt(hdc, 0, 0, WIN_SIZE_X, WIN_SIZE_Y, WHITENESS);
-
-    //if (mBackGround)
-    //{
-    //    mBackGround->Render(hdc);
-    //}
-    //aaa->Render(hdc);
-    MAP_MGR->DrawMap(hdc);
-   // randomPokemon->Render(hdc);
-
-    CON_MGR->Render(hdc);
+    mMonsterball->Render(hdc, mMonsterballPosX, mMonsterballPosY);
 }
 
 void TestScene::Release()
 {
-  
+   
 }

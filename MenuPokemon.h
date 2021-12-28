@@ -1,10 +1,10 @@
 #pragma once
-#include "GameEntity.h"
+#include "MenuManager.h"
 
 class Image;
-class MenuPokemon
+class MenuPokemon : public MenuManager
 {
-protected:
+public:
 	Image* mFrame1;
 	Image* mFrame2;
 	Image* mFrame3;
@@ -23,7 +23,7 @@ protected:
 
 	int mIconPosY;
 
-	bool mbControl;
+	bool mbMenu;
 	bool mbPowerWindow;
 
 	char mSampleText[256];

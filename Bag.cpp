@@ -1,6 +1,8 @@
 #include "stdafx.h"
+#include "Config.h"
 #include "Bag.h"
 #include "Image.h"
+#include "PokemonManager.h"
 #include "InventoryManager.h"
 #include "TextManager.h"
 
@@ -12,43 +14,49 @@ HRESULT Bag::Init()
 	mBag4 = IMG_MGR->FindImage(eImageTag::Bag4);
 
 	mBagCnt = 0;
+	mProgressCnt = 0;
+
 
 	mbControl = true;
+	mbBag = false;
+	mbMonsterball = false;
+
 
 	return S_OK;
 }
 
 void Bag::Update()
 {
-	if (mbControl == true)
+	if (mbControl == true || mbBag == true)
 	{
 		if (Input::GetButtonDown(VK_DOWN))
 		{
 			++mBagCnt;
+			if (mBagCnt > 3)
+			{
+				mBagCnt = 3;
+			}
 		}
 		if (Input::GetButtonDown(VK_UP))
 		{
 			--mBagCnt;
+			if (mBagCnt <= 0)
+			{
+				mBagCnt = 0;
+			}
 		}
 
-		if (mBagCnt <= 0)
-		{
-			mBagCnt = 0;
-		}
-		if (mBagCnt > 3)
-		{
-			mBagCnt = 3;
-		}
-
+	
 		if (Input::GetButtonDown('A'))
 		{
-			mbControl = false;
+			++mProgressCnt;
 			if (mBagCnt == 0)
 			{
 				if (ITEM_MGR->mMonsterball.amount > 0)
 				{
 					--ITEM_MGR->mMonsterball.amount;
-
+					mbBag = false;
+					mbMonsterball = true;
 				}
 			}
 			if (mBagCnt == 1)
@@ -56,6 +64,7 @@ void Bag::Update()
 				if (ITEM_MGR->mPlayerHeal.amount > 0)
 				{
 					--ITEM_MGR->mPlayerHeal.amount;
+					POKE_MGR->mJiwooPokemon[0]->mHp += 20;
 				}
 			}
 			if (mBagCnt == 2)
@@ -63,7 +72,13 @@ void Bag::Update()
 				if (ITEM_MGR->mPlayerPowerHeal.amount > 0)
 				{
 					--ITEM_MGR->mPlayerPowerHeal.amount;
+					POKE_MGR->mJiwooPokemon[0]->mHp += 60;
 				}
+			}
+			if (mBagCnt == 3)
+			{
+				mbBag = false;
+				mBagCnt = 0;
 			}
 		}
 	}

@@ -40,6 +40,21 @@
     <Filter Include="Menu">
       <UniqueIdentifier>{d540ee65-11c3-423f-bbf1-689642a6fd4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Battle">
+      <UniqueIdentifier>{de437cd0-2e56-42cc-bbf1-6583c4938978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\AboutMap">
+      <UniqueIdentifier>{9fdbb946-0157-4094-98c2-b41269d873ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Openning">
+      <UniqueIdentifier>{ff418222-c147-4326-b190-29ebe99d8ce4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\ETC">
+      <UniqueIdentifier>{8ca06f1b-28df-42f1-9543-8098a7f08a06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Human">
+      <UniqueIdentifier>{dface2e6-2785-456f-9876-d534db287991}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,14 +84,8 @@
     <ClCompile Include="GameEntity.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="MapEditor.cpp">
       <Filter>TileMap</Filter>
-    </ClCompile>
-    <ClCompile Include="MapScene.cpp">
-      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="CameraManager.cpp">
       <Filter>Manager</Filter>
@@ -84,23 +93,8 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="OpeningScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Jiwoo.cpp">
-      <Filter>Character</Filter>
-    </ClCompile>
     <ClCompile Include="RandomManager.cpp">
       <Filter>Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="CityScene.cpp">
-      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>Collider</Filter>
@@ -113,24 +107,6 @@
     </ClCompile>
     <ClCompile Include="MapManager.cpp">
       <Filter>Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="CenterScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="DrOLabScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="GymScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Home1stScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Home2ndScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="MartScene.cpp">
-      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Bcane.cpp">
       <Filter>Character\Pokemon</Filter>
@@ -162,9 +138,6 @@
     <ClCompile Include="TextManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="DrOOpeningScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="MenuPokemon.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
@@ -173,6 +146,60 @@
     </ClCompile>
     <ClCompile Include="Bag.cpp">
       <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Fight.cpp">
+      <Filter>Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleManager.cpp">
+      <Filter>Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="CenterScene.cpp">
+      <Filter>Scene\AboutMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CityScene.cpp">
+      <Filter>Scene\AboutMap</Filter>
+    </ClCompile>
+    <ClCompile Include="DrOLabScene.cpp">
+      <Filter>Scene\AboutMap</Filter>
+    </ClCompile>
+    <ClCompile Include="GymScene.cpp">
+      <Filter>Scene\AboutMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Home1stScene.cpp">
+      <Filter>Scene\AboutMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Home2ndScene.cpp">
+      <Filter>Scene\AboutMap</Filter>
+    </ClCompile>
+    <ClCompile Include="MartScene.cpp">
+      <Filter>Scene\AboutMap</Filter>
+    </ClCompile>
+    <ClCompile Include="DrOOpeningScene.cpp">
+      <Filter>Scene\Openning</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningScene.cpp">
+      <Filter>Scene\Openning</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleScene.cpp">
+      <Filter>Scene\ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="MapScene.cpp">
+      <Filter>Scene\ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>Scene\ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="Jiwoo.cpp">
+      <Filter>Character\Human</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Character\Human</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterAppear.cpp">
+      <Filter>Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="CatchPokemon.cpp">
+      <Filter>Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +236,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="MapEditor.h">
       <Filter>TileMap</Filter>
     </ClInclude>
@@ -227,32 +251,14 @@
     <ClInclude Include="Extern.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MapScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="CameraManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="OpeningScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Jiwoo.h">
-      <Filter>Character</Filter>
-    </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Character</Filter>
-    </ClInclude>
     <ClInclude Include="RandomManager.h">
       <Filter>Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="CityScene.h">
-      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Collider</Filter>
@@ -265,24 +271,6 @@
     </ClInclude>
     <ClInclude Include="MapManager.h">
       <Filter>Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="CenterScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="DrOLabScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Home1stScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Home2ndScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="GymScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="MartScene.h">
-      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Bcane.h">
       <Filter>Character\Pokemon</Filter>
@@ -314,9 +302,6 @@
     <ClInclude Include="TextManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="DrOOpeningScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="MenuPokemon.h">
       <Filter>Menu</Filter>
     </ClInclude>
@@ -325,6 +310,60 @@
     </ClInclude>
     <ClInclude Include="Bag.h">
       <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleManager.h">
+      <Filter>Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Fight.h">
+      <Filter>Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="CenterScene.h">
+      <Filter>Scene\AboutMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CityScene.h">
+      <Filter>Scene\AboutMap</Filter>
+    </ClInclude>
+    <ClInclude Include="DrOLabScene.h">
+      <Filter>Scene\AboutMap</Filter>
+    </ClInclude>
+    <ClInclude Include="GymScene.h">
+      <Filter>Scene\AboutMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Home1stScene.h">
+      <Filter>Scene\AboutMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Home2ndScene.h">
+      <Filter>Scene\AboutMap</Filter>
+    </ClInclude>
+    <ClInclude Include="MartScene.h">
+      <Filter>Scene\AboutMap</Filter>
+    </ClInclude>
+    <ClInclude Include="DrOOpeningScene.h">
+      <Filter>Scene\Openning</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningScene.h">
+      <Filter>Scene\Openning</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleScene.h">
+      <Filter>Scene\ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="MapScene.h">
+      <Filter>Scene\ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>Scene\ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="Jiwoo.h">
+      <Filter>Character\Human</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>Character\Human</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterAppear.h">
+      <Filter>Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="CatchPokemon.h">
+      <Filter>Battle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

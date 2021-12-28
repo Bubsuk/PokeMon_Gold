@@ -1,8 +1,8 @@
 #pragma once
-#include "GameEntity.h"
+#include "MenuManager.h"
 
 class Image;
-class Dogam : public GameEntity
+class Dogam : public MenuManager
 {
 public:
 	Image* mDogamMain;
@@ -14,6 +14,8 @@ public:
 
 	char mSampleText[256];
 	string str;
+
+	bool mbDogam;
 	
 public:
 	HRESULT Init();

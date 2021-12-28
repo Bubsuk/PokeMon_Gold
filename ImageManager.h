@@ -53,7 +53,7 @@ enum class eImageTag
 	AppearPoke, Attack, Attack3, Bind, Cut, Cut3, fire, Growth, Horn, Light, Move, MyConfusion, 
 	MyHorn, MyPoison, MyQuickAttack, MySandAttack, MyStringShot, Poison, RazorWind, Shine, ElectricShock,
 	SkyAttack, Slash, SmokeScreen, Snap, Spark, Squall, WildConfusion, WildHorn, WildPoisonSting, 
-	WildQuickAttack, WildSandAttack, WildStingShot, WalkGrass1, WalkGrass2, Shadow, Monsterball,
+	WildQuickAttack, WildSandAttack, WildStingShot, WalkGrass1, WalkGrass2, Shadow, Monsterball, Blind,
 
 	// End Scene
 	End1, End2, End3, End4, EndPoke1, EndPoke2, EndPoke3, EndPoke4,

@@ -54,11 +54,6 @@ HRESULT Jiwoo::Init()
 
 void Jiwoo::Update()
 { 
-    if (mbMenuSwitch == true)
-    {
-        mMenu->Update();
-    }
-
     mElapsedCount += DELTA_TIME;
     mCoolTimeCnt += DELTA_TIME;
     if (mCoolTimeCnt > 3.0f)
@@ -360,11 +355,11 @@ void Jiwoo::Update()
     {
         mbMenuSwitch = false;
         mbControlSwitch = true;
+    }
 
-        mMenu->mbMenuCon = true;
-        mMenu->mbDogam = false;
-        mMenu->mbPokemon = false;
-        mMenu->mbGear = false;
+    if (mbMenuSwitch == true)
+    {
+        mMenu->Update();
     }
 
 }

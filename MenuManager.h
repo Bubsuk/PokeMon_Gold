@@ -44,13 +44,6 @@ public:
 	Image* mPlayerStat1;
 	Image* mPlayerStat2;
 
-	bool mbMenu;
-	bool mbMenuCon;
-
-	bool mbDogam;
-	bool mbPokemon;
-	bool mbBag;
-	bool mbGear;
 
 
 public:

@@ -16,23 +16,16 @@ HRESULT MenuManager::Init()
 	mMenuSetting = IMG_MGR->FindImage(eImageTag::MenuSet);
 	mMenuClose = IMG_MGR->FindImage(eImageTag::MenuClose);
 
-	mbMenuCon = true;
-
 	mDogam = new Dogam;
 	mDogam->Init();
-	mbDogam = false;
-
+	
 	mPokeMenu = new MenuPokemon;
 	mPokeMenu->Init();
-	mbPokemon = false;
-
+	
 	mBag = new Bag;
 	mBag->Init();
-	mbBag = false;
 
 	mMenuCnt = 0;
-
-	//mbMenu = false;
 
 	return S_OK;
 }
@@ -40,9 +33,7 @@ HRESULT MenuManager::Init()
 void MenuManager::Update()
 {
 
-	
-
-	if (mbMenuCon == true)
+	if ((mDogam->mbDogam == false) && (mPokeMenu->mbMenu == false) && (mBag->mbBag == false))
 	{
 		if (Input::GetButtonDown(VK_DOWN))
 		{
@@ -61,59 +52,38 @@ void MenuManager::Update()
 		{
 			mMenuCnt = 6;
 		}
-
-		
 	}
 	
-
 	if (Input::GetButtonDown('Z'))
 	{
-		mbMenuCon = false;
 
 		switch (mMenuCnt)
 		{
 		case 0:
-			mbDogam = true;
+			mDogam->mbDogam = true;
 			break;
 		case 1:
-			mbPokemon = true;
+			mPokeMenu->mbMenu = true;
 			break;
 		case 2:
-			mbBag = true;
+			mBag->mbBag = true;
 			break;
 		default:
 			break;
 		}
 	}
 
-	if (mbMenuCon == false && mbDogam == true)
+	if (mDogam->mbDogam == true)
 	{
 		mDogam->Update();
 	}
-	if (mbMenuCon == false && mbPokemon == true)
+	if (mPokeMenu->mbMenu == true)
 	{
 		mPokeMenu->Update();
 	}
-	if (mbMenuCon == false && mbBag == true)
+	if (mBag->mbBag == true)
 	{
 		mBag->Update();
-	}
-	
-	if ((mbDogam == true || mbPokemon == true) && Input::GetButtonDown('X'))
-	{
-		mbMenuCon = true;
-		mbDogam = false;
-		mbPokemon = false;
-		mbGear = false;
-	}
-	if (mBag->mBagCnt == 3 && mbBag == true)
-	{
-		if (Input::GetButtonDown('Z'))
-		{
-			mbMenuCon = true;
-			mBag->mBagCnt = 0;
-			mbBag = false;
-		}
 	}
 
 }
@@ -123,7 +93,7 @@ void MenuManager::Render(HDC hdc)
 	if (mMenuCnt == 0)
 	{
 		mMenuDogam->Render(hdc, WIN_SIZE_X / 2 + 192, WIN_SIZE_Y - WIN_SIZE_Y / 2);
-		if (mbDogam == true)
+		if (mDogam->mbDogam == true)
 		{
 			mDogam->Render(hdc);
 		}
@@ -131,7 +101,7 @@ void MenuManager::Render(HDC hdc)
 	if (mMenuCnt == 1)
 	{
 		mMenuPoke->Render(hdc, WIN_SIZE_X / 2 + 192, WIN_SIZE_Y - WIN_SIZE_Y / 2);
-		if (mbPokemon == true)
+		if (mPokeMenu->mbMenu == true)
 		{
 			mPokeMenu->Render(hdc);
 		}
@@ -139,7 +109,7 @@ void MenuManager::Render(HDC hdc)
 	if (mMenuCnt == 2)
 	{
 		mMenuBag->Render(hdc, WIN_SIZE_X / 2 + 192, WIN_SIZE_Y - WIN_SIZE_Y / 2);
-		if (mbBag == true)
+		if (mBag->mbBag == true)
 		{
 			mBag->Render(hdc);
 		}

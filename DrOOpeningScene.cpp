@@ -45,6 +45,12 @@ void DrOOpeningScene::Update()
 
 void DrOOpeningScene::Render(HDC hdc)
 {
+    SetTextColor(hdc, RGB(0, 0, 0));
+    SetBkColor(hdc, RGB(248, 248, 248));
+    HFONT hFont = CreateFont(36, 0, 0, 0, 700, 0, 0, 0, ANSI_CHARSET, 3, 2, 1,
+        18, TEXT("PokemonGSC"));
+    HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+
     mBackground->Render(hdc);
     mDialogue->Render(hdc, WIN_SIZE_X / 2, WIN_SIZE_Y / 2);
     mOBaksa->Render(hdc, WIN_SIZE_X / 2, WIN_SIZE_Y / 2 - 50);
@@ -58,6 +64,8 @@ void DrOOpeningScene::Render(HDC hdc)
     sprintf_s(mText, ch);
     RECT rc = { 25, WIN_SIZE_Y / 2 + 135, WIN_SIZE_X - 50, WIN_SIZE_Y - 30 };
     DrawText(hdc, mText, -1, &rc, DT_WORDBREAK);
+
+    DeleteObject(SelectObject(hdc, hOldFont));
 }
 
 void DrOOpeningScene::Release()
