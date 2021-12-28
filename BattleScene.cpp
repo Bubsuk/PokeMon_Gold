@@ -167,7 +167,6 @@ void BattleScene::Update()
 		}
 		if (Input::GetButtonDown('Z') && mCursorCnt == 3)
 		{
-			SAFE_DELETE(POKE_MGR->mTempPokemon);
 			SCENE_MGR->ChangeScene(eSceneTag::CityScene);
 		}
 
@@ -438,6 +437,7 @@ void BattleScene::UseMonsterBall(HDC hdc)
 {
 }
 
+// 포물선 그리는 함수 공부해보자
 POINT BattleScene::DrawMonsterballLine(int curTime)
 {
 	POINT before, after, result;

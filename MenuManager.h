@@ -10,7 +10,7 @@ class MenuManager : public GameEntity
 public:
 
 	Dogam* mDogam;
-	MenuPokemon* mPokemon;
+	MenuPokemon* mPokeMenu;
 	Bag* mBag;
 
 

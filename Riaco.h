@@ -14,6 +14,7 @@ public:
 		mTypeIndexY = 0;
 
 		mName = "¸®¾ÆÄÚ";
+		strcpy_s(chName, mName.c_str());
 
 		if (RandomManager::PercentMaker(87) == true) mGender = Gender::Male;
 		else mGender = Gender::Female;

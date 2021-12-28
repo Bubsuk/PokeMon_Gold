@@ -17,29 +17,23 @@ HRESULT Dogam::Init()
 
 void Dogam::Update()
 {
-
 	if (Input::GetButtonDown(VK_DOWN))
 	{
 		++mSelectCnt;
-		mSelectPos.y += 70;
 	}
 	if (Input::GetButtonDown(VK_UP))
 	{
 		--mSelectCnt;
-		mSelectPos.y -= 70;
 	}
 
-	// 벡터 중복 제거 후 사이즈가 안줄어들음
+	mSelectPos.y = 75 + (mSelectCnt * 70);
 
-	if (mSelectCnt >= POKE_MGR->mPokeDogam.size() || mSelectCnt > 6)
+	if (mSelectCnt > POKE_MGR->mPokeDogam.size() - 1 || mSelectCnt > 6)
 	{
 		mSelectCnt = 0;
 		mSelectPos = { WIN_SIZE_X - 202, 75 };
 	}
 
-	
-
-	
 }
 
 void Dogam::Render(HDC hdc)
@@ -48,6 +42,7 @@ void Dogam::Render(HDC hdc)
 
 	if (!POKE_MGR->mPokeDogam.empty())
 	{
+		int cnt = 0;
 		for (int i = 0; i < POKE_MGR->mPokeDogam.size(); ++i)
 		{
 			SetTextColor(hdc, RGB(255, 255, 255));
@@ -56,13 +51,13 @@ void Dogam::Render(HDC hdc)
 				18, TEXT("PokemonGSC"));
 			HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
 
-			sprintf_s(mSampleText, POKE_MGR->mPokeDogam[i].second->chName);
+			sprintf_s(mSampleText, POKE_MGR->mPokeDogam[i]->chName);
 			TextOut(hdc, WIN_SIZE_X - 250, 55 +(70 * i), mSampleText, strlen(mSampleText));
 			
 			DeleteObject(SelectObject(hdc, hOldFont));
 		}
 
-		POKE_MGR->mPokeDogam[mSelectCnt].second->mFrontImg->Render(hdc, 145, 145);
+		POKE_MGR->mPokeDogam[mSelectCnt]->mFrontImg->Render(hdc, 145, 145);
 
 	}
 

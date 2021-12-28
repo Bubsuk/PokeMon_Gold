@@ -24,7 +24,9 @@ HRESULT Home2ndScene::Init()
 void Home2ndScene::Update()
 {
 	
-	if (CON_MGR->mState == eDir::Up && Collider::CheckDoor() == true)
+	if (CON_MGR->mState == eDir::Up 
+		&& Collider::CheckDoor() == true 
+		&& CAM_MGR->GetCamPos().y >= 0)
 	{
 		SCENE_MGR->mbStartScene = false;
 		POINT warfPos = { -5375, -64 };

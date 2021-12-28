@@ -22,8 +22,8 @@ HRESULT MenuManager::Init()
 	mDogam->Init();
 	mbDogam = false;
 
-	mPokemon = new MenuPokemon;
-	mPokemon->Init();
+	mPokeMenu = new MenuPokemon;
+	mPokeMenu->Init();
 	mbPokemon = false;
 
 	mBag = new Bag;
@@ -92,14 +92,14 @@ void MenuManager::Update()
 	}
 	if (mbMenuCon == false && mbPokemon == true)
 	{
-		mPokemon->Update();
+		mPokeMenu->Update();
 	}
 	if (mbMenuCon == false && mbBag == true)
 	{
 		mBag->Update();
 	}
 	
-	if (Input::GetButtonDown('X'))
+	if ((mbDogam == true || mbPokemon == true) && Input::GetButtonDown('X'))
 	{
 		mbMenuCon = true;
 		mbDogam = false;
@@ -133,7 +133,7 @@ void MenuManager::Render(HDC hdc)
 		mMenuPoke->Render(hdc, WIN_SIZE_X / 2 + 192, WIN_SIZE_Y - WIN_SIZE_Y / 2);
 		if (mbPokemon == true)
 		{
-			mPokemon->Render(hdc);
+			mPokeMenu->Render(hdc);
 		}
 	}
 	if (mMenuCnt == 2)
@@ -166,6 +166,6 @@ void MenuManager::Render(HDC hdc)
 void MenuManager::Release()
 {
 	SAFE_RELEASE(mDogam);
-	SAFE_RELEASE(mPokemon);
+	SAFE_RELEASE(mPokeMenu);
 	SAFE_RELEASE(mBag);
 }

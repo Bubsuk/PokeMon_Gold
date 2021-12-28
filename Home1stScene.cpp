@@ -9,7 +9,7 @@ HRESULT Home1stScene::Init()
 	MAP_MGR->LoadMap("etcMap");
 	CAM_MGR->SetPos(-4544, -64);
 	
-	mTo2ndFloor = { -4544, 0 };
+
 	mToOutdoor = { -4416, -448 };
 	return S_OK;
 }
@@ -18,13 +18,15 @@ void Home1stScene::Update()
 {
 	
 
-	if(CON_MGR->mState == eDir::Up &&
-		CAM_MGR->GetCamPos().x == mTo2ndFloor.x
-		&& CAM_MGR->GetCamPos().y == mTo2ndFloor.y)
+	if(CON_MGR->mState == eDir::Up 
+		&& Collider::CheckDoor() == true
+		&& CAM_MGR->GetCamPos().y >= 0)
 	{
 		SCENE_MGR->ChangeScene(eSceneTag::Home2ndScene);
 	}
-	else if(CON_MGR->mState == eDir::Down && Collider::CheckDoor() == true)
+	else if(CON_MGR->mState == eDir::Down 
+		&& Collider::CheckDoor() == true
+		&& CAM_MGR->GetCamPos().y <= -448)
 	{
 		POINT outDoor;
 		outDoor.x = -7488;

@@ -20,14 +20,37 @@ void PokemonManager::Init()
 	RegistDogam(PIKACHU);
 	RegistDogam(CHIKO);
 	///////////////////////////////////////
+
+	mExisted = false;
 }
 
 void PokemonManager::RegistDogam(Pokemon* monster)
 {
-	mPokeDogam.emplace_back(monster->mPokeSpecies, monster);
+	if (mPokeDogam.empty())
+	{
+		mPokeDogam.emplace_back(monster);
+	}
+	else if(!mPokeDogam.empty())
+	{
+		if (CheckExisted(monster) == true)
+		{
+			return;
+		}
+		else mPokeDogam.emplace_back(monster);
+	}
+	
+}
 
-	sort(mPokeDogam.begin(), mPokeDogam.end());
-	mPokeDogam.erase(unique(mPokeDogam.begin(), mPokeDogam.end()), mPokeDogam.end());
+bool PokemonManager::CheckExisted(Pokemon* monster)
+{
+	for (int i = 0; i < mPokeDogam.size(); ++i)
+	{
+		if (mPokeDogam[i]->mPokeSpecies == monster->mPokeSpecies)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 void PokemonManager::CatchPoke(Pokemon* monster)
@@ -38,6 +61,15 @@ void PokemonManager::CatchPoke(Pokemon* monster)
 void PokemonManager::KillPoke(Pokemon* monster)
 {
 	SAFE_DELETE(monster);
+}
+
+
+
+// 오박사 NPC 나오면 수정
+void PokemonManager::Release()
+{
+	SAFE_RELEASE(PIKACHU);
+	SAFE_RELEASE(CHIKO);
 }
 
 
@@ -67,7 +99,4 @@ Pokemon* PokemonManager::FactoryFunc(ePokemon pokemon)
 		break;
 	}
 }
-
-
-
 

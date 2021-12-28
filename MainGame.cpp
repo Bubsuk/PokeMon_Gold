@@ -49,7 +49,7 @@ HRESULT MainGame::Init()
 	POINT g_maxSize = {TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y};
 
 #else
-	SCENE_MGR->ChangeScene(eSceneTag::CenterScene);
+	SCENE_MGR->ChangeScene(eSceneTag::Home2ndScene);
 	POINT g_maxSize = { WIN_SIZE_X, WIN_SIZE_Y };
 
 #endif
@@ -100,6 +100,7 @@ void MainGame::Release()
 
 	ITEM_MGR->ReleaseSingleton();
 
+	POKE_MGR->Release();
 	POKE_MGR->ReleaseSingleton();
 
 	KillTimer(g_hWnd, 0);
