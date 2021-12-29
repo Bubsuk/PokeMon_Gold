@@ -13,54 +13,58 @@ HRESULT Fight::Init()
 
 	mSkillCursorPos = { 60, WIN_SIZE_Y / 2 + 60 };
 
-	TXT_MGR->BattleScript();
+	
 
     return S_OK;
 }
 
 void Fight::Update()
 {
-	mSkillCursorPos.y = WIN_SIZE_Y / 2 + 60 + (60 * mSkillCurCnt);
-	if (Input::GetButtonDown(VK_DOWN))
+	if (mbFight == true)
 	{
-		++mSkillCurCnt;
-		if (mSkillCurCnt > POKE_MGR->mJiwooPokemon[0]->mPokeSkill.size() - 1)
+		mSkillCursorPos.y = WIN_SIZE_Y / 2 + 60 + (60 * mSkillCurCnt);
+		if (Input::GetButtonDown(VK_DOWN))
 		{
+			++mSkillCurCnt;
+			if (mSkillCurCnt > POKE_MGR->mJiwooPokemon[0]->mPokeSkill.size() - 1)
+			{
+				mSkillCurCnt = 0;
+			}
+		}
+		if (Input::GetButtonDown(VK_UP))
+		{
+			--mSkillCurCnt;
+			if (mSkillCurCnt < 0)
+			{
+				mSkillCurCnt = POKE_MGR->mJiwooPokemon[0]->mPokeSkill.size() - 1;
+			}
+		}
+
+		if (Input::GetButtonDown('Z'))
+		{
+			++mProgressCnt;
+			if (mProgressCnt == 1)
+			{
+				Attack mfAttack{ POKE_MGR->mTempPokemon->mHp };
+				POKE_MGR->mTempPokemon->mHp = mfAttack(POKE_MGR->mJiwooPokemon[0]->mPokeSkill[mSkillCurCnt]->mAttack);
+			}
+			else if (mProgressCnt == 2)
+			{
+				mEnemySkillNum = RandomManager::RandomPeeker(0, POKE_MGR->mTempPokemon->mPokeSkill.size() - 1);
+				Attacked mfAttacked{ POKE_MGR->mTempPokemon, mEnemySkillNum };
+				POKE_MGR->mJiwooPokemon[0]->mHp = mfAttacked(POKE_MGR->mTempPokemon, mEnemySkillNum);
+			}
+
+		}
+
+		if (Input::GetButtonDown('X') || mProgressCnt == 3)
+		{
+			mbFight = false;
 			mSkillCurCnt = 0;
+			mProgressCnt = 0;
 		}
 	}
-	if (Input::GetButtonDown(VK_UP))
-	{
-		--mSkillCurCnt;
-		if (mSkillCurCnt < 0)
-		{
-			mSkillCurCnt = POKE_MGR->mJiwooPokemon[0]->mPokeSkill.size() - 1;
-		}
-	}
-
-	if (Input::GetButtonDown('Z'))
-	{
-		++mProgressCnt;
-		if (mProgressCnt == 1)
-		{
-			Attack mfAttack{ POKE_MGR->mTempPokemon->mHp };
-			POKE_MGR->mTempPokemon->mHp = mfAttack(POKE_MGR->mJiwooPokemon[0]->mPokeSkill[mSkillCurCnt]->mAttack);
-		}
-		else if (mProgressCnt == 2)
-		{
-			mEnemySkillNum = RandomManager::RandomPeeker(0, POKE_MGR->mTempPokemon->mPokeSkill.size() - 1);
-			Attacked mfAttacked{ POKE_MGR->mTempPokemon, mEnemySkillNum };
-			POKE_MGR->mJiwooPokemon[0]->mHp = mfAttacked(POKE_MGR->mTempPokemon, mEnemySkillNum);
-		}
-		
-	}
-
-	if (Input::GetButtonDown('X') || mProgressCnt == 3)
-	{
-		mbFight = false;
-		mSkillCurCnt = 0;
-		mProgressCnt = 0;
-	}
+	
 }
 
 void Fight::Render(HDC hdc)
@@ -83,7 +87,8 @@ void Fight::Render(HDC hdc)
 			TextOut(hdc, 80, WIN_SIZE_Y / 2 + 30 + (60 * i), mText, strlen(mText));
 
 
-			DeleteObject(SelectObject(hdc, oldFont));
+			SelectObject(hdc, oldFont);
+			DeleteObject(font);
 		}
 	}
 	if (mProgressCnt == 1)

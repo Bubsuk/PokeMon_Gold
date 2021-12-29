@@ -28,6 +28,7 @@ void PokemonManager::RegistDogam(Pokemon* monster)
 {
 	if (mPokeDogam.empty())
 	{
+		
 		mPokeDogam.emplace_back(monster);
 	}
 	else if(!mPokeDogam.empty())

@@ -65,7 +65,8 @@ void DrOOpeningScene::Render(HDC hdc)
     RECT rc = { 25, WIN_SIZE_Y / 2 + 135, WIN_SIZE_X - 50, WIN_SIZE_Y - 30 };
     DrawText(hdc, mText, -1, &rc, DT_WORDBREAK);
 
-    DeleteObject(SelectObject(hdc, hOldFont));
+    SelectObject(hdc, hOldFont);
+    DeleteObject(hFont);
 }
 
 void DrOOpeningScene::Release()

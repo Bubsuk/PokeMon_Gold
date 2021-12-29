@@ -61,7 +61,8 @@ void Dogam::Render(HDC hdc)
 			sprintf_s(mSampleText, POKE_MGR->mPokeDogam[i]->chName);
 			TextOut(hdc, WIN_SIZE_X - 250, 55 +(70 * i), mSampleText, strlen(mSampleText));
 			
-			DeleteObject(SelectObject(hdc, hOldFont));
+			SelectObject(hdc, hOldFont);
+			DeleteObject(hFont);
 		}
 
 		POKE_MGR->mPokeDogam[mSelectCnt]->mFrontImg->Render(hdc, 145, 145);

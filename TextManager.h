@@ -21,5 +21,7 @@ public:
 	void BattleScript();
 	void ItemScript();
 
+	void ClearBattleScript();
+
 };
 

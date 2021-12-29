@@ -33,7 +33,11 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 {
 #ifdef _DEBUG
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//_CrtSetBreakAlloc(1778);
 	//_CrtSetBreakAlloc(185);
+	//_CrtMemDumpAllObjectsSince(0);
+	_CrtDumpMemoryLeaks();
+
 #endif
 
 	// 윈도우를 생성하기 위한 기본 셋팅

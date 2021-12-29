@@ -20,7 +20,7 @@ HRESULT BattleManager::Init()
 	mExpGauge = IMG_MGR->FindImage(eImageTag::ExpGauge);
 	mGender = IMG_MGR->FindImage(eImageTag::Gender);
 	
-
+	TXT_MGR->BattleScript();
 
 	mAppear = new MonsterAppear;
 	mAppear->Init();
@@ -56,33 +56,25 @@ HRESULT BattleManager::Init()
 void BattleManager::Update()
 {
 	mElasedCnt += DELTA_TIME;
-	if (mAppear->mbAppeared == false)
-	{
-		mAppear->Update();
-	}
-	if (mFightScene->mbFight == true)
-	{
-		mFightScene->Update();
-	}
-	if (mMenuPoke->mbMenu == true)
-	{
-		mMenuPoke->Update();
-	}
-	if (mBag->mbBag == true)
-	{
-		mBag->Update();
-	}
+
+	mAppear->Update();
+
+	mFightScene->Update();
+
+	mMenuPoke->Update();
+
+	mBag->Update();
+
 	if (mBag->mbMonsterball == true)
-	{	
+	{
 		mCatchScene->mbCatch = true;
 	}
-	if (mCatchScene->mbCatch == true)
-	{
-		mCatchScene->Update();
-	}
 
-	if (mAppear->mbAppeared == true && mFightScene->mbFight == false 
-		&& mBag->mbBag == false && mMenuPoke->mbMenu == false)
+	mCatchScene->Update();
+
+
+	if (mMenuPoke->mbMenu == false && mFightScene->mbFight == false
+		&& mBag->mbBag == false && mAppear->mbAppeared == true)
 	{
 		if (Input::GetButtonDown(VK_DOWN))
 		{
@@ -117,16 +109,13 @@ void BattleManager::Update()
 		{
 			mBag->mbBag = true;
 		}
-		if (Input::GetButtonDown('Z') && mCursorCnt == 3)
+		if ((Input::GetButtonDown('Z') && mCursorCnt == 3) || mCatchScene->mbCatchEnd == true)
 		{
+			TXT_MGR->ClearBattleScript();
 			SCENE_MGR->ChangeScene(eSceneTag::CityScene);
 		}
-		if (mCatchScene->mbCatchEnd == true)
-		{
-			SCENE_MGR->ChangeScene(eSceneTag::CityScene);
-		}
+		
 	}
-	
 	
 	
 }
@@ -162,12 +151,8 @@ void BattleManager::Render(HDC hdc)
 		mCatchScene->Render(hdc);
 	}
 
-
-	
-
-
-
-	DeleteObject(SelectObject(hdc, hOldFont));
+	SelectObject(hdc, hOldFont);
+	DeleteObject(hFont);
 }
 
 void BattleManager::Release()

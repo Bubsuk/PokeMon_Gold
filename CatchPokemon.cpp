@@ -25,37 +25,41 @@ HRESULT CatchPokemon::Init()
     mParticle = true;
     mbCatchEnd = false;
 
-    TXT_MGR->BattleScript();
+   
 
     return S_OK;
 }
 
 void CatchPokemon::Update()
 {
-    mElapsedCnt += DELTA_TIME;
- /*   mMonsterballPos.x += mBallSpeed * DELTA_TIME;
-    mMonsterballPos.y -= mBallSpeed * DELTA_TIME;*/
-
-    if (mElapsedCnt > 1.0f)
+    if (mbCatch == true)
     {
-        POKE_MGR->CatchPoke(POKE_MGR->mTempPokemon);
-        mbCatch = false;
-        mbCatchEnd = true;
-        
-    }
+        mElapsedCnt += DELTA_TIME;
+        /*   mMonsterballPos.x += mBallSpeed * DELTA_TIME;
+           mMonsterballPos.y -= mBallSpeed * DELTA_TIME;*/
 
-    if (mParticle == true)
-    {
-        if (mElapsedCnt > 0.15f)
+        if (mElapsedCnt > 1.0f)
         {
-            --mGoalInFrameX;
-            mElapsedCnt = 0.0f;
+            POKE_MGR->CatchPoke(POKE_MGR->mTempPokemon);
+            mbCatch = false;
+            mbCatchEnd = true;
+
         }
-        if (mGoalInFrameX < 0)
+
+        if (mParticle == true)
         {
-            mParticle = false;
+            if (mElapsedCnt > 0.15f)
+            {
+                --mGoalInFrameX;
+                mElapsedCnt = 0.0f;
+            }
+            if (mGoalInFrameX < 0)
+            {
+                mParticle = false;
+            }
         }
     }
+   
    
 }
 

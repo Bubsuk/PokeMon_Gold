@@ -9,7 +9,7 @@ void TextManager::Init()
 	ReadScript("Dialogue/DrODialogue.txt", mDrOScript);
 
 	ItemScript();
-		
+	
 }
 
 void TextManager::ReadScript(const char* directory, vector<string> &strvec)
@@ -64,4 +64,15 @@ void TextManager::ItemScript()
 	mItemScript.emplace_back("체력을 60 회복시킨다");
 	
 }
+
+void TextManager::ClearBattleScript()
+{
+	mBattleScript.clear();
+	vector<string>().swap(mBattleScript);
+
+	mBattleScript1.clear();
+	vector<string>().swap(mBattleScript1);
+}
+
+
 

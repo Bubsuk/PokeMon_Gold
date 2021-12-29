@@ -12,7 +12,6 @@ HRESULT BattleScene::Init()
 void BattleScene::Update()
 {
 	mBattle->Update();
-    
 }
 
 void BattleScene::Render(HDC hdc)
@@ -22,7 +21,6 @@ void BattleScene::Render(HDC hdc)
 
 void BattleScene::Release()
 {
-	mBattle->Release();
 	SAFE_RELEASE(mBattle);
 }
 

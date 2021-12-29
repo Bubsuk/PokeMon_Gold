@@ -16,8 +16,6 @@ HRESULT Bag::Init()
 	mBagCnt = 0;
 	mProgressCnt = 0;
 
-
-	mbControl = true;
 	mbBag = false;
 	mbMonsterball = false;
 
@@ -27,7 +25,7 @@ HRESULT Bag::Init()
 
 void Bag::Update()
 {
-	if (mbControl == true || mbBag == true)
+	if (mbBag == true)
 	{
 		if (Input::GetButtonDown(VK_DOWN))
 		{
@@ -103,8 +101,8 @@ void Bag::Render(HDC hdc)
 		sprintf_s(mSampleText, ch);
 		RECT rc = { 25, WIN_SIZE_Y / 2 + 135, WIN_SIZE_X - 50, WIN_SIZE_Y - 30 };
 		DrawText(hdc, mSampleText, -1, &rc, DT_WORDBREAK);
-
-		DeleteObject(SelectObject(hdc, hOldFont));
+		SelectObject(hdc, hOldFont);
+		DeleteObject(hFont);
 	}
 	if (mBagCnt == 1)
 	{
@@ -121,7 +119,8 @@ void Bag::Render(HDC hdc)
 		RECT rc = { 25, WIN_SIZE_Y / 2 + 135, WIN_SIZE_X - 50, WIN_SIZE_Y - 30 };
 		DrawText(hdc, mSampleText, -1, &rc, DT_WORDBREAK);
 
-		DeleteObject(SelectObject(hdc, hOldFont));
+		SelectObject(hdc, hOldFont);
+		DeleteObject(hFont);
 	}
 	if (mBagCnt == 2)
 	{
@@ -138,7 +137,8 @@ void Bag::Render(HDC hdc)
 		RECT rc = { 25, WIN_SIZE_Y / 2 + 135, WIN_SIZE_X - 50, WIN_SIZE_Y - 30 };
 		DrawText(hdc, mSampleText, -1, &rc, DT_WORDBREAK);
 
-		DeleteObject(SelectObject(hdc, hOldFont));
+		SelectObject(hdc, hOldFont);
+		DeleteObject(hFont);
 	}
 	if (mBagCnt == 3)
 	{
@@ -160,7 +160,8 @@ void Bag::Render(HDC hdc)
 	sprintf_s(mSampleText, "%d", ITEM_MGR->mPlayerPowerHeal.amount);
 	TextOut(hdc, 580, 205, mSampleText, strlen(mSampleText));
 
-	DeleteObject(SelectObject(hdc, hOldFont));
+	SelectObject(hdc, hOldFont);
+	DeleteObject(hFont);
 }
 
 void Bag::Release()

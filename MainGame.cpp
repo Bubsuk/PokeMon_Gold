@@ -5,6 +5,7 @@
 #include "CommonFunction.h"
 #include "Jiwoo.h"
 #include "PokemonManager.h"
+#include "MapManager.h"
 
 
 // #define TILETOOL
@@ -49,7 +50,7 @@ HRESULT MainGame::Init()
 	POINT g_maxSize = {TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y};
 
 #else
-	SCENE_MGR->ChangeScene(eSceneTag::OpeningScene);
+	SCENE_MGR->ChangeScene(eSceneTag::CenterScene);
 	POINT g_maxSize = { WIN_SIZE_X, WIN_SIZE_Y };
 
 #endif
@@ -78,8 +79,8 @@ void MainGame::Render(HDC hdc)
 	PatBlt(hBackBufferDC, 0, 0, backBuffer->GetWidth(), backBuffer->GetHeight(), WHITENESS);
 
 	SCENE_MGR->Render(hBackBufferDC);
-
-	DeleteObject(SelectObject(backBuffer->GetMemDC(), oldFont));
+	SelectObject(backBuffer->GetMemDC(), oldFont);
+	DeleteObject(font);
 	backBuffer->Render(hdc);
 	
 }
@@ -103,6 +104,8 @@ void MainGame::Release()
 
 	POKE_MGR->Release();
 	POKE_MGR->ReleaseSingleton();
+
+	MAP_MGR->ReleaseSingleton();
 
 	KillTimer(g_hWnd, 0);
 }

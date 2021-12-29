@@ -282,7 +282,8 @@ void MapEditor::Render(HDC hdc)
 	wsprintf(mSampleText, "LeftBlock = 6");
 	TextOut(hdc, TILE_MAP_TOOL_X - mSampleTileImage->GetWidth(), mSampleTileImage->GetHeight() + 300, mSampleText, strlen(mSampleText));
 
-	DeleteObject(SelectObject(hdc, oldFont));
+	SelectObject(hdc, oldFont);
+	DeleteObject(hFont);
 }
 
 void MapEditor::Release()

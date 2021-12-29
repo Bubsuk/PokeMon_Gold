@@ -16,7 +16,7 @@ void ImageManager::Init()
 	AddImage(eImageTag::Mart, "Image/pokemon_mart.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Nurse, "Image/pokemon_nurse.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Master, "Image/pokemon_master.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
-	AddImage(eImageTag::Master_sub, "Image/master_sub.bmp", 128, 64, 2, 1, true, RGB(255, 0, 255));
+	//AddImage(eImageTag::Master_sub, "Image/master_sub.bmp", 128, 64, 2, 1, true, RGB(255, 0, 255));
 	
 	// Æ÷ÄÏ¸ó
 	AddImage(eImageTag::Caterpie_R, "Image/pokemon/no_10B.bmp", 192, 192, 1, 1, true, RGB(255, 0, 255));

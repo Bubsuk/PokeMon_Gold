@@ -31,42 +31,49 @@ HRESULT MonsterAppear::Init()
 
 void MonsterAppear::Update()
 {
-	mElasedCnt += DELTA_TIME;
+	cout << TXT_MGR->mBattleScript.size() << endl;
+	cout << mAppProgCnt << endl << endl;
 
-	mPlayerAppearX = WIN_SIZE_X + 100 - (WIN_SIZE_X - 50) * mElasedCnt / 1.5f;
-	mBattlePokePosX = -100 + (WIN_SIZE_X - 50) * mElasedCnt / 1.5f;
-
-	if (mElasedCnt > 1.5f)
+	if (mbAppeared == false)
 	{
-		mPlayerAppearX = 150;
-		mBattlePokePosX = WIN_SIZE_X - 150;
-		
-		if (mAppProgCnt >= TXT_MGR->mBattleScript.size())
-		{
-			mbScripted = true;
-			mElasedCnt = 0.0f;
-		}
-	}
+		mElasedCnt += DELTA_TIME;
 
-	if (mbScripted == true)
-	{
-		if (mElasedCnt > 0.15f)
+		mPlayerAppearX = WIN_SIZE_X + 100 - (WIN_SIZE_X - 50) * mElasedCnt / 1.5f;
+		mBattlePokePosX = -100 + (WIN_SIZE_X - 50) * mElasedCnt / 1.5f;
+
+		if (mElasedCnt > 1.5f)
 		{
-			--mFrameX;
-			mElasedCnt = 0.0f;
-			
+			mPlayerAppearX = 150;
+			mBattlePokePosX = WIN_SIZE_X - 150;
+
+			if (mAppProgCnt >= TXT_MGR->mBattleScript.size())
+			{
+				mbScripted = true;
+				mElasedCnt = 0.0f;
+			}
 		}
-		if (mFrameX < 0)
+
+		if (mbScripted == true)
 		{
-			mbParticle = true;
-			mbAppeared = true;
+			if (mElasedCnt > 0.15f)
+			{
+				--mFrameX;
+				mElasedCnt = 0.0f;
+
+			}
+			if (mFrameX < 0)
+			{
+				mbParticle = true;
+				mbAppeared = true;
+			}
+		}
+
+		if (Input::GetButtonDown('Z'))
+		{
+			++mAppProgCnt;
 		}
 	}
 	
-	if (Input::GetButtonDown('Z'))
-	{
-		++mAppProgCnt;
-	}
 
 }
 

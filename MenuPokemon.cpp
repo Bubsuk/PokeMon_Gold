@@ -29,39 +29,41 @@ HRESULT MenuPokemon::Init()
 
 void MenuPokemon::Update()
 {
-
-	if (Input::GetButtonDown(VK_DOWN))
+	if (mbMenu == true)
 	{
-		++mPokeCnt;
-	}
-	if (Input::GetButtonDown(VK_UP))
-	{
-		--mPokeCnt;
-	}
-
-	if (mPokeCnt <= 0)
-	{
-		mPokeCnt = 0;
-	}
-	if (!POKE_MGR->mJiwooPokemon.empty())
-	{
-		if (mPokeCnt >= POKE_MGR->mJiwooPokemon.size() - 1)
+		if (Input::GetButtonDown(VK_DOWN))
 		{
-			mPokeCnt = POKE_MGR->mJiwooPokemon.size() - 1;
+			++mPokeCnt;
 		}
-	}
-		
-	if (Input::GetButtonDown('A'))
-	{
-		mbPowerWindow = true;
-	}
-	if (Input::GetButtonDown('X'))
-	{
-		mbMenu = false;
-		mPokeCnt = 0;
-	}
-		
+		if (Input::GetButtonDown(VK_UP))
+		{
+			--mPokeCnt;
+		}
 
+		if (mPokeCnt <= 0)
+		{
+			mPokeCnt = 0;
+		}
+		if (!POKE_MGR->mJiwooPokemon.empty())
+		{
+			if (mPokeCnt >= POKE_MGR->mJiwooPokemon.size() - 1)
+			{
+				mPokeCnt = POKE_MGR->mJiwooPokemon.size() - 1;
+			}
+		}
+
+		if (Input::GetButtonDown('A'))
+		{
+			mbPowerWindow = true;
+		}
+		if (Input::GetButtonDown('X'))
+		{
+			mbMenu = false;
+			mPokeCnt = 0;
+		}
+
+	}
+	
 }
 
 void MenuPokemon::Render(HDC hdc)
@@ -116,7 +118,8 @@ void MenuPokemon::Render(HDC hdc)
 			sprintf_s(mSampleText, "%d", POKE_MGR->mJiwooPokemon[i]->mMaxHp);
 			TextOut(hdc, WIN_SIZE_X / 2 + 230, (70 * i), mSampleText, strlen(mSampleText));
 
-			DeleteObject(SelectObject(hdc, hOldFont));
+			SelectObject(hdc, hOldFont);
+			DeleteObject(hFont);
 		}
 
 		
