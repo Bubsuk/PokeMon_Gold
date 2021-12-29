@@ -72,6 +72,9 @@ void TextManager::ClearBattleScript()
 
 	mBattleScript1.clear();
 	vector<string>().swap(mBattleScript1);
+
+	mEnemyScript.clear();
+	vector<string>().swap(mEnemyScript);
 }
 
 

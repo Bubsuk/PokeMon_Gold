@@ -31,8 +31,6 @@ HRESULT MonsterAppear::Init()
 
 void MonsterAppear::Update()
 {
-	cout << TXT_MGR->mBattleScript.size() << endl;
-	cout << mAppProgCnt << endl << endl;
 
 	if (mbAppeared == false)
 	{

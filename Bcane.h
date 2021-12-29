@@ -43,7 +43,15 @@ public:
 		mLv = 1;
 		mIdNum = "No. 155";
 		mMaxHp = 40 * RandomManager::WeightMaker();
-		mHp = mMaxHp;
+		
+		if (mHp >= mMaxHp)
+		{
+			mHp = mMaxHp;
+		}
+		else
+		{
+			mHp = mMaxHp;
+		}
 
 		mMaxExp = 40 * RandomManager::WeightMaker();
 		mExp = 0;

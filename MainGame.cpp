@@ -8,7 +8,7 @@
 #include "MapManager.h"
 
 
-// #define TILETOOL
+ #define TILETOOL
 
 HRESULT MainGame::Init()
 {
