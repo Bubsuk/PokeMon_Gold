@@ -8,7 +8,7 @@ HRESULT Home1stScene::Init()
 {
 	MAP_MGR->LoadMap("etcMap");
 	CAM_MGR->SetPos(-4544, -64);
-	
+	CON_MGR->mState = eDir::Down;
 
 	mToOutdoor = { -4416, -448 };
 	return S_OK;

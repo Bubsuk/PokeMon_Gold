@@ -8,7 +8,7 @@
 #include "MapManager.h"
 
 
- #define TILETOOL
+ //#define TILETOOL
 
 HRESULT MainGame::Init()
 {
@@ -50,7 +50,7 @@ HRESULT MainGame::Init()
 	POINT g_maxSize = {TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y};
 
 #else
-	SCENE_MGR->ChangeScene(eSceneTag::OpeningScene);
+	SCENE_MGR->ChangeScene(eSceneTag::CenterScene);
 	POINT g_maxSize = { WIN_SIZE_X, WIN_SIZE_Y };
 
 #endif

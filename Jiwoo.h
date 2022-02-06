@@ -10,7 +10,7 @@ public:
 	Image* mImageRunRL = nullptr;
 	Image* mImageRunUD = nullptr;
 	Image* mShadow;
-	Image* mDetectFlash;
+	Image* mBattleLoading;
 
 	Collider* mCollider;
 
@@ -21,6 +21,8 @@ public:
 	
 	int mframeX = 0;
 	int mframeY = 0;
+
+	int mLoadingFrame;
 
 	float mJumpWeight;
 	int mJumpHeight;
@@ -35,6 +37,7 @@ public:
 	const float mFlipAnimTime = 0.15f;
 	float mElapsedCount;
 	float mCoolTimeCnt;
+	float mLodingCount;
 	float mJumpCount = 0.0f;
 	float mMoveSpeed = {};
 	float mOneTileTime = {};

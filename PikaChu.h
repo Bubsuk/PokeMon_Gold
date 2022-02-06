@@ -9,6 +9,7 @@ public:
 		mBackImg = IMG_MGR->FindImage(eImageTag::Pika_R);
 		mFrontImg = IMG_MGR->FindImage(eImageTag::Pika_F);
 		mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
+		//mAttackImg = IMG_MGR->FindImage(eImageTag::)
 
 		mTypeIndexX = 6;
 		mTypeIndexY = 0;
@@ -34,6 +35,7 @@ public:
 		mSkill1->mAttack = 30;
 		mSkill1->mAccuracyRate = 100;
 		mSkill1->mSkillImg = IMG_MGR->FindImage(eImageTag::ElectricShock);
+		mSkill1->mSkillFrameX = 3;
 
 		PokemonSkill* mSkill2 = new PokemonSkill;
 		mPokeSkill.emplace_back(mSkill2);
@@ -41,7 +43,8 @@ public:
 		mSkill2->eType = SkillType::Normal;
 		mSkill2->mAttack = 0;
 		mSkill2->mAccuracyRate = 100;
-		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
+		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::WildConfusion);
+		mSkill2->mSkillFrameX = 8;
 
 		mLv = 1;
 		mIdNum = "No. 025";
@@ -55,6 +58,7 @@ public:
 		{
 			mHp = mMaxHp;
 		}
+
 
 		mMaxExp = 40 * RandomManager::WeightMaker();
 		mExp = 0;

@@ -12,6 +12,7 @@ HRESULT Jiwoo::Init()
     mImageRunRL = IMG_MGR->FindImage(eImageTag::Jiwoo_moveRL);
     mImageRunUD = IMG_MGR->FindImage(eImageTag::Jiwoo_moveUD);
     mShadow = IMG_MGR->FindImage(eImageTag::Shadow);
+    mBattleLoading = IMG_MGR->FindImage(eImageTag::BattleLoading);
 
     if (mImageRunRL == nullptr || mImageRunUD == nullptr)
     {
@@ -42,6 +43,8 @@ HRESULT Jiwoo::Init()
 
     mElapsedCount = 0.0f;
     mCoolTimeCnt = 0.0f;
+    mLodingCount = 0.0f;
+    mLoadingFrame = 0;
 
     mMoveSpeed = 300;
     CAM_MGR->mObjectPos = { 0,0 };
@@ -333,15 +336,32 @@ void Jiwoo::Update()
         }
     }
 
-    if (mbDetected == true && mElapsedCount > 0.5f)
+    if (mbDetected == true /*&& mElapsedCount > 0.5f*/)
     {
+        mbControl = false;
+        mLodingCount += DELTA_TIME;
+        int LoadingTime = mLodingCount * 100;
+ 
+
+        mLoadingFrame = LoadingTime / 5;
+        if (mLoadingFrame >= 27)
+        {
+            mLoadingFrame = 27;
+        }
+        
         // ¹èÆ²¾À ÀüÈ¯
-        POINT tempPos = CAM_MGR->GetCamPos();
-        tempPos.x += 50;
-        tempPos.y += 50;
-        CAM_MGR->SetWarfPos(tempPos);
-        SCENE_MGR->ChangeScene(eSceneTag::BattleScene);
-        mbDetected = false;
+        if (mLodingCount > 1.5f)
+        {
+            POINT tempPos = CAM_MGR->GetCamPos();
+            tempPos.x += 50;
+            tempPos.y += 50;
+            CAM_MGR->SetWarfPos(tempPos);
+            SCENE_MGR->ChangeScene(eSceneTag::BattleScene);
+            mbDetected = false;
+            mbControl = true;
+            mLodingCount = 0.0f;
+        }
+        
     }
 
 
@@ -389,6 +409,11 @@ void Jiwoo::Render(HDC hdc)
     if (mbMenuSwitch == true)
     {
         mMenu->Render(hdc);
+    }
+
+    if (mbDetected == true)
+    {
+        mBattleLoading->Render(hdc, WIN_SIZE_X / 2, WIN_SIZE_Y / 2, mLoadingFrame, 0);
     }
 }
 

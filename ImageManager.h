@@ -49,7 +49,7 @@ enum class eImageTag
 	// PokemonCenter
 	HealingPoke,
 
-	// Particle
+	// Battle Particle
 	AppearPoke, Attack, Attack3, Bind, Cut, Cut3, fire, Growth, Horn, Light, Move, MyConfusion, 
 	MyHorn, MyPoison, MyQuickAttack, MySandAttack, MyStringShot, Poison, RazorWind, Shine, ElectricShock,
 	SkyAttack, Slash, SmokeScreen, Snap, Spark, Squall, WildConfusion, WildHorn, WildPoisonSting, 

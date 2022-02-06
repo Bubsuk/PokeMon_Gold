@@ -36,15 +36,18 @@ protected:
 	char mText[256];
 
 	int mCursorCnt;
+	int mEffectFrameX;
 	POINT mCursorPos;
 
 	
 	bool mbBasicFrame;
+	bool mPlayerPokeEffect;
+	bool mEnemyPokeEffect;
 	
 	//bool mbMenu;
 	//bool mbBag;
 
-	float mElasedCnt;
+	float mElapsedCnt;
 
 public:
 	HRESULT Init();

@@ -17,7 +17,7 @@ HRESULT MonsterAppear::Init()
 	mPlayerAppearX = 0;
 	mBattlePokePosX = 0;
 
-	mElasedCnt = 0.0f;
+	mElapsedCnt = 0.0f;
 
 	mbAppeared = false;
 	mbScripted = false;
@@ -34,12 +34,12 @@ void MonsterAppear::Update()
 
 	if (mbAppeared == false)
 	{
-		mElasedCnt += DELTA_TIME;
+		mElapsedCnt += DELTA_TIME;
 
-		mPlayerAppearX = WIN_SIZE_X + 100 - (WIN_SIZE_X - 50) * mElasedCnt / 1.5f;
-		mBattlePokePosX = -100 + (WIN_SIZE_X - 50) * mElasedCnt / 1.5f;
+		mPlayerAppearX = WIN_SIZE_X + 100 - (WIN_SIZE_X - 50) * mElapsedCnt / 1.5f;
+		mBattlePokePosX = -100 + (WIN_SIZE_X - 50) * mElapsedCnt / 1.5f;
 
-		if (mElasedCnt > 1.5f)
+		if (mElapsedCnt > 1.5f)
 		{
 			mPlayerAppearX = 150;
 			mBattlePokePosX = WIN_SIZE_X - 150;
@@ -47,16 +47,16 @@ void MonsterAppear::Update()
 			if (mAppProgCnt >= TXT_MGR->mBattleScript.size())
 			{
 				mbScripted = true;
-				mElasedCnt = 0.0f;
+				mElapsedCnt = 0.0f;
 			}
 		}
 
 		if (mbScripted == true)
 		{
-			if (mElasedCnt > 0.15f)
+			if (mElapsedCnt > 0.15f)
 			{
 				--mFrameX;
-				mElasedCnt = 0.0f;
+				mElapsedCnt = 0.0f;
 
 			}
 			if (mFrameX < 0)

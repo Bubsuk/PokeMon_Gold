@@ -14,6 +14,7 @@ HRESULT Home2ndScene::Init()
 	{
 		POINT startPos = CAM_MGR->GetWarfPos();
 		CAM_MGR->SetPos(startPos.x, startPos.y);
+		CON_MGR->mState = eDir::Down;
 	}
 
 	mTo1stFloor = { -5376, 0 };

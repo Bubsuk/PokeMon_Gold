@@ -28,6 +28,7 @@ public:
 		mSkill1->mAttack = 25;
 		mSkill1->mAccuracyRate = 100;
 		mSkill1->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
+		mSkill1->mSkillFrameX = 8;
 
 		PokemonSkill* mSkill2 = new PokemonSkill;
 		mPokeSkill.emplace_back(mSkill2);
@@ -35,7 +36,8 @@ public:
 		mSkill2->eType = SkillType::Normal;
 		mSkill2->mAttack = 0;
 		mSkill2->mAccuracyRate = 100;
-		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
+		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::WildConfusion);
+		mSkill2->mSkillFrameX = 10;
 
 		mLv = 1;
 		mIdNum = "No. 158";

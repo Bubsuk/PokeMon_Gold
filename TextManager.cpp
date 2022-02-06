@@ -50,7 +50,7 @@ void TextManager::BattleScript()
 	
 	
 	mBattleScript1.emplace_back("급소에 맞았다!");//2
-	mBattleScript1.emplace_back("지우의 패배!");
+	mBattleScript1.emplace_back("지우의 " + POKE_MGR->mJiwooPokemon[0]->mName + "는 쓰러졌다! 지우의 패배!");
 	mBattleScript1.emplace_back(POKE_MGR->mTempPokemon->mName + "를 획득했다!"); //4
 	mBattleScript1.emplace_back("적의 " + POKE_MGR->mTempPokemon->mName + "는 쓰러젔다!");
 	mBattleScript1.emplace_back("신난다! " + POKE_MGR->mTempPokemon->mName + "를 잡았다!");

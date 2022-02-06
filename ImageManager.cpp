@@ -67,6 +67,20 @@ void ImageManager::Init()
 	// 포켓몬 타입이미지
 	AddImage(eImageTag::PokeIcon, "Image/menuUI/pokeicon.bmp", 2048, 191, 32, 3, true, RGB(255, 0, 255));
 
+	// Battle Particle
+	AddImage(eImageTag::WalkGrass1, "Image/poketmon_grass1.bmp", 48, 36);
+	AddImage(eImageTag::WalkGrass2, "Image/poketmon_grass2.bmp", 45, 21);
+	AddImage(eImageTag::Shadow, "Image/character_shadow.bmp", 56, 64, 1, 1, true, RGB(255, 0, 255));
+
+	AddImage(eImageTag::ElectricShock, "Image/skill/shock.bmp", 138, 42, 3, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::Slash, "Image/skill/slash.bmp", 480, 60, 8, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::MyConfusion, "Image/skill/myconfusion.bmp", 1680, 160, 8, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::Squall, "Image/skill/squall.bmp", 4300, 114, 43, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::WildStingShot, "Image/skill/wildstringShot.bmp", 5940, 235, 19, 1, true, RGB(255, 0, 255));
+	AddImage(eImageTag::WildConfusion, "Image/skill/wildconfusion.bmp", 1680, 160, 10, 1, true, RGB(255, 0, 255));
+	
+
+
 	// 배경
 	AddImage(eImageTag::StartRoom, "Image/pokemon_start_home1.bmp", 640, 512);
 	AddImage(eImageTag::Background, "Image/mapImage.bmp", 1024, 768);
@@ -137,7 +151,7 @@ void ImageManager::Init()
 
 	// UI - Battle
 	AddImage(eImageTag::BattleLoading, "Image/battle_loading.bmp", 17920, 596, 28, 1, true, RGB(255, 0, 255));
-	AddImage(eImageTag::BattleFlash, "Image/battle/flash_loading.bmp", 640, 576);
+	AddImage(eImageTag::BattleFlash, "Image/flash_loading.bmp", 640, 576);
 	AddImage(eImageTag::BattleFrame, "Image/battle/battleBackground.bmp", 640, 576);
 	AddImage(eImageTag::BattleSkill, "Image/battle/backgroundSkill.bmp", 640, 289, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::BattleSelect, "Image/battle/selectBehavior.bmp", 640, 186);
@@ -163,15 +177,7 @@ void ImageManager::Init()
 	AddImage(eImageTag::Sell, "Image/shopUI/shop_2.bmp", 650, 576);
 	AddImage(eImageTag::Nothing, "Image/shopUI/shop_3.bmp", 650, 576);
 
-	// Particle
-	AddImage(eImageTag::WalkGrass1, "Image/poketmon_grass1.bmp", 48, 36);
-	AddImage(eImageTag::WalkGrass2, "Image/poketmon_grass2.bmp", 45, 21);
-	AddImage(eImageTag::Shadow, "Image/character_shadow.bmp", 56, 64, 1, 1, true, RGB(255, 0, 255));
-
-	AddImage(eImageTag::ElectricShock, "Image/battle/skill/shock.bmp", 138, 42, 3, 1, true, RGB(255, 0, 255));
-	AddImage(eImageTag::Slash, "Image/battle/skill/slash.bmp", 480, 60, 8, 1, true, RGB(255, 0, 255));
-
-
+	
 	// End Scene
 	AddImage(eImageTag::End1, "Image/end_image/endingBackground1.bmp", 650, 576);
 	AddImage(eImageTag::End2, "Image/end_image/endingBackground2.bmp", 650, 576);

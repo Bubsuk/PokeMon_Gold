@@ -30,6 +30,7 @@ public:
 		mSkill1->mAttack = 30;
 		mSkill1->mAccuracyRate = 95;
 		mSkill1->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
+		mSkill1->mSkillFrameX = 8;
 		mPokeSkill.emplace_back(mSkill1);
 
 		PokemonSkill* mSkill2 = new PokemonSkill;
@@ -37,7 +38,8 @@ public:
 		mSkill2->eType = SkillType::Bug;
 		mSkill2->mAttack = 0;
 		mSkill2->mAccuracyRate = 95;
-		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::Slash);
+		mSkill2->mSkillImg = IMG_MGR->FindImage(eImageTag::WildStingShot);
+		mSkill2->mSkillFrameX = 19;
 		mPokeSkill.emplace_back(mSkill2);
 		
 
@@ -55,6 +57,7 @@ public:
 		{
 			mHp = mMaxHp;
 		}
+
 
 		mMaxExp = 40 * RandomManager::WeightMaker();
 		mExp = 0;

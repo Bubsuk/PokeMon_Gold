@@ -47,7 +47,7 @@ HRESULT BattleManager::Init()
 	mbBag = false;
 	mbCatch = false;*/
 
-	mElasedCnt = 0.0f;
+	mElapsedCnt = 0.0f;
 
 
     return S_OK;
@@ -55,7 +55,7 @@ HRESULT BattleManager::Init()
 
 void BattleManager::Update()
 {
-	mElasedCnt += DELTA_TIME;
+	mElapsedCnt += DELTA_TIME;
 
 	mAppear->Update();
 
@@ -109,14 +109,15 @@ void BattleManager::Update()
 		{
 			mBag->mbBag = true;
 		}
-		if ((Input::GetButtonDown('Z') && mCursorCnt == 3) || mCatchScene->mbCatchEnd == true)
+		if ((Input::GetButtonDown('Z') && mCursorCnt == 3) || mCatchScene->mbCatchEnd == true
+			|| mFightScene->mbFightEnd == true)
 		{
 			TXT_MGR->ClearBattleScript();
 			SCENE_MGR->ChangeScene(eSceneTag::CityScene);
 		}
+
 		
 	}
-	
 	
 }
 
@@ -201,9 +202,9 @@ void BattleManager::BattleFrameRender(HDC hdc)
 	TextOut(hdc, WIN_SIZE_X / 2 + 60, WIN_SIZE_Y / 2 - 35, mText, strlen(mText));
 
 	sprintf_s(ch, "%d ", POKE_MGR->mJiwooPokemon[0]->mHp);
-	TextOut(hdc, 360, 310, ch, strlen(ch));
+	TextOut(hdc, 360, 320, ch, strlen(ch));
 
 	sprintf_s(ch, "%d", POKE_MGR->mJiwooPokemon[0]->mMaxHp);
-	TextOut(hdc, 480, 310, ch, strlen(ch));
+	TextOut(hdc, 480, 320, ch, strlen(ch));
 }
 

@@ -8,7 +8,6 @@ public:
 	explicit Attack(int attackPoint) : enemyHp{ POKE_MGR->mTempPokemon->mHp } {}
 	int operator() (int point) const
 	{
-
 		return enemyHp - point;
 	}
 
@@ -36,10 +35,14 @@ public:
 	Image* mCursor;
 	
 	bool mbFight;
+	bool mbPlayerDie;
+	bool mbEnemyDie;
+	bool mbFightEnd;
 
 	int mSkillCurCnt;
 	int mEnemySkillNum;
 	int mProgressCnt;
+	float mElapsedCnt;
 
 	POINT mSkillCursorPos;
 

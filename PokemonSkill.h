@@ -9,7 +9,9 @@ public:
 	string mSkillName = "default";
 	SkillType eType;
 	Image* mSkillImg;
+	int mSkillFrameX;
 	POINT mImgPos;
+	
 
 	int mAttack = {};
 	int mAccuracyRate = {};
