@@ -52,7 +52,7 @@ private:
 	COLORREF transColor;
 
 public:
-	virtual ~Image() {}
+	virtual ~Image() { Release(); }
 	HRESULT Init(int width, int height);
 	HRESULT Init(const char* fileName, int width, int height,
 		bool isTrans = false, COLORREF transColor = NULL);

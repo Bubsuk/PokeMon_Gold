@@ -18,9 +18,9 @@ enum class eTerrain
     Grass = 1,          // 포켓몬 출현
     Close = 2,          // 못지나감
     Door = 3,           // 문 1개
-    BottomBlock = 4,    // 아래막힘(점프)
-    RightBlock = 5,     // 오른쪽막힘(점프)
-    LeftBlock = 6,      // 왼쪽막힘(점프)
+    BottomBlock = 4,    // 아래막힘
+    RightBlock = 5,     // 오른쪽막힘
+    LeftBlock = 6,      // 왼쪽막힘
 };
 
 enum class ePokemon
@@ -30,10 +30,6 @@ enum class ePokemon
     Pika,
     Chicorita, Bcane, Riaco, 
     Alligay,
-    /*Jangcro, Dandegi, Butter, Bbul, Ddak,
-    DokChung, Gugu, Pigeon, PigeonTwo,
-    Ggaebi, Ggaebidrill, Richu, Bayleaf,
-    Meganium, Rat*/
 };
 
 enum class ePokemonType
@@ -71,4 +67,3 @@ enum class Gender
     Male, Female
 };
 
-// 포켓몬 상태 : 잠 독 마비 혼란 화상

@@ -6,17 +6,14 @@
 void ImageManager::Init()
 {
 	// 캐릭터
-	//AddImage(eImageTag::Jiwoo_idle, "Image/Jiwoo_idle.bmp", 128, 128, 2, 2, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Jiwoo_moveUD, "Image/Jiwoo_UD.bmp", 280, 128, 5, 2, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Jiwoo_moveRL, "Image/Jiwoo_RL.bmp", 171, 128, 3, 2, true, RGB(255, 0, 255));
 	AddImage(eImageTag::DoctorO, "Image/pokemon_O.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::SubO, "Image/pokemon_Ominion.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Mom_move, "Image/mom_move.bmp", 128, 128, 2, 2, true, RGB(255, 0, 255));
-	//AddImage(eImageTag::Mom_idle, "Image/mom_move.bmp", 128, 128, 2, 2, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Mart, "Image/pokemon_mart.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Nurse, "Image/pokemon_nurse.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
 	AddImage(eImageTag::Master, "Image/pokemon_master.bmp", 64, 64, 1, 1, true, RGB(255, 0, 255));
-	//AddImage(eImageTag::Master_sub, "Image/master_sub.bmp", 128, 64, 2, 1, true, RGB(255, 0, 255));
 	
 	// 포켓몬
 	AddImage(eImageTag::Caterpie_R, "Image/pokemon/no_10B.bmp", 192, 192, 1, 1, true, RGB(255, 0, 255));

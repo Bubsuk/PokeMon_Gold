@@ -18,12 +18,11 @@ public:
 	vector<Pokemon*> mPokeDogam;
 	vector<Pokemon*> mJiwooPokemon;
 
-	bool mExisted;
 
 	void Init();
 	void RegistDogam(Pokemon* monster);
+	void RegistDogamAfterCatch(Pokemon* monster);
 	void CatchPoke(Pokemon* monster);
-	void KillPoke(Pokemon* monster);
 	bool CheckExisted(Pokemon* monster);
 
 	// 오박사 NPC 나오면 수정

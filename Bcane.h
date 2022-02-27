@@ -61,6 +61,7 @@ public:
 	}
 	~Bcane()
 	{
+		
 	}
 	HRESULT Init() override;
 	void Update() override;

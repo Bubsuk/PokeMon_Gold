@@ -59,6 +59,10 @@ public:
 		mExp = 0;
 
 	}
+	~GgoRat()
+	{
+		
+	}
 	HRESULT Init() override;
 	void Update() override;
 	void Render(HDC hdc) override;

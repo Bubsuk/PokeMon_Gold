@@ -59,9 +59,10 @@ void Jiwoo::Update()
 { 
     mElapsedCount += DELTA_TIME;
     mCoolTimeCnt += DELTA_TIME;
-    if (mCoolTimeCnt > 3.0f)
+    if (mCoolTimeCnt > 5.0f)
     {
         mbCoolTime = false;
+        mCoolTimeCnt = 0.0f;
     }
 
   
@@ -185,18 +186,7 @@ void Jiwoo::Update()
         }
     }
 
-    //// 점프
-    //if (mbJump == true)
-    //{
-    //    Jump();
-
-    //    if (mPos.y >= mBarometerPos.y)
-    //    {
-    //        mPos.y = WIN_SIZE_Y / 2;
-    //        mbJump = false;
-    //    }
-    //}
-    // 
+    
     // 보간
     if (mbNeedRevise == true)
     {
@@ -299,33 +289,27 @@ void Jiwoo::Update()
     // 포켓몬 발견
     if (CheckGrass() == true && mbCoolTime == false)
     {
-        if (RandomManager::PercentMaker(2000) == true)
+        if (RandomManager::PercentMaker(200) == true)
         {
             switch (RandomManager::RandomPeeker(0, 5))
             {
             case 0:
                 POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Bcane);
-                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
                 break;
             case 1:
                 POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Caterpie);
-                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
                 break;
             case 2:
                 POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Chicorita);
-                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
                 break;
             case 3:
                 POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Ggorat);
-                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
                 break;
             case 4:
                 POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Pika);
-                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
                 break;
             case 5:
                 POKE_MGR->mTempPokemon = POKE_MGR->FactoryFunc(ePokemon::Riaco);
-                POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
                 break;
             default:
                 break;

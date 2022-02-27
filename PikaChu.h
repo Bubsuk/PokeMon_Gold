@@ -63,7 +63,10 @@ public:
 		mMaxExp = 40 * RandomManager::WeightMaker();
 		mExp = 0;
 	}
+	~PikaChu()
+	{
 
+	}
 	HRESULT Init() override;
 	void Update() override;
 	void Render(HDC hdc) override;

@@ -17,18 +17,15 @@ void PokemonManager::Init()
 
 	mJiwooPokemon.emplace_back(PIKACHU);
 	mJiwooPokemon.emplace_back(CHIKO);
-	RegistDogam(PIKACHU);
-	RegistDogam(CHIKO);
+	mPokeDogam.emplace_back(PIKACHU);
+	mPokeDogam.emplace_back(CHIKO);
 	///////////////////////////////////////
-
-	mExisted = false;
 }
 
 void PokemonManager::RegistDogam(Pokemon* monster)
 {
 	if (mPokeDogam.empty())
 	{
-		
 		mPokeDogam.emplace_back(monster);
 	}
 	else if(!mPokeDogam.empty())
@@ -37,9 +34,34 @@ void PokemonManager::RegistDogam(Pokemon* monster)
 		{
 			return;
 		}
-		else mPokeDogam.emplace_back(monster);
+		else
+		{
+			Pokemon* Temp = FactoryFunc(monster->mPokeSpecies);
+			mPokeDogam.emplace_back(Temp);
+			SAFE_RELEASE(monster);
+		}
 	}
 	
+}
+
+void PokemonManager::RegistDogamAfterCatch(Pokemon* monster)
+{
+	if (mPokeDogam.empty())
+	{
+		mPokeDogam.emplace_back(monster);
+	}
+	else if (!mPokeDogam.empty())
+	{
+		if (CheckExisted(monster) == true)
+		{
+			return;
+		}
+		else
+		{
+			mPokeDogam.emplace_back(monster);
+		}
+	}
+
 }
 
 bool PokemonManager::CheckExisted(Pokemon* monster)
@@ -59,18 +81,14 @@ void PokemonManager::CatchPoke(Pokemon* monster)
 	mJiwooPokemon.emplace_back(monster);
 }
 
-void PokemonManager::KillPoke(Pokemon* monster)
-{
-	SAFE_DELETE(monster);
-}
-
-
 
 // 오박사 NPC 나오면 수정
 void PokemonManager::Release()
 {
-	SAFE_RELEASE(PIKACHU);
-	SAFE_RELEASE(CHIKO);
+	for (auto& elem : mPokeDogam)
+	{
+		SAFE_RELEASE(elem);
+	}
 }
 
 

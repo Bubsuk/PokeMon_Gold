@@ -8,7 +8,7 @@
 #include "MapManager.h"
 
 
- //#define TILETOOL
+// #define TILETOOL
 
 HRESULT MainGame::Init()
 {
@@ -28,29 +28,15 @@ HRESULT MainGame::Init()
 	clickedMousePosX = 0;
 	clickedMousePosY = 0;
 
-	// 백버퍼 맥스사이즈 다시보기
+	// 백버퍼 맥스사이즈
 	backBuffer = new Image();
-	//AddFontResource("gsc.ttf");
 
-	//LOGFONT lf = {};
-	//lf.lfHeight = -MulDiv(15, GetDeviceCaps(backBuffer->GetMemDC(), LOGPIXELSY), 72);
-	//lf.lfWeight = FW_NORMAL;
-	//strcpy_s(lf.lfFaceName, TEXT("PokemonGSC"));
-	//font = CreateFontIndirect(&lf);
-	
-	/*font = CreateFont(50, 0, 0, 0, 400, 0, 0, 0, ANSI_CHARSET, 3, 2, 1,
-		18, TEXT("PokemonGSC"));
-	oldFont = (HFONT)SelectObject(backBuffer->GetMemDC(), font);*/
-	
-	// oldFont는 보관해두고
-	// Release() 에서 font = (HFONT)SelectObject(backBuffer->GetMemDC(), oldFont);
-	// DeleteObject(font);
 #ifdef TILETOOL
 	SCENE_MGR->ChangeScene(eSceneTag::MapToolScene);
 	POINT g_maxSize = {TILE_MAP_TOOL_X, TILE_MAP_TOOL_Y};
 
 #else
-	SCENE_MGR->ChangeScene(eSceneTag::CenterScene);
+	SCENE_MGR->ChangeScene(eSceneTag::OpeningScene);
 	POINT g_maxSize = { WIN_SIZE_X, WIN_SIZE_Y };
 
 #endif
@@ -105,6 +91,7 @@ void MainGame::Release()
 	POKE_MGR->Release();
 	POKE_MGR->ReleaseSingleton();
 
+	CAM_MGR->ReleaseSingleton();
 	MAP_MGR->ReleaseSingleton();
 
 	KillTimer(g_hWnd, 0);

@@ -50,6 +50,10 @@ public:
 	virtual ~Pokemon() 
 	{
 		SAFE_DELETE(mSkill);
+		for (auto& elem : mPokeSkill)
+		{
+			SAFE_DELETE(elem);
+		}
 	};
 
 };

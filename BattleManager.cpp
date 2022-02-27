@@ -40,12 +40,6 @@ HRESULT BattleManager::Init()
 	mCursorCnt = 0;
 	mCursorPos = { 300, 460 };
 
-	
-	
-	/*mbBasicFrame = false;
-	mbMenu = false;
-	mbBag = false;
-	mbCatch = false;*/
 
 	mElapsedCnt = 0.0f;
 
@@ -109,14 +103,19 @@ void BattleManager::Update()
 		{
 			mBag->mbBag = true;
 		}
-		if ((Input::GetButtonDown('Z') && mCursorCnt == 3) || mCatchScene->mbCatchEnd == true
-			|| mFightScene->mbFightEnd == true)
+		if (mCatchScene->mbCatchEnd == true)
 		{
+			POKE_MGR->RegistDogamAfterCatch(POKE_MGR->mTempPokemon);
+			TXT_MGR->ClearBattleScript();
+			SCENE_MGR->ChangeScene(eSceneTag::CityScene);
+		}
+		else if ((Input::GetButtonDown('Z') && mCursorCnt == 3) || mFightScene->mbFightEnd == true)
+		{
+			POKE_MGR->RegistDogam(POKE_MGR->mTempPokemon);
 			TXT_MGR->ClearBattleScript();
 			SCENE_MGR->ChangeScene(eSceneTag::CityScene);
 		}
 
-		
 	}
 	
 }

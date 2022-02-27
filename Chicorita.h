@@ -57,7 +57,10 @@ public:
 		mMaxExp = 40 * RandomManager::WeightMaker();
 		mExp = 0;
 	}
-
+	~Chicorita()
+	{
+		
+	}
 	HRESULT Init() override;
 	void Update() override;
 	void Render(HDC hdc) override;

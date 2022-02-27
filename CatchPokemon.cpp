@@ -15,10 +15,6 @@ HRESULT CatchPokemon::Init()
 
     mElapsedCnt = 0.0f;
 
-    //mMonsterballPos = { 220, 300 };
-    //mBallSpeed = 800.0f;
-    //mBallWeight = 10.0f;
-    //mHeightLimit = 80;
 
     mbCatch = false;
     mbBall = false;
@@ -35,8 +31,6 @@ void CatchPokemon::Update()
     if (mbCatch == true)
     {
         mElapsedCnt += DELTA_TIME;
-        /*   mMonsterballPos.x += mBallSpeed * DELTA_TIME;
-           mMonsterballPos.y -= mBallSpeed * DELTA_TIME;*/
 
         if (mElapsedCnt > 1.0f)
         {

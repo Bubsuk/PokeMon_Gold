@@ -63,7 +63,10 @@ public:
 		mExp = 0;
 
 	}
+	~Caterpie()
+	{
 
+	}
 	HRESULT Init() override;
 	void Update() override;
 	void Render(HDC hdc) override;
