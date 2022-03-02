@@ -287,7 +287,7 @@ void Jiwoo::Update()
     }
 
     // 포켓몬 발견
-    if (CheckGrass() == true && mbCoolTime == false)
+    if (CheckGrass() == true && mbCoolTime == false && mbControlSwitch == true)
     {
         if (RandomManager::PercentMaker(200) == true)
         {
@@ -320,7 +320,7 @@ void Jiwoo::Update()
         }
     }
 
-    if (mbDetected == true /*&& mElapsedCount > 0.5f*/)
+    if (mbDetected == true)
     {
         mbControl = false;
         mLodingCount += DELTA_TIME;

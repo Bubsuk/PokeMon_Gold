@@ -9,7 +9,7 @@ public:
 		mBackImg = IMG_MGR->FindImage(eImageTag::Pika_R);
 		mFrontImg = IMG_MGR->FindImage(eImageTag::Pika_F);
 		mTypeImg = IMG_MGR->FindImage(eImageTag::PokeIcon);
-		//mAttackImg = IMG_MGR->FindImage(eImageTag::)
+
 
 		mTypeIndexX = 6;
 		mTypeIndexY = 0;
